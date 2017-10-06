@@ -95,10 +95,10 @@ public class AddressBookParser {
         case RedoCommand.COMMAND_ALIAS:
             return new RedoCommand();
 
-        case RemarkCommand.COMMAND_WORD: 
+        case RemarkCommand.COMMAND_WORD:
             return new RemarkCommandParser().parse(arguments);
 
-        default: 
+        default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
         }
     }
