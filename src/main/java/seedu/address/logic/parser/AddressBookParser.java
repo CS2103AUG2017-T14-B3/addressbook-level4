@@ -67,7 +67,7 @@ public class AddressBookParser {
 
         case ClearCommand.COMMAND_WORD:
         case ClearCommand.COMMAND_ALIAS:
-                return new ClearCommand();
+            return new ClearCommand();
 
         case FindCommand.COMMAND_WORD:
         case FindCommand.COMMAND_ALIAS:

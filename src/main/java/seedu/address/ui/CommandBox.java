@@ -55,7 +55,7 @@ public class CommandBox extends UiPart<Region> {
             keyEvent.consume();
             navigateToNextInput();
             break;
-            default:
+        default:
             // let JavaFx handle the keypress
         }
     }
