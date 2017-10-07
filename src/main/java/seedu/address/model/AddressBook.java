@@ -10,6 +10,7 @@ import java.util.Objects;
 import java.util.Set;
 
 import javafx.collections.ObservableList;
+
 import seedu.address.model.person.Person;
 import seedu.address.model.person.ReadOnlyPerson;
 import seedu.address.model.person.UniquePersonList;
@@ -27,12 +28,12 @@ public class AddressBook implements ReadOnlyAddressBook {
     private final UniquePersonList persons;
     private final UniqueTagList tags;
 
-    /*
-     * The 'unusual' code block below is an non-static initialization block, sometimes used to avoid duplication
-     * between constructors. See https://docs.oracle.com/javase/tutorial/java/javaOO/initial.html
-     *
-     * Note that non-static init blocks are not recommended to use. There are other ways to avoid duplication
-     *   among constructors.
+        /*
+         * The 'unusual' code block below is an non-static initialization block, sometimes used to avoid duplication
+         * between constructors. See https://docs.oracle.com/javase/tutorial/java/javaOO/initial.html
+         *
+         * Note that non-static init blocks are not recommended to use. There are other ways to avoid duplication
+         *   among constructors.
      */ {
         persons = new UniquePersonList();
         tags = new UniqueTagList();

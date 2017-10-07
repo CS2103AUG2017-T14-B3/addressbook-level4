@@ -6,7 +6,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 
 import javax.xml.bind.JAXBException;
-
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
