@@ -76,7 +76,7 @@
                 <Insets bottom="5" left="5" right="5" top="5" />
             </padding>
             <TabPane fx:id="tabPane" tabClosingPolicy="UNAVAILABLE"
-                     tabMinWidth="120.0" minHeight="50" styleClass="tabPane"
+                     tabMinHeight="50" tabMinWidth="120.0" styleClass="tabPane"
                      VBox.vgrow="ALWAYS" prefHeight="500.0" prefWidth="200.0">
                 <tabs>
                     <Tab fx:id="contactTab" styleClass="contactsTab"
