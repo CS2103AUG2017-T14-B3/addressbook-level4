@@ -1,3 +1,4 @@
+//@@author a0107442n
 package seedu.address.model.event;
 
 import java.util.function.Function;

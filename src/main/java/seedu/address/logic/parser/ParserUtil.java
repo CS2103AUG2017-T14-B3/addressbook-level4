@@ -157,24 +157,20 @@ public class ParserUtil {
             //Get the file name.
             String s = File.separator;
             int lastDelimiterPosition = originalFilePath.lastIndexOf(s);
-            String fileName = originalFilePath.substring
-                    (lastDelimiterPosition + 1);
+            String fileName = originalFilePath.substring(lastDelimiterPosition + 1);
 
-            if (lastDelimiterPosition == -1 || !fileName.matches
-                    (".*\\.(jpg|png|jpeg)")) {
+            if (lastDelimiterPosition == -1 || !fileName.matches(".*\\.(jpg|png|jpeg)")) {
                 throw new IllegalValueException(Photo.MESSAGE_PHOTO_CONSTRAINTS);
             } else {
                 try {
-                    destFilePath = "src" + s + "main" + s + "resources" + s
-                            + "images" + s + fileName;
+                    destFilePath = "src" + s + "main" + s + "resources" + s + "images" + s + fileName;
                     File originalFile = new File(originalFilePath);
                     File destFile = new File(destFilePath);
 
                     // Copy source image file to specified destination.
                     FileUtil.copyFile(originalFile, destFile);
                 } catch (IOException e) {
-                    throw new IllegalValueException("Invalid file. "
-                            + "Please try again.");
+                    throw new IllegalValueException("Invalid file. Please try again.");
                 }
             }
         }

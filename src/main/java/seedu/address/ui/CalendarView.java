@@ -105,17 +105,22 @@ public class CalendarView extends UiPart<Region> {
         this.logic = logic;
 
         calendarView = new GridPane();
+        initCalendarView(eventList);
+        ScrollPane scrollableCalendar = new ScrollPane(calendarView);
+        calendarViewPlaceHolder.getChildren().add(scrollableCalendar);
 
+        registerAsAnEventHandler(this);
+    }
+
+    /**
+     * Initialize the view holders and event list for the week
+     * @param eventList to be added to the calendar view
+     */
+    private void initCalendarView(ObservableList<ReadOnlyEvent> eventList) {
         initSlots(calendarView);
         initDateHeader(calendarView);
         initDateTimeHeader(calendarView);
         initEvents(calendarView, eventList, null);
-
-        ScrollPane scrollableCalendar = new ScrollPane(calendarView);
-
-        calendarViewPlaceHolder.getChildren().add(scrollableCalendar);
-
-        registerAsAnEventHandler(this);
     }
 
 
@@ -240,7 +245,6 @@ public class CalendarView extends UiPart<Region> {
     private void removeDuplicatedPane(GridPane calendarView, ReadOnlyEvent lastChangedEvent) {
         if (calendarView.getChildren().contains(addedEvents.get(lastChangedEvent))) {
             if (calendarView.getChildren().remove(addedEvents.get(lastChangedEvent))) {
-                logger.info(lastChangedEvent + " removed.");
                 addedEvents.remove(lastChangedEvent);
             }
         }
@@ -267,7 +271,22 @@ public class CalendarView extends UiPart<Region> {
         eventPane.setStyle("-fx-background-color: " + colors[randomColor] + "; -fx-alignment: CENTER; "
                 + "-fx-border-color: " + "white");
 
+        //Add the label to the pane
+        eventPane.getChildren().addAll(eventTitle);
+
         //Add listener to mouse-click event to show detail of the event
+        registerClickHandler(event, eventPane);
+
+        return eventPane;
+    }
+
+    /**
+     * Add listener to mouse-click event on event panes so that when clicked, the corresponding event details will be
+     * shown.
+     * @param event Event chosen
+     * @param eventPane event pane clicked
+     */
+    private void registerClickHandler(ReadOnlyEvent event, StackPane eventPane) {
         eventPane.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent t) {
@@ -278,11 +297,6 @@ public class CalendarView extends UiPart<Region> {
                 }
             }
         });
-
-        //Add the label to the pane
-        eventPane.getChildren().addAll(eventTitle);
-
-        return eventPane;
     }
 
     /**
@@ -349,9 +363,7 @@ public class CalendarView extends UiPart<Region> {
             dragBoard.setContent(clipboardContent);
 
             //Register the detail of the dragged event pane
-            draggingPane = eventPane;
-            draggedEvent = event;
-            draggingPaneSpan = rowSpan;
+            setDraggingDetails(eventPane, event, rowSpan);
         });
     }
 
@@ -363,6 +375,7 @@ public class CalendarView extends UiPart<Region> {
      */
     private void addDropHandling(TimeSlot timeSlot, int rowIndex) {
         StackPane pane = timeSlot.getView();
+
         pane.setOnDragOver(e -> {
             Dragboard dragBoard = e.getDragboard();
             if (dragBoard.hasContent(paneFormat) && draggingPane != null) {
@@ -374,14 +387,7 @@ public class CalendarView extends UiPart<Region> {
             Dragboard dragBoard = e.getDragboard();
             if (dragBoard.hasContent(paneFormat) && rowIndex + draggingPaneSpan <= lastSlotIndex) {
                 try {
-                    int eventIndex = eventList.indexOf(draggedEvent) + 1;
-                    String date = timeSlot.getDateAsString();
-                    String startTime = timeSlot.getStartTimeAsString();
-                    String endTime = timeSlot.getEndTimeAsString(draggingPaneSpan);
-
-                    //Update event's new date and time information through an edit command
-                    CommandResult commandResult = logic.execute("eventedit " + eventIndex + " t/" + date
-                            + " " + startTime + "-" + endTime);
+                    CommandResult commandResult = executeEditCommand(timeSlot);
                     raise(new NewResultAvailableEvent(commandResult.feedbackToUser, false));
                 } catch (CommandException | ParseException exc) {
                     raise(new NewResultAvailableEvent(exc.getMessage(), true));
@@ -390,16 +396,44 @@ public class CalendarView extends UiPart<Region> {
                 e.setDropCompleted(true);
 
                 //Dropping finished, reset the details of dragged pane
-                draggingPane = null;
-                draggedEvent = null;
-                draggingPaneSpan = 0;
+                setDraggingDetails(null, null, 0);
             }
         });
 
     }
 
     /**
+     * Once the dragged pane is dropped at a particular timeslot, create an EditEventCommand and return the command
+     * result.
+     * @param timeSlot the timeslot where the pane is dropped
+     * @return the command result
+     */
+    private CommandResult executeEditCommand(TimeSlot timeSlot) throws CommandException, ParseException {
+        int eventIndex = eventList.indexOf(draggedEvent) + 1;
+        String date = timeSlot.getDateAsString();
+        String startTime = timeSlot.getStartTimeAsString();
+        String endTime = timeSlot.getEndTimeAsString(draggingPaneSpan);
+
+        //Update event's new date and time information through an edit command
+        return logic.execute("eventedit " + eventIndex + " t/" + date
+                + " " + startTime + "-" + endTime);
+    }
+
+    /**
+     * Set the details of the dragging event
+     * @param eventPane the stackpane being dragged
+     * @param event the event being rescheduled
+     * @param rowSpan the span of the stackpane
+     */
+    private void setDraggingDetails(StackPane eventPane, ReadOnlyEvent event, int rowSpan) {
+        draggingPane = eventPane;
+        draggedEvent = event;
+        draggingPaneSpan = rowSpan;
+    }
+
+    /**
      * Upon receiving an AddressBookChangedEvent, update the event list accordingly.
+     * @param abce the AddressBookChangeEvent received
      */
     @Subscribe
     public void handleAddressBookChangedEvent(AddressBookChangedEvent abce) {
@@ -465,7 +499,6 @@ public class CalendarView extends UiPart<Region> {
 
             selectedProperty().addListener((obs, wasSelected, isSelected) ->
                     view.pseudoClassStateChanged(SELECTED_PSEUDO_CLASS, isSelected));
-
         }
 
         public final BooleanProperty selectedProperty() {

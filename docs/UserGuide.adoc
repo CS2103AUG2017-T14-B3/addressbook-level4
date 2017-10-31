@@ -58,7 +58,8 @@ window every time one forgets it.
 
 === Viewing help : `help`
 
-Format: `help`
+Synonyms/Aliases for the command: `help`
+Displays the help window on command.
 
 === Adding a person: `add`
 
@@ -105,39 +106,6 @@ Edits the name of the 2nd person to be `Betsy Crower` and clears all existing ta
 * `edit 3 no/Hates western food. Can only take him out to Chinese and Japanese restaurants.` +
 Edits the note of the 3rd person to be the string displayed above. This is the only way to add a note to a person
 as notes cannot be initialized when adding the person.
-
-=== Exporting of person's data command: `export`
-
-`Coming in v2.0` +
-Synonyms/Aliases: `ex` +
-Exports the data into an excel file. +
-Format: `export` / `ex`
-
-****
-* Export persons data
-* Client(s) data will be stored in an excel format
-****
-
-Examples:
-
-* `export` +
-Exports the data of everyone in the list in an excel file.
-
-
-=== Mass import of person's data command: `import`
-
-`Coming in v2.0` +
-Imports the data into a ... +
-Format: `import`
-
-****
-* Import persons data
-****
-
-Examples:
-
-* `import` [filename] +
-Imports the file and store it in [app].
 
 === Locating persons by name: `find`
 
@@ -212,18 +180,42 @@ Examples:
 * `note John Doe Remember to call him once every day otherwise he will question your commitment.`
 
 
-=== Attaching photos to persons : `photo`
+=== Attaching photos to persons :
 
-`Implemented in v1.3` +
-Adds a photo to a person by specifying the path of the image file. Only .jpg
-file is allowed. Photo can be added either at the creation of a contact (with
- `add` command) or when updating a contact's information (with `edit` command)
+`Since v1.3` +
+Adds a photo to a person by importing an image file, with
+allowed file format jpg, jpeg and png.
+
+Photo can be added or edited in two ways:
+
+* Through Command Line Interface:
+
+Photos can be imported either at the creation
+of a client contact (with `add` command) or when updating a client's
+information (with `edit` command), by specifying the file path of image file
+to be imported
 
 Examples:
 
-* `add Jon... ph/~/Images/Photo.jpg`
+** `add n/Jon ... ph/Users/username/Images/Photo.jpg`
 
-* `edit 1 ph/~/Images/Photo.jpg`
+** `edit 1 ph/Users/username/Images/Photo.jpg`
+
+****
+Restrictions on the input:
+
+* Must be a valid file path
+
+* File must of of jpg, jpeg or png format
+
+
+****
+
+* Through Graphic User Interface
+
+In the `clients's detail` panel, user can use the `import photo` button to
+add/edit photo of the client. Upon clicking the button, a file-chooser window
+ will pop up, enabling the easy choosing of image files with GUI.
 
 === View all persons with a specific tag : `tag`
 
@@ -242,24 +234,6 @@ Format: `company [COMPANY]`
 
 Examples:
 * `company ABC Foods`
-
-=== View a person's address on Google Maps within the app : `address`
-
-`Coming in v2.0` +
-Searches for the person's address on Google Maps and displays the result within the app. +
-Format: `address [PERSON]`
-
-Examples:
-* `address John Doe`
-
-=== Send an email to a person : `email`
-
-`Coming in v2.0` +
-Opens the user's default email client loaded with the person's email in the To: field. +
-Format: `email [PERSON]`
-
-Examples:
-* `email John Doe`
 
 === Adding an event: `eventadd`
 
@@ -453,6 +427,58 @@ Example:
 Checks if ANSWER is yes/no and perform the relevant answer choice. +
 * `startup` yes +
 Sets opening app at startup of user's OS yes.
+
+=== Exporting of person's data command: `export`
+
+`Coming in v2.0` +
+Synonyms/Aliases: `ex` +
+Exports the data into an excel file. +
+Format: `export` / `ex`
+
+****
+* Export persons data
+* Client(s) data will be stored in an excel format
+****
+
+Examples:
+
+* `export` +
+Exports the data of everyone in the list in an excel file.
+
+
+=== Mass import of person's data command: `import`
+
+`Coming in v2.0` +
+Imports the data into a ... +
+Format: `import`
+
+****
+* Import persons data
+****
+
+Examples:
+
+* `import` [filename] +
+Imports the file and store it in [app].
+
+
+=== View a person's address on Google Maps within the app : `address`
+
+`Coming in v2.0` +
+Searches for the person's address on Google Maps and displays the result within the app. +
+Format: `address [PERSON]`
+
+Examples:
+* `address John Doe`
+
+=== Send an email to a person : `email`
+
+`Coming in v2.0` +
+Opens the user's default email client loaded with the person's email in the To: field. +
+Format: `email [PERSON]`
+
+Examples:
+* `email John Doe`
 
 === Saving the data
 
