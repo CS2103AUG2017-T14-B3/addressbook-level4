@@ -34,6 +34,7 @@ public class EventList implements Iterable<Event> {
 
     private static final Logger logger = LogsCenter.getLogger(EventList.class);
 
+    //@@author a0107442n
     private final ObservableTreeMap<Timeslot, Event> internalMap = new
             ObservableTreeMap<>();
     // used by asObservableList()
@@ -53,6 +54,8 @@ public class EventList implements Iterable<Event> {
             }
         });
     }
+
+    //@@author
     /**
      * Adds a event to the tree map.
      */
@@ -131,8 +134,8 @@ public class EventList implements Iterable<Event> {
         Iterator<Event> iterator = this.iterator();
         while (iterator.hasNext()) {
             Event e = iterator.next();
-            if (e.clashesWith(event)
-                    && (!e.getTitle().equals(event.getTitle())
+            if (e.clashesWith(event) // Check if there's time clash between the two events
+                    && (!e.getTitle().equals(event.getTitle()) // Check if the two events are actually the same
                     || !e.getDescription().equals(event.getDescription()))) {
                 return true;
             }

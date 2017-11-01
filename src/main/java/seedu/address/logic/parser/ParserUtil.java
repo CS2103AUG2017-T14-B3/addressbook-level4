@@ -39,6 +39,7 @@ import seedu.address.model.tag.Tag;
  * {@code Optional} return value inside {@code ParserUtil} methods.
  */
 public class ParserUtil {
+    //private static final Logger logger = LogsCenter.getLogger(ParserUtil.class);
 
     public static final String MESSAGE_INVALID_INDEX = "Index is not a non-zero unsigned integer.";
     public static final String MESSAGE_INSUFFICIENT_PARTS = "Number of parts must be more than 1.";
@@ -157,24 +158,24 @@ public class ParserUtil {
             //Get the file name.
             String s = File.separator;
             int lastDelimiterPosition = originalFilePath.lastIndexOf(s);
-            String fileName = originalFilePath.substring
-                    (lastDelimiterPosition + 1);
+            String fileName = originalFilePath.substring(lastDelimiterPosition + 1);
+            //logger.info("ParserUtil ======== filename is " + fileName);
 
-            if (lastDelimiterPosition == -1 || !fileName.matches
-                    (".*\\.(jpg|png|jpeg)")) {
+            if (lastDelimiterPosition == -1 || !fileName.matches(".*\\.(jpg|png|jpeg)")) {
                 throw new IllegalValueException(Photo.MESSAGE_PHOTO_CONSTRAINTS);
             } else {
                 try {
-                    destFilePath = "src" + s + "main" + s + "resources" + s
-                            + "images" + s + fileName;
+                    destFilePath = "src" + s + "main" + s + "resources" + s + "images" + s + fileName;
                     File originalFile = new File(originalFilePath);
                     File destFile = new File(destFilePath);
+
+                    //logger.info("ParserUtil ============= original file = " + originalFile.toURI().toString());
+                    //logger.info("ParserUtil ============= dest file = " + destFile.toURI().toString());
 
                     // Copy source image file to specified destination.
                     FileUtil.copyFile(originalFile, destFile);
                 } catch (IOException e) {
-                    throw new IllegalValueException("Invalid file. "
-                            + "Please try again.");
+                    throw new IllegalValueException("Invalid file. Please try again.");
                 }
             }
         }

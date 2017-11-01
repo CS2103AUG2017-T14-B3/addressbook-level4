@@ -194,8 +194,7 @@ public class MainWindow extends UiPart<Region> {
         CommandBox commandBox = new CommandBox(logic);
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
 
-        //When calendar button is clicked, the browserPlaceHolder will switch
-        // to the calendar view
+        //@@author a0107442n
         calendarView = new CalendarView(logic.getFilteredEventList(), logic);
         calendarButton.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
@@ -209,6 +208,7 @@ public class MainWindow extends UiPart<Region> {
                 }
             }
         });
+        //@@author
     }
 
     void hide() {
@@ -262,28 +262,6 @@ public class MainWindow extends UiPart<Region> {
         helpWindow.show();
     }
 
-    /**
-     * Opens the calendar view.
-     */
-    @FXML
-    public void handleShowCalendar() {
-        if (!browserPlaceholder.getChildren().contains(calendarView.getRoot()
-        )) {
-            browserPlaceholder.getChildren().add(calendarView
-                    .getRoot());
-        }
-    }
-
-    /**
-     * Hides the calendar view.
-     */
-    @FXML
-    public void handleHideCalendar() {
-        if (browserPlaceholder.getChildren().contains(calendarView.getRoot())) {
-            browserPlaceholder.getChildren().remove(calendarView
-                    .getRoot());
-        }
-    }
 
     //@@author sebtsh
     /**
@@ -345,6 +323,7 @@ public class MainWindow extends UiPart<Region> {
         handleHelp();
     }
 
+    //@@author a0107442n
     @Subscribe
     private void handleShowCalendarEvent(ShowCalendarEvent event) {
         logger.info(LogsCenter.getEventHandlingLogMessage(event));
@@ -355,6 +334,30 @@ public class MainWindow extends UiPart<Region> {
     private void handleHideCalendarEvent(HideCalendarEvent event) {
         logger.info(LogsCenter.getEventHandlingLogMessage(event));
         handleHideCalendar();
+    }
+
+
+    /**
+     * Opens the calendar view.
+     */
+    @FXML
+    public void handleShowCalendar() {
+        if (!browserPlaceholder.getChildren().contains(calendarView.getRoot()
+        )) {
+            browserPlaceholder.getChildren().add(calendarView
+                    .getRoot());
+        }
+    }
+
+    /**
+     * Hides the calendar view.
+     */
+    @FXML
+    public void handleHideCalendar() {
+        if (browserPlaceholder.getChildren().contains(calendarView.getRoot())) {
+            browserPlaceholder.getChildren().remove(calendarView
+                    .getRoot());
+        }
     }
 
     //@@author sebtsh

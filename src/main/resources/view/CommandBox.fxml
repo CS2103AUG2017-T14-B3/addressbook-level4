@@ -6,8 +6,7 @@
 <?import javafx.scene.layout.StackPane?>
 <StackPane xmlns:fx="http://javafx.com/fxml/1" styleClass="anchor-pane" xmlns="http://javafx.com/javafx/8.0.111">
     <TextField fx:id="commandTextField" alignment="CENTER" onAction="#handleCommandInputChanged"
-               onKeyPressed="#handleKeyPress"
-               promptText="Tell me what you want..."
-               style="-fx-border-color:transparent;">
+               onKeyPressed="#handleKeyPress" promptText="Tell me what you want..."
+               style="-fx-border-color:transparent; -fx-font-family: Gruppo">
     </TextField>
 </StackPane>
