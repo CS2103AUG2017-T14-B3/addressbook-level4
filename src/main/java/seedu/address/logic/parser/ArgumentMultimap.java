@@ -52,6 +52,13 @@ public class ArgumentMultimap {
         }
         return new ArrayList<>(argMultimap.get(prefix));
     }
+
+    /**
+     * Checks if the arguMultimap contains a specfic prefix
+     * if it contains, it will return a true, if it does not it returns a false
+     * @param prefix
+     * @return true || false
+     */
     public boolean containsPrefix(Prefix prefix) {
         return argMultimap.containsKey(prefix);
     }

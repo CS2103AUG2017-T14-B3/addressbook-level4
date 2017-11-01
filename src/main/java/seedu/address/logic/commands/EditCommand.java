@@ -61,8 +61,7 @@ public class EditCommand extends UndoableCommand {
             + "[" + PREFIX_PRIORITY + "PRIORITY] "
             + "[" + PREFIX_NOTE + "NOTE] "
             + "[" + PREFIX_PHOTO + "PHOTO] "
-            + "[" + PREFIX_TAG + "TAG]"
-            + "[" + PREFIX_RELATIONSHIP + "RELATIONSHIP]...\n"
+            + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_PHONE + "91234567 "
             + PREFIX_EMAIL + "johndoe@example.com";
@@ -326,8 +325,7 @@ public class EditCommand extends UndoableCommand {
                     && getPriority().equals(e.getPriority())
                     && getNote().equals(e.getNote())
                     && getPhoto().equals(e.getPhoto())
-                    && getTags().equals(e.getTags())
-                    && getRelation().equals(e.getRelation());
+                    && getTags().equals(e.getTags());
         }
     }
 }

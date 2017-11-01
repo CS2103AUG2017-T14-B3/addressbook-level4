@@ -68,8 +68,6 @@ public class CommandTestUtil {
             + FILE_SEPARATOR + "images" + FILE_SEPARATOR + "mad-men.jpg";
     public static final String VALID_TAG_HUSBAND = "husband";
     public static final String VALID_TAG_FRIEND = "friend";
-    public static final String VALID_REL_SIBLINGS = "siblings";
-    public static final String VALID_REL_COLLEAGUE = "colleague";
 
     public static final String NAME_DESC_AMY = " " + PREFIX_NAME + VALID_NAME_AMY;
     public static final String NAME_DESC_BOB = " " + PREFIX_NAME + VALID_NAME_BOB;
@@ -95,8 +93,6 @@ public class CommandTestUtil {
     public static final String PHOTO_DESC_BOB = " " + PREFIX_PHOTO + VALID_PHOTO_BOB;
     public static final String TAG_DESC_FRIEND = " " + PREFIX_TAG + VALID_TAG_FRIEND;
     public static final String TAG_DESC_HUSBAND = " " + PREFIX_TAG + VALID_TAG_HUSBAND;
-    public static final String REL_DESC_SIBLINGS = " " + PREFIX_ADD_RELATIONSHIP + VALID_REL_SIBLINGS;
-    public static final String REL_DESC_COLLEAGUE = " " + PREFIX_ADD_RELATIONSHIP + VALID_REL_COLLEAGUE;
 
     public static final String INVALID_NAME_DESC = " " + PREFIX_NAME + "James&"; // '&' not allowed in names
     public static final String INVALID_PHONE_DESC = " " + PREFIX_PHONE + "911a"; // 'a' not allowed in phones
@@ -151,16 +147,14 @@ public class CommandTestUtil {
                 .withCompany(VALID_COMPANY_AMY).withPosition(VALID_POSITION_AMY)
                 .withStatus(VALID_STATUS_AMY).withPriority(VALID_PRIORITY_AMY)
                 .withNote(VALID_NOTE_AMY).withPhoto(VALID_PHOTO_AMY).withTags
-                (VALID_TAG_FRIEND).withRelation(VALID_REL_SIBLINGS).build();
+                (VALID_TAG_FRIEND).build();
 
         DESC_BOB = new EditPersonDescriptorBuilder().withName(VALID_NAME_BOB)
                 .withPhone(VALID_PHONE_BOB).withEmail(VALID_EMAIL_BOB).withAddress(VALID_ADDRESS_BOB)
                 .withCompany(VALID_COMPANY_BOB).withPosition(VALID_POSITION_BOB)
                 .withStatus(VALID_STATUS_BOB).withPriority(VALID_PRIORITY_BOB)
-                .withNote(VALID_NOTE_BOB).withPhoto(VALID_PHOTO_BOB).withTags
-                (VALID_TAG_FRIEND).withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND)
-                .withRelation(VALID_REL_SIBLINGS).build();
-        //@@author
+                .withNote(VALID_NOTE_BOB).withPhoto(VALID_PHOTO_BOB)
+                .withTags(VALID_TAG_FRIEND).withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND).build();
 
         DESC_MIDTERM = new EditEventDescriptorBuilder().withTitle(VALID_TITLE_MIDTERM)
                 .withTimeslot(VALID_TIMESLOT_MIDTERM)

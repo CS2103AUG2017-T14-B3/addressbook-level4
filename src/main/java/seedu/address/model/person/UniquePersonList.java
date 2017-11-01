@@ -100,9 +100,11 @@ public class UniquePersonList implements Iterable<Person> {
         }
         setPersons(replacement);
     }
-
+    //@@author huiyiiih
     /**
-     *
+     * Sorts the person list according to the sorting type provided for the user
+     * @param type                          Type represents the user input sorting type
+     * @throws InvalidSortTypeException     sorting type entered by use is not found
      */
     public void sortPersonList(String type) throws InvalidSortTypeException {
         final Comparator<Person> sortByName = (
@@ -132,12 +134,11 @@ public class UniquePersonList implements Iterable<Person> {
             internalList.sort(sortByStatus);
             break;
         default:
-            //System.out.printf("Sorting type entered not found!\n");
             throw new InvalidSortTypeException(
             String.format(MESSAGE_INVALID_COMMAND_FORMAT, SortCommand.MESSAGE_USAGE));
         }
     }
-
+    //author
     /**
      * Returns the backing list as an unmodifiable {@code ObservableList}.
      */
