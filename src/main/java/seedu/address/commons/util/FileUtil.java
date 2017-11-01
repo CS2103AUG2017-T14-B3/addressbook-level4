@@ -8,11 +8,16 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.channels.FileChannel;
 import java.nio.file.Files;
+import java.util.logging.Logger;
+
+import seedu.address.commons.core.LogsCenter;
 
 /**
  * Writes and reads files
  */
 public class FileUtil {
+
+    private static final Logger logger = LogsCenter.getLogger(FileUtil.class);
 
     private static final String CHARSET = "UTF-8";
 
@@ -109,6 +114,7 @@ public class FileUtil {
         FileChannel inputChannel = null;
         FileChannel outputChannel = null;
         try {
+            logger.info("Source file is " + source.toURI().toString());
             inputChannel = new FileInputStream(source).getChannel();
             outputChannel = new FileOutputStream(destination).getChannel();
             outputChannel.transferFrom(inputChannel, 0, inputChannel.size());

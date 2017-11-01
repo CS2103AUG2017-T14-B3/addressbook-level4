@@ -8,7 +8,9 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
+import java.util.logging.Logger;
 
+import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.commons.util.FileUtil;
@@ -39,6 +41,8 @@ import seedu.address.model.tag.Tag;
  * {@code Optional} return value inside {@code ParserUtil} methods.
  */
 public class ParserUtil {
+
+    private static final Logger logger = LogsCenter.getLogger(ParserUtil.class);
 
     public static final String MESSAGE_INVALID_INDEX = "Index is not a non-zero unsigned integer.";
     public static final String MESSAGE_INSUFFICIENT_PARTS = "Number of parts must be more than 1.";
@@ -158,6 +162,7 @@ public class ParserUtil {
             String s = File.separator;
             int lastDelimiterPosition = originalFilePath.lastIndexOf(s);
             String fileName = originalFilePath.substring(lastDelimiterPosition + 1);
+            logger.info("ParserUtil ======== filename is " + fileName);
 
             if (lastDelimiterPosition == -1 || !fileName.matches(".*\\.(jpg|png|jpeg)")) {
                 throw new IllegalValueException(Photo.MESSAGE_PHOTO_CONSTRAINTS);
@@ -166,6 +171,9 @@ public class ParserUtil {
                     destFilePath = "src" + s + "main" + s + "resources" + s + "images" + s + fileName;
                     File originalFile = new File(originalFilePath);
                     File destFile = new File(destFilePath);
+
+                    logger.info("ParserUtil ============= original file = " + originalFile.toURI().toString());
+                    logger.info("ParserUtil ============= dest file = " + destFile.toURI().toString());
 
                     // Copy source image file to specified destination.
                     FileUtil.copyFile(originalFile, destFile);

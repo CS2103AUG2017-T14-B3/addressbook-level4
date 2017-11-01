@@ -202,12 +202,13 @@ Examples:
 ** `edit 1 ph/Users/username/Images/Photo.jpg`
 
 ****
-Restrictions on the input:
+Restrictions on input:
 
-* Must be a valid file path
-
+* Must be a valid local file path for the respective operating system
 * File must of of jpg, jpeg or png format
-
+* Can be either relative or absolute file path
+* File path is case-insensitive, but file extension should be lower case
+* Support all UTF-8 characters
 
 ****
 
@@ -314,18 +315,35 @@ Returns any event having titles that contain `Birthday`
 Pressing the kbd:[&uarr;] and kbd:[&darr;] arrows will display the previous and next input respectively in the command box.
 ====
 
-=== Displaying user's schedule command: `checkschedule`
+=== Displaying user's schedule: `checkschedule`
 
-`Coming in v1.4` +
-Displays user's schedule for the current week upon executing the command.
-After execution, a calendar GUI will appear in the main window, with events
-displayed in the corresponding time slots.
-Format: `checkschedule` / `thisweek`/`cs`/`tw`
+`Since v1.4` +
+Synonyms/Aliases for the command: `checkschedule` / `thisweek`/`cs`/`tw` +
+Displays user's schedule for the current week upon executing the command. +
+After execution of the command, a calendar GUI will appear in the main +
+window, with events displayed in the corresponding time slots. Each time slot
+ is 30 minutes, starting from 7:00 am and ending with 11:59 pm +
 
-Example:
+With the calendar GUI, the user can:
 
-* `checkschedule` +
-Displays user's schedule for the week.
+* Have an overview of all scheduled events in the current week
+** All changes to events will be reflected on the calendar UI in real time
+* Check the detail of a specific event by clicking on the event block in the
+calendar UI
+** This will direct user to the event's detail page
+* Reschedule events through drag-and-drop
+** Dragging and dropping an event, if successful, will change the event's
+starting time to the dropped timeslot in the calendar, while maintaining the
+duration of the event
+****
+Conditions for successful drag-and-drop:
+
+* There should not be any time clash with existing events (eg. if a timeslot
+is already occupied by an event, cannot drop at this time slot) +
+* The dropped event block should be entirely contained within the calendar
+(eg. cannot drop at the last time slot, if event's duration is longer than 30
+minutes) +
+****
 
 === Listing entered commands : `history`
 
