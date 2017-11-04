@@ -15,6 +15,7 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.CollectionUtil;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.UndoableCommand;
+import seedu.address.logic.commands.event.util.CommandUtil;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.event.Description;
 import seedu.address.model.event.Event;
@@ -61,21 +62,7 @@ public class EditEventCommand extends UndoableCommand {
         this.editEventDescriptor = new EditEventDescriptor(editEventDescriptor);
     }
 
-    /**
-     * Creates and returns a {@code Event} with the details of {@code eventToEdit}
-     * edited with {@code editEventDescriptor}.
-     */
-    private static Event createEditedEvent(ReadOnlyEvent eventToEdit,
-                                           EditEventDescriptor editEventDescriptor) {
-        assert eventToEdit != null;
 
-        Title updatedTitle = editEventDescriptor.getTitle().orElse(eventToEdit.getTitle());
-        Timeslot updatedTimeslot = editEventDescriptor.getTimeslot().orElse(eventToEdit.getTimeslot());
-        Description updatedDescription = editEventDescriptor.getDescription().orElse(eventToEdit.getDescription());
-        List<ReadOnlyPerson> originalPersonList = eventToEdit.getPersonList();
-
-        return new Event(updatedTitle, updatedTimeslot, updatedDescription, originalPersonList);
-    }
 
     @Override
     public CommandResult executeUndoableCommand() throws CommandException {
@@ -86,7 +73,7 @@ public class EditEventCommand extends UndoableCommand {
         }
 
         ReadOnlyEvent eventToEdit = lastShownList.get(index.getZeroBased());
-        Event editedEvent = createEditedEvent(eventToEdit, editEventDescriptor);
+        Event editedEvent = CommandUtil.createEditedEvent(eventToEdit, editEventDescriptor);
 
         try {
             model.updateEvent(eventToEdit, editedEvent);
@@ -125,6 +112,7 @@ public class EditEventCommand extends UndoableCommand {
         private Title title;
         private Timeslot timeslot;
         private Description description;
+        private List<ReadOnlyPerson> personList;
 
         public EditEventDescriptor() {
         }
@@ -133,6 +121,7 @@ public class EditEventCommand extends UndoableCommand {
             this.title = toCopy.title;
             this.timeslot = toCopy.timeslot;
             this.description = toCopy.description;
+            this.personList = toCopy.personList;
         }
 
         /**
@@ -165,6 +154,15 @@ public class EditEventCommand extends UndoableCommand {
         public void setDescription(Description description) {
             this.description = description;
         }
+
+        public Optional<List<ReadOnlyPerson>> getPersonList() {
+            return Optional.ofNullable(personList);
+        }
+
+        public void setPersonList(List<ReadOnlyPerson> personList) {
+            this.personList = personList;
+        }
+
 
         @Override
         public boolean equals(Object other) {
