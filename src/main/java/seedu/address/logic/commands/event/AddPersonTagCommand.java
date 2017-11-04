@@ -33,7 +33,7 @@ public class AddPersonTagCommand extends UndoableCommand {
             + "Parameters: INDEX_OF_EVENT (must be a positive integer) INDEX_OF_PERSON (must be a positive integer) "
             + "Example: " + COMMAND_WORD + " 1 2 ";
 
-    public static final String MESSAGE_AddPersonTag_SUCCESS = "%1$s\n has been tag in %2$s";
+    public static final String MESSAGE_ADD_TAG_SUCCESS = "%1$s\n has been tag in %2$s";
     public static final String MESSAGE_DUPLICATE_TAG = "This person has already been tagged in the event.";
     public static final String ERROR = "Fatal Error";
     public static final String MESSAGE_EVENT_MISSING = "The event to be tagged does not exist";
@@ -95,7 +95,7 @@ public class AddPersonTagCommand extends UndoableCommand {
             throw new CommandException(ERROR);
         }
         // update event card //upmodel.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
-        return new CommandResult(String.format(MESSAGE_AddPersonTag_SUCCESS, person, event));
+        return new CommandResult(String.format(MESSAGE_ADD_TAG_SUCCESS, person, event));
     }
 
     @Override

@@ -11,7 +11,12 @@ import seedu.address.logic.parser.ParserUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 //@@author reginleiff
+
+/**
+ * Parses input arguments and creates a new AddPersonTagCommand object
+ */
 public class AddPersonTagCommandParser implements Parser<AddPersonTagCommand> {
+
     /**
      * Parses the given {@code String} of arguments in the context of the AddPersonTagCommand
      * and returns an AddPersonTagCommand object for execution.
