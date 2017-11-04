@@ -14,6 +14,8 @@ import seedu.address.logic.commands.UndoableCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.event.Event;
 import seedu.address.model.event.ReadOnlyEvent;
+import seedu.address.model.event.exceptions.EventNotFoundException;
+import seedu.address.model.event.exceptions.EventTimeClashException;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.ReadOnlyPerson;
 import seedu.address.model.person.UniquePersonList;
@@ -32,7 +34,9 @@ public class TagPersonCommand extends UndoableCommand {
             + "Example: " + COMMAND_WORD + " 1 2 ";
 
     public static final String MESSAGE_TAGPERSON_SUCCESS = "%1$s\n has been tag in %2$s";
-    public static final String MESSAGE_DUPLIATE_TAG = "This person has already been tagged in the event.";
+    public static final String MESSAGE_DUPLICATE_TAG = "This person has already been tagged in the event.";
+    public static final String ERROR = "Fatal Error";
+    public static final String MESSAGE_EVENT_MISSING = "The event to be tagged does not exist";
 
     private final Index eventIndex;
     private final Index personIndex;
@@ -51,6 +55,7 @@ public class TagPersonCommand extends UndoableCommand {
         this.eventIndex = eventIndex;
         this.personIndex = personIndex;
         this.editEventDescriptor = new EditEventCommand.EditEventDescriptor();
+        this.editPersonDescriptor = new EditCommand.EditPersonDescriptor();
     }
 
     @Override
@@ -79,10 +84,17 @@ public class TagPersonCommand extends UndoableCommand {
         try {
             eventPersonList.setPersons(event.getPersonList());
             eventPersonList.add(person);
+
+            event.setPersonList(eventPersonList.asObservableList());
+            model.updateEvent(eventToTag, event);
         } catch (DuplicatePersonException dpe) {
-            throw new CommandException(MESSAGE_DUPLIATE_TAG);
+            throw new CommandException(MESSAGE_DUPLICATE_TAG);
+        } catch (EventNotFoundException enf) {
+            throw new CommandException(MESSAGE_EVENT_MISSING);
+        } catch (EventTimeClashException etc) {
+            throw new CommandException(ERROR);
         }
-        //upmodel.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+        // update event card //upmodel.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
         return new CommandResult(String.format(MESSAGE_TAGPERSON_SUCCESS, person, event));
     }
 

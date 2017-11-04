@@ -55,6 +55,7 @@ public class CheckCommandsParser {
         final String[] subEditEventsCommands = new String[] { "eventedit", "editevent", "ee" };
         final String[] subFindEventsCommands = new String[] { "eventfind", "findevent", "fe", "ef" };
         final String[] subSetRelCommands = new String[] { "set", "rel", "setrel" };
+        final String[] subTagPersonCommands = new String[] { "eventtag", "et", "tagperson", "te" };
 
 
         /**
@@ -80,6 +81,7 @@ public class CheckCommandsParser {
         final Set<String> commandsForEditEvent = new HashSet<>(Arrays.asList(subEditEventsCommands));
         final Set<String> commandsForFindEvent = new HashSet<>(Arrays.asList(subFindEventsCommands));
         final Set<String> commandsForSetRel = new HashSet<>(Arrays.asList(subSetRelCommands));
+        final Set<String> commandsForTagPerson = new HashSet<>(Arrays.asList(subTagPersonCommands));
 
         /**
          * Compares the userInputCommand with the different commands set
@@ -122,6 +124,8 @@ public class CheckCommandsParser {
             finalUserCommand = "eventfind";
         } else if (!Collections.disjoint(userInputCommand, commandsForSetRel)) {
             finalUserCommand = "set";
+        } else if (!Collections.disjoint(userInputCommand, commandsForTagPerson)) {
+            finalUserCommand = "eventtag";
         }
         return finalUserCommand;
     }
