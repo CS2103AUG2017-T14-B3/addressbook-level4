@@ -24,7 +24,7 @@ import seedu.address.model.person.exceptions.DuplicatePersonException;
 /**
  * Tags a person in an event.
  */
-public class TagPersonCommand extends UndoableCommand {
+public class AddPersonTagCommand extends UndoableCommand {
     public static final String COMMAND_WORD = "eventtag";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Tags a person by the index number used in the last "
@@ -33,7 +33,7 @@ public class TagPersonCommand extends UndoableCommand {
             + "Parameters: INDEX_OF_EVENT (must be a positive integer) INDEX_OF_PERSON (must be a positive integer) "
             + "Example: " + COMMAND_WORD + " 1 2 ";
 
-    public static final String MESSAGE_TAGPERSON_SUCCESS = "%1$s\n has been tag in %2$s";
+    public static final String MESSAGE_AddPersonTag_SUCCESS = "%1$s\n has been tag in %2$s";
     public static final String MESSAGE_DUPLICATE_TAG = "This person has already been tagged in the event.";
     public static final String ERROR = "Fatal Error";
     public static final String MESSAGE_EVENT_MISSING = "The event to be tagged does not exist";
@@ -48,7 +48,7 @@ public class TagPersonCommand extends UndoableCommand {
      * @param eventIndex   index of the event in the filtered event list to add tag
      * @param personIndex   index of the person in the filtered person list to be tagged in the event
      */
-    public TagPersonCommand(Index eventIndex, Index personIndex) {
+    public AddPersonTagCommand(Index eventIndex, Index personIndex) {
         requireNonNull(eventIndex);
         requireNonNull(personIndex);
 
@@ -95,7 +95,7 @@ public class TagPersonCommand extends UndoableCommand {
             throw new CommandException(ERROR);
         }
         // update event card //upmodel.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
-        return new CommandResult(String.format(MESSAGE_TAGPERSON_SUCCESS, person, event));
+        return new CommandResult(String.format(MESSAGE_AddPersonTag_SUCCESS, person, event));
     }
 
     @Override
@@ -106,12 +106,12 @@ public class TagPersonCommand extends UndoableCommand {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof TagPersonCommand)) {
+        if (!(other instanceof AddPersonTagCommand)) {
             return false;
         }
 
         // state check
-        TagPersonCommand e = (TagPersonCommand) other;
+        AddPersonTagCommand e = (AddPersonTagCommand) other;
         return eventIndex.equals(e.eventIndex) && personIndex.equals(e.personIndex);
     }
 
