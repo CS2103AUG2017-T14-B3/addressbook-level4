@@ -95,6 +95,7 @@ public class AddressBookParser {
 
         case RedoCommand.COMMAND_WORD:
             return new RedoCommand();
+
         case SortCommand.COMMAND_WORD:
             return new SortCommandParser().parse(arguments);
 
@@ -112,6 +113,7 @@ public class AddressBookParser {
 
         case FindEventCommand.COMMAND_WORD:
             return new FindEventCommandParser().parse(arguments);
+
         case SetRelCommand.COMMAND_WORD:
             return new SetRelCommandParser().parse(arguments);
 

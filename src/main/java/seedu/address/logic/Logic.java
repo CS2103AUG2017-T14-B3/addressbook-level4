@@ -35,7 +35,7 @@ public interface Logic {
     /**
      * Returns an unmodifiable view of the schedule.
      */
-    ObservableList<ReadOnlyEvent> getSchedule();
+    ObservableList<ReadOnlyEvent> getTimetable();
 
     //@@author
 
