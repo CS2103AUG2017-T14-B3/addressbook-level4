@@ -1,12 +1,16 @@
 //@@author reginleiff
 package seedu.address.testutil;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.event.Description;
 import seedu.address.model.event.Event;
 import seedu.address.model.event.ReadOnlyEvent;
 import seedu.address.model.event.Title;
 import seedu.address.model.event.timeslot.Timeslot;
+import seedu.address.model.person.ReadOnlyPerson;
 
 /**
  * A utility class to help with building Event objects.
@@ -24,7 +28,8 @@ public class EventBuilder {
             Title defaultTitle = new Title(DEFAULT_TITLE);
             Timeslot defaultTimeslot = new Timeslot(DEFAULT_TIMESLOT);
             Description defaultDescription = new Description(DEFAULT_DESCRIPTION);
-            this.event = new Event(defaultTitle, defaultTimeslot, defaultDescription);
+            List<ReadOnlyPerson> defaultPersonList = new ArrayList<>();
+            this.event = new Event(defaultTitle, defaultTimeslot, defaultDescription, defaultPersonList);
         } catch (IllegalValueException ive) {
             throw new AssertionError("Default event's values are invalid.");
         }

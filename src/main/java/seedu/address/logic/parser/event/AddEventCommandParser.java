@@ -5,6 +5,8 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TIMESLOT;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Stream;
 
 import seedu.address.commons.exceptions.IllegalValueException;
@@ -20,6 +22,7 @@ import seedu.address.model.event.Event;
 import seedu.address.model.event.ReadOnlyEvent;
 import seedu.address.model.event.Title;
 import seedu.address.model.event.timeslot.Timeslot;
+import seedu.address.model.person.ReadOnlyPerson;
 
 /**
  * Parses input arguments and creates a new AddEventCommand object
@@ -53,8 +56,9 @@ public class AddEventCommandParser implements Parser<AddEventCommand> {
             Title title = ParserUtil.parseTitle(argMultimap.getValue(PREFIX_NAME)).get();
             Timeslot timeslot = ParserUtil.parseTimeslot(argMultimap.getValue(PREFIX_TIMESLOT)).get();
             Description description = ParserUtil.parseDescription(argMultimap.getValue(PREFIX_DESCRIPTION)).get();
+            List<ReadOnlyPerson> personList = new ArrayList<>();
 
-            ReadOnlyEvent event = new Event(title, timeslot, description);
+            ReadOnlyEvent event = new Event(title, timeslot, description, personList);
 
             return new AddEventCommand(event);
         } catch (IllegalValueException ive) {

@@ -23,6 +23,7 @@ import seedu.address.model.event.Title;
 import seedu.address.model.event.exceptions.EventNotFoundException;
 import seedu.address.model.event.exceptions.EventTimeClashException;
 import seedu.address.model.event.timeslot.Timeslot;
+import seedu.address.model.person.ReadOnlyPerson;
 
 /**
  * Edits the details of an existing event in the address book.
@@ -71,8 +72,9 @@ public class EditEventCommand extends UndoableCommand {
         Title updatedTitle = editEventDescriptor.getTitle().orElse(eventToEdit.getTitle());
         Timeslot updatedTimeslot = editEventDescriptor.getTimeslot().orElse(eventToEdit.getTimeslot());
         Description updatedDescription = editEventDescriptor.getDescription().orElse(eventToEdit.getDescription());
+        List<ReadOnlyPerson> originalPersonList = eventToEdit.getPersonList();
 
-        return new Event(updatedTitle, updatedTimeslot, updatedDescription);
+        return new Event(updatedTitle, updatedTimeslot, updatedDescription, originalPersonList);
     }
 
     @Override
