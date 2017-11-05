@@ -76,6 +76,5 @@ public class EditEventCommandParser implements Parser<EditEventCommand> {
         Collection<String> tagSet = tags.size() == 1 && tags.contains("") ? Collections.emptySet() : tags;
         return Optional.of(ParserUtil.parseTags(tagSet));
     }
-
 }
 

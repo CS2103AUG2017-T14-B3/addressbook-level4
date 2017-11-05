@@ -5,9 +5,11 @@ import java.util.logging.Logger;
 
 import com.google.common.eventbus.Subscribe;
 
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Region;
+import javafx.scene.layout.StackPane;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.events.model.AddressBookChangedEvent;
@@ -34,6 +36,13 @@ public class EventPanel extends UiPart<Region> {
     @FXML
     private Label descriptionLabel;
 
+    //@@author reginleiff
+    private PersonListPanel eventPersonsPanel;
+
+    @FXML
+    private StackPane eventPersonsPanelPlaceholder;
+    //@@author
+
 
     public EventPanel(Logic logic) {
         super(FXML);
@@ -50,6 +59,9 @@ public class EventPanel extends UiPart<Region> {
         nameLabel.setText(event.getTitle().toString());
         timeslotLabel.setText(event.getTimeslot().toString());
         descriptionLabel.setText(event.getDescription().toString());
+        eventPersonsPanel = new PersonListPanel(FXCollections.observableList(event.getPersonList()));
+        eventPersonsPanel.setHorizontalOrientation();
+        eventPersonsPanelPlaceholder.getChildren().add(eventPersonsPanel.getRoot());
     }
 
     /**

@@ -47,7 +47,7 @@ public class ModelManager extends ComponentManager implements Model {
         this.addressBook = new AddressBook(addressBook);
         filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
         filteredEvents = new FilteredList<>(this.addressBook.getEventList());
-        scheduledEvents = new FilteredList<>(this.addressBook.getSchedule(this.addressBook.getCurrentDate()));
+        scheduledEvents = new FilteredList<>(this.addressBook.getTimetable(this.addressBook.getCurrentDate()));
     }
 
     public ModelManager() {
@@ -136,7 +136,7 @@ public class ModelManager extends ComponentManager implements Model {
     //=========== Schedule Accessors  =========================================================================
 
     @Override
-    public ObservableList<ReadOnlyEvent> getSchedule() {
+    public ObservableList<ReadOnlyEvent> getTimetable() {
         return FXCollections.unmodifiableObservableList(scheduledEvents);
     }
 

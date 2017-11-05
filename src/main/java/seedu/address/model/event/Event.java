@@ -6,6 +6,7 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.time.Duration;
 import java.time.LocalTime;
+import java.util.List;
 import java.util.Objects;
 
 import javafx.beans.property.ObjectProperty;
@@ -13,6 +14,7 @@ import javafx.beans.property.SimpleObjectProperty;
 import seedu.address.model.event.timeslot.Date;
 import seedu.address.model.event.timeslot.Timeslot;
 import seedu.address.model.event.timeslot.Timing;
+import seedu.address.model.person.ReadOnlyPerson;
 
 //@@author reginleiff
 /**
@@ -25,25 +27,27 @@ public class Event implements ReadOnlyEvent {
     private ObjectProperty<Timing> timing;
     private ObjectProperty<Timeslot> timeslot;
     private ObjectProperty<Description> description;
+    private ObjectProperty<List<ReadOnlyPerson>> personList;
 
 
     /**
      * Every field must be present and not null.
      */
-    public Event(Title title, Timeslot timeslot, Description description) {
+    public Event(Title title, Timeslot timeslot, Description description, List<ReadOnlyPerson> personList) {
         requireAllNonNull(title, timeslot, description);
         this.title = new SimpleObjectProperty<>(title);
         this.date = new SimpleObjectProperty<>(timeslot.getDate());
         this.timing = new SimpleObjectProperty<>(timeslot.getTiming());
         this.timeslot = new SimpleObjectProperty<>(timeslot);
         this.description = new SimpleObjectProperty<>(description);
+        this.personList = new SimpleObjectProperty<>(personList);
     }
 
     /**
      * Creates a copy of the given ReadOnlyEvent.
      */
     public Event(ReadOnlyEvent source) {
-        this(source.getTitle(), source.getTimeslot(), source.getDescription());
+        this(source.getTitle(), source.getTimeslot(), source.getDescription(), source.getPersonList());
     }
 
     @Override
@@ -114,6 +118,20 @@ public class Event implements ReadOnlyEvent {
 
     public void setDescription(Description description) {
         this.description.set(requireNonNull(description));
+    }
+
+    @Override
+    public ObjectProperty<List<ReadOnlyPerson>> personListProperty() {
+        return this.personList;
+    }
+
+    @Override
+    public List<ReadOnlyPerson> getPersonList() {
+        return this.personList.get();
+    }
+
+    public void setPersonList(List<ReadOnlyPerson> personList) {
+        this.personList.set(personList);
     }
 
     /**

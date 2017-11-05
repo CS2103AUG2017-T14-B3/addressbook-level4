@@ -21,13 +21,17 @@ import seedu.address.logic.commands.SelectCommand;
 import seedu.address.logic.commands.SortCommand;
 import seedu.address.logic.commands.UndoCommand;
 import seedu.address.logic.commands.event.AddEventCommand;
+import seedu.address.logic.commands.event.AddPersonTagCommand;
 import seedu.address.logic.commands.event.CheckScheduleCommand;
 import seedu.address.logic.commands.event.DeleteEventCommand;
+import seedu.address.logic.commands.event.DeletePersonTagCommand;
 import seedu.address.logic.commands.event.EditEventCommand;
 import seedu.address.logic.commands.event.FindEventCommand;
 import seedu.address.logic.commands.relationship.SetRelCommand;
 import seedu.address.logic.parser.event.AddEventCommandParser;
+import seedu.address.logic.parser.event.AddPersonTagCommandParser;
 import seedu.address.logic.parser.event.DeleteEventCommandParser;
+import seedu.address.logic.parser.event.DeletePersonTagCommandParser;
 import seedu.address.logic.parser.event.EditEventCommandParser;
 import seedu.address.logic.parser.event.FindEventCommandParser;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -95,6 +99,7 @@ public class AddressBookParser {
 
         case RedoCommand.COMMAND_WORD:
             return new RedoCommand();
+
         case SortCommand.COMMAND_WORD:
             return new SortCommandParser().parse(arguments);
 
@@ -112,8 +117,15 @@ public class AddressBookParser {
 
         case FindEventCommand.COMMAND_WORD:
             return new FindEventCommandParser().parse(arguments);
+
         case SetRelCommand.COMMAND_WORD:
             return new SetRelCommandParser().parse(arguments);
+
+        case AddPersonTagCommand.COMMAND_WORD:
+            return new AddPersonTagCommandParser().parse(arguments);
+
+        case DeletePersonTagCommand.COMMAND_WORD:
+            return new DeletePersonTagCommandParser().parse(arguments);
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);

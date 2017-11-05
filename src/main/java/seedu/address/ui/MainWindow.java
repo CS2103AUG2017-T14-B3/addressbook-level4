@@ -57,8 +57,8 @@ public class MainWindow extends UiPart<Region> {
     private PersonListPanel personListPanel;
     private EventListPanel eventListPanel;
     //@@author reginleiff
-    private EventPanel schedulePanel;
-    private ScheduleListPanel scheduleListPanel;
+    private EventPanel timetablePanel;
+    private TimetableListPanel timetableListPanel;
     //@@author
     private CalendarView calendarView;
     private Config config;
@@ -80,7 +80,7 @@ public class MainWindow extends UiPart<Region> {
     private StackPane eventListPanelPlaceholder;
 
     @FXML
-    private StackPane scheduleListPanelPlaceholder;
+    private StackPane timetableListPanelPlaceholder;
 
     @FXML
     private StackPane resultDisplayPlaceholder;
@@ -173,7 +173,7 @@ public class MainWindow extends UiPart<Region> {
         personPanel = new PersonPanel(logic);
         //@@author
 
-        schedulePanel = new EventPanel(logic);
+        timetablePanel = new EventPanel(logic);
 
         personListPanel = new PersonListPanel(logic.getFilteredPersonList());
         personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
@@ -181,8 +181,8 @@ public class MainWindow extends UiPart<Region> {
         eventListPanel = new EventListPanel(logic.getFilteredEventList());
         eventListPanelPlaceholder.getChildren().add(eventListPanel.getRoot());
 
-        scheduleListPanel = new ScheduleListPanel(logic.getSchedule());
-        scheduleListPanelPlaceholder.getChildren().add(scheduleListPanel.getRoot());
+        timetableListPanel = new TimetableListPanel(logic.getTimetable());
+        timetableListPanelPlaceholder.getChildren().add(timetableListPanel.getRoot());
 
         ResultDisplay resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());

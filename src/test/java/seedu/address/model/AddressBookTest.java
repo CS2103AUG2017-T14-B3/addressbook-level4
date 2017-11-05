@@ -89,6 +89,7 @@ public class AddressBookTest {
         AddressBookStub(Collection<? extends ReadOnlyPerson> persons, Collection<? extends Tag> tags, Collection<?
             extends Relationship> relation) {
             this.persons.setAll(persons);
+
             this.tags.setAll(tags);
             this.relation.setAll(relation);
         }
@@ -118,7 +119,7 @@ public class AddressBookTest {
         }
 
         @Override
-        public ObservableList<ReadOnlyEvent> getSchedule(Date date) {
+        public ObservableList<ReadOnlyEvent> getTimetable(Date date) {
             return null;
         }
 

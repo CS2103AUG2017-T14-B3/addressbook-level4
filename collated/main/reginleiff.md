@@ -368,7 +368,7 @@ public class FindEventCommand extends Command {
     /**
      * Returns an unmodifiable view of the schedule.
      */
-    ObservableList<ReadOnlyEvent> getSchedule();
+    ObservableList<ReadOnlyEvent> getTimetable();
 
 ```
 ###### \java\seedu\address\logic\LogicManager.java
@@ -379,8 +379,8 @@ public class FindEventCommand extends Command {
     }
 
     @Override
-    public ObservableList<ReadOnlyEvent> getSchedule() {
-        return model.getSchedule();
+    public ObservableList<ReadOnlyEvent> getTimetable() {
+        return model.getTimetable();
     }
 ```
 ###### \java\seedu\address\logic\parser\event\DateParser.java
@@ -493,7 +493,7 @@ public class DateParser {
     }
 
     @Override
-    public ObservableList<ReadOnlyEvent> getSchedule(Date currentDate) {
+    public ObservableList<ReadOnlyEvent> getTimetable(Date currentDate) {
         return events.getObservableSubList(currentDate);
     }
 ```
@@ -1386,7 +1386,7 @@ public class TitleContainsKeywordsPredicate implements Predicate<ReadOnlyEvent> 
     /**
      * Returns an unmodifiable view of the schedule
      */
-    ObservableList<ReadOnlyEvent> getSchedule();
+    ObservableList<ReadOnlyEvent> getTimetable();
 
     /**
      * @throws NullPointerException if {@code predicate} is null.
@@ -1406,7 +1406,7 @@ public class TitleContainsKeywordsPredicate implements Predicate<ReadOnlyEvent> 
     //=========== Schedule Accessors  =========================================================================
 
     @Override
-    public ObservableList<ReadOnlyEvent> getSchedule() {
+    public ObservableList<ReadOnlyEvent> getTimetable() {
         return FXCollections.unmodifiableObservableList(scheduledEvents);
     }
 
@@ -1459,7 +1459,7 @@ public class TitleContainsKeywordsPredicate implements Predicate<ReadOnlyEvent> 
     /**
      * Returns an unmodifiable view of the schedule.
      */
-    ObservableList<ReadOnlyEvent> getSchedule(Date currentDate);
+    ObservableList<ReadOnlyEvent> getTimetable(Date currentDate);
 
 ```
 ###### \java\seedu\address\storage\XmlAdaptedEvent.java
@@ -1539,7 +1539,7 @@ public class XmlAdaptedEvent {
     }
 
     @Override
-    public ObservableList<ReadOnlyEvent> getSchedule(Date currentDate) {
+    public ObservableList<ReadOnlyEvent> getTimetable(Date currentDate) {
         return null;
     }
 ```
@@ -1641,7 +1641,7 @@ public class ScheduleListPanel extends UiPart<Region> {
      */
     @Subscribe
     public void handleAddressBookChangedEvent(AddressBookChangedEvent abce) {
-        ObservableList<ReadOnlyEvent> eventList = abce.data.getSchedule(abce.data.getCurrentDate());
+        ObservableList<ReadOnlyEvent> eventList = abce.data.getTimetable(abce.data.getCurrentDate());
         ObservableList<ScheduleListCard> mappedList = EasyBind.map(eventList, (event) -> new ScheduleListCard(event));
         scheduleListView.setItems(mappedList);
     }

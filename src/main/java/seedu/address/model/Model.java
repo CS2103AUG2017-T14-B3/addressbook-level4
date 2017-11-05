@@ -98,7 +98,7 @@ public interface Model {
     /**
      * Returns an unmodifiable view of the schedule
      */
-    ObservableList<ReadOnlyEvent> getSchedule();
+    ObservableList<ReadOnlyEvent> getTimetable();
 
     /**
      * @throws NullPointerException if {@code predicate} is null.

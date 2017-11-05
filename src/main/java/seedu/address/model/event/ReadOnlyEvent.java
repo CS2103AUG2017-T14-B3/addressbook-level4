@@ -3,11 +3,13 @@ package seedu.address.model.event;
 
 import java.time.Duration;
 import java.time.LocalTime;
+import java.util.List;
 
 import javafx.beans.property.ObjectProperty;
 import seedu.address.model.event.timeslot.Date;
 import seedu.address.model.event.timeslot.Timeslot;
 import seedu.address.model.event.timeslot.Timing;
+import seedu.address.model.person.ReadOnlyPerson;
 
 //@@author reginleiff
 /**
@@ -35,6 +37,10 @@ public interface ReadOnlyEvent {
 
     Description getDescription();
 
+    ObjectProperty<List<ReadOnlyPerson>> personListProperty();
+
+    List<ReadOnlyPerson> getPersonList();
+
     boolean happensBefore(Timeslot slot);
 
     boolean happensAfter(Timeslot slot);
@@ -51,7 +57,8 @@ public interface ReadOnlyEvent {
                 || (other != null // this is first to avoid NPE below
                 && other.getTitle().equals(this.getTitle()) // state checks here onwards
                 && other.getTimeslot().equals(this.getTimeslot())
-                && other.getDescription().equals(this.getDescription()));
+                && other.getDescription().equals(this.getDescription()))
+                && other.getPersonList().equals(this.getPersonList());
     }
 
     /**
