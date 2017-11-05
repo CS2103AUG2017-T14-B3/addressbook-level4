@@ -1,35 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <!--@@author sebtsh generated-->
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.StackPane?>
-
+<?import javafx.scene.layout.VBox?>
 
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="800.0" stylesheets="@BrightTheme.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <StackPane id="eventName" prefHeight="150.0" prefWidth="200.0">
+      <VBox prefHeight="200.0" prefWidth="100.0">
          <children>
-            <Label id="eventName" fx:id="nameLabel" alignment="TOP_CENTER" text="Event Name Placeholder" StackPane.alignment="TOP_CENTER">
+            <Label id="eventName" fx:id="nameLabel" alignment="CENTER" minHeight="99.0" prefHeight="99.0" prefWidth="800.0" text="Event Name Placeholder">
                <padding>
-                  <Insets top="100.0" />
+                  <Insets top="30.0" />
                </padding>
             </Label>
-         </children>
-      </StackPane>
-      <StackPane id="eventTime" prefHeight="150.0" prefWidth="200.0">
-         <children>
-            <Label id="eventTime" fx:id="timeslotLabel" text="Event Timeslot Placeholder" StackPane.alignment="CENTER" />
-         </children>
-      </StackPane>
-      <StackPane id="eventDescription" prefHeight="150.0" prefWidth="200.0">
-         <children>
-            <Label id="eventDescription" fx:id="descriptionLabel" alignment="CENTER" prefHeight="200.0" prefWidth="800.0" text="Event Description Placeholder" textAlignment="CENTER" wrapText="true" StackPane.alignment="BOTTOM_CENTER">
+            <Label id="eventTime" fx:id="timeslotLabel" alignment="CENTER" prefHeight="37.0" prefWidth="800.0" text="Event Timeslot Placeholder" />
+            <Label id="eventDescription" fx:id="descriptionLabel" alignment="CENTER" prefHeight="116.0" prefWidth="800.0" text="Event Description Placeholder" textAlignment="CENTER" wrapText="true">
                <padding>
                   <Insets bottom="50.0" />
                </padding>
             </Label>
+            <StackPane fx:id="eventPersonsPanelPlaceholder" maxHeight="145.0" minHeight="50.0" prefHeight="145.0" prefWidth="800.0" styleClass="background" />
          </children>
-      </StackPane>
+      </VBox>
    </children>
 </StackPane>

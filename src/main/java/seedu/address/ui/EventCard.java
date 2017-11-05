@@ -43,6 +43,7 @@ public class EventCard extends UiPart<Region> {
     @FXML
     private Label description;
 
+
     public EventCard(ReadOnlyEvent event, int displayedIndex) {
         super(FXML);
         this.event = event;

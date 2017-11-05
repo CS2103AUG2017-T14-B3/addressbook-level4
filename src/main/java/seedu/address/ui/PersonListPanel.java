@@ -9,6 +9,7 @@ import com.google.common.eventbus.Subscribe;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.geometry.Orientation;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.Region;
@@ -91,6 +92,15 @@ public class PersonListPanel extends UiPart<Region> {
     }
     //@@author
 
+    //@@author reginleiff
+    /**
+     * Sets the list view of the person list to be horizontal.
+     */
+    public void setHorizontalOrientation() {
+        personListView.setOrientation(Orientation.HORIZONTAL);
+    }
+    //@@author
+
     /**
      * Custom {@code ListCell} that displays the graphics of a {@code PersonCard}.
      */
@@ -99,7 +109,6 @@ public class PersonListPanel extends UiPart<Region> {
         @Override
         protected void updateItem(PersonCard person, boolean empty) {
             super.updateItem(person, empty);
-
             if (empty || person == null) {
                 setGraphic(null);
                 setText(null);
@@ -108,5 +117,6 @@ public class PersonListPanel extends UiPart<Region> {
             }
         }
     }
+
 
 }
