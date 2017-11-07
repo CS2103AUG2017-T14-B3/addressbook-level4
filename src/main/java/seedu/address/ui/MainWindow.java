@@ -269,8 +269,7 @@ public class MainWindow extends UiPart<Region> {
     public void handleShowCalendar() {
         if (!browserPlaceholder.getChildren().contains(calendarView.getRoot()
         )) {
-            browserPlaceholder.getChildren().add(calendarView
-                    .getRoot());
+            browserPlaceholder.getChildren().add(calendarView.getRoot());
         }
     }
 
@@ -297,7 +296,10 @@ public class MainWindow extends UiPart<Region> {
         if (browserPlaceholder.getChildren().contains(calendarView.getRoot())) {
             browserPlaceholder.getChildren().remove(calendarView.getRoot());
         }
-        browserPlaceholder.getChildren().add((personPanel.getRoot()));
+        if (browserPlaceholder.getChildren().contains(personPanel.getRoot())) {
+            browserPlaceholder.getChildren().remove((personPanel.getRoot()));
+        }
+        browserPlaceholder.getChildren().add(personPanel.getRoot());
     }
 
     /**
@@ -311,7 +313,10 @@ public class MainWindow extends UiPart<Region> {
         if (browserPlaceholder.getChildren().contains(calendarView.getRoot())) {
             browserPlaceholder.getChildren().remove(calendarView.getRoot());
         }
-        browserPlaceholder.getChildren().add((eventPanel.getRoot()));
+        if (browserPlaceholder.getChildren().contains((eventPanel.getRoot()))) {
+            browserPlaceholder.getChildren().add((eventPanel.getRoot()));
+        }
+        browserPlaceholder.getChildren().add(eventPanel.getRoot());
     }
     //@@author
 
