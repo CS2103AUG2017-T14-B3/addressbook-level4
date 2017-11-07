@@ -80,6 +80,11 @@ public class StatusBarFooter extends UiPart<Region> {
         String lastUpdated = new Date(now).toString();
         logger.fine(LogsCenter.getEventHandlingLogMessage(abce, "Setting last updated status to " + lastUpdated));
         setSyncStatus(String.format(SYNC_STATUS_UPDATED, lastUpdated));
-        setNumofPersonsAndEvents(abce.data.getPersonList().size(), abce.data.getEventList().size());
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                setNumofPersonsAndEvents(abce.data.getPersonList().size(), abce.data.getEventList().size());
+            }
+        });
     }
 }

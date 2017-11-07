@@ -6,6 +6,7 @@ import java.util.logging.Logger;
 
 import com.google.common.eventbus.Subscribe;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -179,7 +180,12 @@ public class PersonPanel extends UiPart<Region> {
         logger.fine(LogsCenter.getEventHandlingLogMessage(event));
         for (ReadOnlyPerson dataPerson : event.data.getPersonList()) {
             if (storedPerson != null && storedPerson.getName().equals(dataPerson.getName())) {
-                showPersonDetails(dataPerson);
+                Platform.runLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        showPersonDetails(dataPerson);
+                    }
+                });
                 storedPerson = dataPerson;
                 break;
             }
