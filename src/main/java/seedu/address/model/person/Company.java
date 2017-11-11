@@ -3,13 +3,15 @@ package seedu.address.model.person;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.Comparator;
+
 import seedu.address.commons.exceptions.IllegalValueException;
 
 /**
  * Represents a Person's company in the address book.
  */
 
-public class Company {
+public class Company implements Comparator<Company> {
     public static final String MESSAGE_COMPANY_CONSTRAINTS =
             "Person company can take any values, and it should not be blank";
 
@@ -19,6 +21,7 @@ public class Company {
      */
     public static final String COMPANY_VALIDATION_REGEX = "[^\\s].*";
 
+    private static final String ORDERED_ENTRIES = "NIL";
     public final String value;
 
     /**
@@ -58,4 +61,25 @@ public class Company {
         return value.hashCode();
     }
 
+    //@@author huiyiiih
+    /**
+     * Comparator to compare the statuses to sort them with NIL all the way at the bottom.
+     */
+    public int compareTo(Company companyOne) {
+        if (ORDERED_ENTRIES.contains(companyOne.toString()) && ORDERED_ENTRIES.contains(this.toString())) {
+            return ORDERED_ENTRIES.indexOf(this.toString()) - ORDERED_ENTRIES.indexOf(companyOne.toString());
+        }
+        if (ORDERED_ENTRIES.contains(companyOne.toString())) {
+            return 1;
+        }
+        if (ORDERED_ENTRIES.contains(this.toString())) {
+            return -1;
+        }
+        return companyOne.toString().compareTo(this.toString());
+    }
+    @Override
+    public int compare(Company companyOne, Company companyTwo) {
+        return companyOne.compareTo(companyTwo);
+    }
+    //@@author
 }
