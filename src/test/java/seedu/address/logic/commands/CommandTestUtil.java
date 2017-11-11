@@ -56,12 +56,17 @@ public class CommandTestUtil {
     //@@author huiyiiih
     public static final String VALID_NAME_JOE = "Joe Smith";
     public static final String VALID_NAME_JANE = "Jane Smith";
+    public static final String VALID_PRIORITY = "L";
+    public static final String VALID_POSITION = "NIL";
+    public static final String VALID_COMPANY = "NIL";
+    public static final String VALID_REL_SIBLINGS = "siblings";
+    public static final String VALID_REL_COLLEAGUE = "colleague";
     //@@author
     //@@author sebtsh
     public static final String VALID_COMPANY_AMY = "Microsoft";
     public static final String VALID_COMPANY_BOB = "Google";
     public static final String VALID_POSITION_AMY = "Manager";
-    public static final String VALID_POSITION_BOB = "Director";
+    public static final String VALID_POSITION_BOB = "CEO";
     public static final String VALID_STATUS_AMY = "Requires follow up";
     public static final String VALID_STATUS_BOB = "Waiting for reply";
     public static final String VALID_PRIORITY_AMY = "H";
@@ -76,8 +81,6 @@ public class CommandTestUtil {
             + FILE_SEPARATOR + "images" + FILE_SEPARATOR + "mad-men.jpg";
     public static final String VALID_TAG_HUSBAND = "husband";
     public static final String VALID_TAG_FRIEND = "friend";
-    public static final String VALID_REL_SIBLINGS = "siblings";
-    public static final String VALID_REL_COLLEAGUE = "colleague";
 
     public static final String NAME_DESC_AMY = " " + PREFIX_NAME + VALID_NAME_AMY;
     public static final String NAME_DESC_BOB = " " + PREFIX_NAME + VALID_NAME_BOB;
@@ -106,10 +109,11 @@ public class CommandTestUtil {
     //@@author huiyiiih
     public static final String REL_DESC_SIBLINGS = " " + PREFIX_ADD_RELATIONSHIP + VALID_REL_SIBLINGS;
     public static final String REL_DESC_COLLEAGUE = " " + PREFIX_ADD_RELATIONSHIP + VALID_REL_COLLEAGUE;
-    public static final String REL_DESC_JOE_SIBLINGS = " " + PREFIX_ADD_RELATIONSHIP + "Joe Smith" + " ["
-        + VALID_REL_COLLEAGUE + "]";
-    public static final String REL_DESC_JANE_SIBLINGS = " " + PREFIX_ADD_RELATIONSHIP + "Jane Smith" + " ["
-        + VALID_REL_COLLEAGUE + "]";
+    public static final String REL_DESC_JOE_SIBLINGS = " " + PREFIX_ADD_RELATIONSHIP + "Jane Smith [siblings]";
+    public static final String REL_DESC_JANE_SIBLINGS = " " + PREFIX_ADD_RELATIONSHIP + "Joe Smith [siblings]";
+    public static final String COMPANY_DESC = " " + PREFIX_COMPANY + VALID_COMPANY;
+    public static final String POSITION_DESC = " " + PREFIX_POSITION + VALID_POSITION;
+    public static final String PRIORITY_DESC = " " + PREFIX_PRIORITY + VALID_PRIORITY;
     //@@author
 
     public static final String INVALID_NAME_DESC = " " + PREFIX_NAME + "James&"; // '&' not allowed in names
