@@ -453,7 +453,7 @@ any overlap with an existing event, this will generate a
 `ObservableMap` only supports `HashMap`.
 ****
 
-// end::scheduling[]
+// end::Scheduling[]
 
 === Logging
 

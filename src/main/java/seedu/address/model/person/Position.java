@@ -5,7 +5,6 @@ import static java.util.Objects.requireNonNull;
 
 import java.util.Comparator;
 
-import javafx.geometry.Pos;
 import seedu.address.commons.exceptions.IllegalValueException;
 
 /**
