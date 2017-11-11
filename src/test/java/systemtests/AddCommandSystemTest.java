@@ -130,7 +130,7 @@ public class AddCommandSystemTest extends AddressBookSystemTest {
 
         /* Case: selects first card in the person list, add a person -> added, card selection remains unchanged */
         selectPerson(Index.fromOneBased(1));
-        assertCommandSuccess(CARL);
+        assertCommandSuccess(AMY);
 
         /* ----------------------------------- Perform invalid add operations --------------------------------------- */
 

@@ -104,6 +104,7 @@ public class SetRelCommandParserTest {
     @Test
     public void parse_invalidIndex_failure() {
         assertParseFailure(parser, "a b" + REL_DESC_JANE_SIBLINGS, MESSAGE_INVALID_FORMAT);
+        assertParseFailure(parser, "1 b" + REL_DESC_JANE_SIBLINGS, MESSAGE_INVALID_FORMAT);
     }
     @Test
     public void parse_sameIndexes_failure() {

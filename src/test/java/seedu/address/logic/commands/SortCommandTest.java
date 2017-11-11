@@ -32,11 +32,17 @@ public class SortCommandTest {
     private Model expectedModel;
     private String name;
     private String tag;
+    private String position;
+    private String priority;
+    private String company;
 
     @Before
     public void setUp() {
         name = "name";
         tag = "tag";
+        position = "position";
+        company = "company";
+        priority = "priority";
         model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
         expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
     }
@@ -63,6 +69,27 @@ public class SortCommandTest {
     }
 
     @Test
+    public void execute_companyValue_listSorted() {
+        SortCommand command = prepareCommand(company);
+        assertSortSuccess(command, SortCommand.MESSAGE_SUCCESS + company, Arrays.asList(BENSON, ALICE,
+                ELLE, GEORGE, CARL, DANIEL, FIONA));
+    }
+
+    @Test
+    public void execute_positionValue_listSorted() {
+        SortCommand command = prepareCommand(position);
+        assertSortSuccess(command, SortCommand.MESSAGE_SUCCESS + position, Arrays.asList(ALICE, BENSON,
+                GEORGE, ELLE, CARL, DANIEL, FIONA));
+    }
+
+    @Test
+    public void execute_priorityValue_listSorted() {
+        SortCommand command = prepareCommand(priority);
+        assertSortSuccess(command, SortCommand.MESSAGE_SUCCESS + priority, Arrays.asList(BENSON, GEORGE,
+                DANIEL, FIONA, ALICE, CARL, ELLE));
+    }
+
+    @Test
     public void equals() {
         final SortCommand userCommand = new SortCommand(name);
 
@@ -74,13 +101,13 @@ public class SortCommandTest {
         assertTrue(userCommand.equals(firstSortCommand));
 
         // different types -> returns false
-        assertFalse(userCommand.equals(new ListCommand()));
+        assertFalse(userCommand.equals(new SortCommand("tags")));
 
         // null -> returns false
         assertFalse(userCommand.equals(null));
 
         // different command -> returns false
-        assertFalse(userCommand.equals(new SortCommand("tags")));
+        assertFalse(userCommand.equals(new ListCommand()));
     }
 
     private SortCommand prepareCommand(String type) {

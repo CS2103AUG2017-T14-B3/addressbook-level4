@@ -6,12 +6,15 @@ import static org.junit.Assert.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_JANE;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_JOE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_JOE;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_REL_COLLEAGUE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_REL_SIBLINGS;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.CommandTestUtil.showFirstPersonOnly;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
+import static seedu.address.testutil.TypicalIndexes.INDEX_FOURTH_PERSON;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
+import static seedu.address.testutil.TypicalIndexes.INDEX_THIRD_PERSON;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
 import org.junit.Test;
@@ -26,16 +29,19 @@ import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
+import seedu.address.model.person.Person;
 import seedu.address.model.person.ReadOnlyPerson;
 import seedu.address.testutil.EditPersonBuilder;
+import seedu.address.testutil.PersonBuilder;
 
 /**
  * Contains integration tests (interaction with the Model) and unit tests for EditCommand.
  */
 public class SetRelCommandTest {
-    private static final boolean addPrefixPresent = false;
+    private boolean addPrefixPresent = false;
+    private static final boolean shouldClear = true;
     private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
-    //private Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
+    private Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
 
     @Test
     public void execute_noFieldSpecifiedUnfilteredList_failure() {
@@ -77,20 +83,58 @@ public class SetRelCommandTest {
 
         assertCommandFailure(setRelCommand, model, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
     }
-    /*@Test
-    Todo: To be completed
+    @Test
     public void execute_addRelToPersons_success() throws Exception {
-        EditPerson editPerson = new EditPersonBuilder().withToAddRel("siblings").build();
+        EditPerson editPerson = new EditPersonBuilder().withToAddRel(VALID_REL_SIBLINGS).build();
         SetRelCommand setRelCommand = prepareCommand(INDEX_FIRST_PERSON, INDEX_SECOND_PERSON, editPerson,
             addPrefixPresent);
         Person personOne = new PersonBuilder(model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased()))
-            .withRelation("siblings").build();
+            .withRelation("Benson Meier [siblings]").build();
         Person personTwo = new PersonBuilder(model.getFilteredPersonList().get(INDEX_SECOND_PERSON.getZeroBased()))
-            .withRelation("siblings").build();
+            .withRelation("Alice Pauline [siblings]").build();
         String expectedMessage = String.format(SetRelCommand.MESSAGE_EDIT_PERSON_SUCCESS,
             personOne, personTwo);
         assertCommandSuccess(setRelCommand, model, expectedMessage, expectedModel);
-    }*/
+    }
+
+
+    @Test
+    public void execute_deleteRelFromPersons_success() {
+        EditPerson editPerson = new EditPersonBuilder().withToDeleteRel(VALID_REL_COLLEAGUE).build();
+        SetRelCommand setRelCommand = prepareCommand(INDEX_THIRD_PERSON, INDEX_FOURTH_PERSON, editPerson,
+            addPrefixPresent);
+        Person personOne = new PersonBuilder(model.getFilteredPersonList().get(INDEX_THIRD_PERSON.getZeroBased()))
+            .withRelation().build();
+        Person personTwo = new PersonBuilder(model.getFilteredPersonList().get(INDEX_FOURTH_PERSON.getZeroBased()))
+            .withRelation().build();
+        String expectedMessage = String.format(SetRelCommand.MESSAGE_EDIT_PERSON_SUCCESS,
+        personOne, personTwo);
+        assertCommandSuccess(setRelCommand, model, expectedMessage, expectedModel);
+    }
+
+    @Test
+    public void execute_clearAllRelFromPersons_success() {
+        EditPerson editPerson = new EditPersonBuilder().withToClearRels(shouldClear).build();
+        SetRelCommand setRelCommand = prepareCommand(INDEX_THIRD_PERSON, INDEX_FOURTH_PERSON, editPerson,
+            addPrefixPresent);
+        Person personOne = new PersonBuilder(model.getFilteredPersonList().get(INDEX_THIRD_PERSON.getZeroBased()))
+            .withRelation().build();
+        Person personTwo = new PersonBuilder(model.getFilteredPersonList().get(INDEX_FOURTH_PERSON.getZeroBased()))
+            .withRelation().build();
+        String expectedMessage = String.format(SetRelCommand.MESSAGE_EDIT_PERSON_SUCCESS,
+        personOne, personTwo);
+        assertCommandSuccess(setRelCommand, model, expectedMessage, expectedModel);
+    }
+
+    @Test
+    public void execute_addMultipleRelSamePerson_failure() {
+        addPrefixPresent = true;
+        EditPerson editPerson = new EditPersonBuilder().withToAddRel(VALID_REL_SIBLINGS).build();
+        SetRelCommand setRelCommand = prepareCommand(INDEX_THIRD_PERSON, INDEX_FOURTH_PERSON, editPerson,
+            addPrefixPresent);
+        String expectedMessage = String.format(SetRelCommand.MESSAGE_NO_MULTIPLE_REL);
+        assertCommandFailure(setRelCommand, model, expectedMessage);
+    }
 
     @Test
     public void equals() {
