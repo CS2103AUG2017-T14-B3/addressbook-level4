@@ -30,7 +30,7 @@ import seedu.address.model.relationship.Relationship;
  */
 public class SetRelCommandParser implements Parser<SetRelCommand> {
 
-    public static final String ONE_RELATIONSHIP_ALLOWED = "Only one relationship allowed when adding or deleting "
+    public static final String ONE_RELATIONSHIP_ALLOWED = "Only one relationship allowed when adding or deleting\n"
         + "relationship between two persons.";
     public static final String NULL_RELATION_INPUT = "Relationship entered should not be empty.";
     public static final String SAME_INDEX_ERROR = "Index of the two persons must be different.";
