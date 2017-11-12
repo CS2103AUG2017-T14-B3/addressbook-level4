@@ -56,9 +56,6 @@ public class EditCommandParser implements Parser<EditCommand> {
                         PREFIX_TAG, PREFIX_ADD_RELATIONSHIP);
 
         Index index;
-        if (arePrefixesPresent(argMultimap, PREFIX_ADD_RELATIONSHIP)) {
-            throw new ParseException(MESSAGE_ADDREL_PREFIX_NOT_ALLOWED);
-        }
         try {
             index = ParserUtil.parseIndex(argMultimap.getPreamble());
         } catch (IllegalValueException ive) {
@@ -88,6 +85,10 @@ public class EditCommandParser implements Parser<EditCommand> {
             throw new ParseException(EditCommand.MESSAGE_NOT_EDITED);
         }
 
+
+        if (arePrefixesPresent(argMultimap, PREFIX_ADD_RELATIONSHIP)) {
+            throw new ParseException(MESSAGE_ADDREL_PREFIX_NOT_ALLOWED);
+        }
         return new EditCommand(index, editPersonDescriptor);
     }
     //@@author
@@ -106,11 +107,4 @@ public class EditCommandParser implements Parser<EditCommand> {
         Collection<String> tagSet = tags.size() == 1 && tags.contains("") ? Collections.emptySet() : tags;
         return Optional.of(ParserUtil.parseTags(tagSet));
     }
-    //@@author huiyiiih
-    /**
-     * Parses {@code Collection<String> rel} into a {@code Set<Relationship>} if {@code rel} is non-empty.
-     * If {@code rel} contain only one element which is an empty string, it will be parsed into a
-     * {@code Set<Relationship>} containing zero rel.
-     */
-    //@@author
 }

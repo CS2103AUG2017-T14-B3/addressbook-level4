@@ -66,10 +66,6 @@ public class AddCommandParser implements Parser<AddCommand> {
         if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_ADDRESS, PREFIX_PHONE, PREFIX_EMAIL)) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
         }
-        if (arePrefixesPresent(argMultimap, PREFIX_ADD_RELATIONSHIP)) {
-            throw new ParseException(MESSAGE_ADDREL_PREFIX_NOT_ALLOWED);
-        }
-
         try {
             Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME)).get();
             Phone phone = ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE)).get();
@@ -116,7 +112,9 @@ public class AddCommandParser implements Parser<AddCommand> {
                         (PREFIX_PHOTO)).get();
 
             }
-
+            if (arePrefixesPresent(argMultimap, PREFIX_ADD_RELATIONSHIP)) {
+                throw new ParseException(MESSAGE_ADDREL_PREFIX_NOT_ALLOWED);
+            }
             ReadOnlyPerson person = new Person(name, phone, email, address, company, position, status, priority,
                     note, photo, tagList, relationList);
 

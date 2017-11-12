@@ -15,7 +15,7 @@ import seedu.address.commons.exceptions.IllegalValueException;
 public class Relationship {
 
     public static final String MESSAGE_REL_CONSTRAINTS = "Relationship types should be alphabetical";
-    public static final String REL_VALIDATION_REGEX = "\\p{Alpha}+";
+    public static final String REL_VALIDATION_REGEX = "[a-zA-Z0-9\\- ]+\\[[a-zA-Z0-9\\-]+.\\]|[a-zA-Z0-9\\-]+";
 
     public final String relType;
 
@@ -27,7 +27,7 @@ public class Relationship {
     public Relationship(String name) throws IllegalValueException {
         requireNonNull(name);
         String trimmedName = name.trim();
-        if (!isValidRelType(trimmedName)) {
+        if (!isValidRelType(trimmedName) || trimmedName.isEmpty()) {
             throw new IllegalValueException(MESSAGE_REL_CONSTRAINTS);
         }
         this.relType = name;

@@ -26,10 +26,9 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_FRIEND;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
-import static seedu.address.testutil.TypicalPersons.ALICE;
 import static seedu.address.testutil.TypicalPersons.AMY;
 import static seedu.address.testutil.TypicalPersons.BOB;
-import static seedu.address.testutil.TypicalPersons.CARL;
+import static seedu.address.testutil.TypicalPersons.DANIEL;
 import static seedu.address.testutil.TypicalPersons.HOON;
 import static seedu.address.testutil.TypicalPersons.IDA;
 import static seedu.address.testutil.TypicalPersons.KEYWORD_MATCHING_MEIER;
@@ -109,7 +108,7 @@ public class AddCommandSystemTest extends AddressBookSystemTest {
 
         /* Case: add to empty address book -> added */
         deleteAllPersons();
-        assertCommandSuccess(ALICE);
+        assertCommandSuccess(DANIEL);
 
         /* Case: add a person with tags, command with parameters in random order -> added */
         toAdd = BOB;
@@ -130,7 +129,7 @@ public class AddCommandSystemTest extends AddressBookSystemTest {
 
         /* Case: selects first card in the person list, add a person -> added, card selection remains unchanged */
         selectPerson(Index.fromOneBased(1));
-        assertCommandSuccess(CARL);
+        assertCommandSuccess(AMY);
 
         /* ----------------------------------- Perform invalid add operations --------------------------------------- */
 

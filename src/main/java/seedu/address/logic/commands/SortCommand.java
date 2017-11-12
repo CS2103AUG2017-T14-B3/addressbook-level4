@@ -12,7 +12,7 @@ public class SortCommand extends UndoableCommand {
     public static final String MESSAGE_UNKNOWN_SORT_TYPE = "Sorting type not found";
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Sorts the list according to either name, tag, "
             + "company, priority, status\n"
-            + "Parameters: TYPE  (name, tag, company, priority, status)\n"
+            + "Parameters: TYPE  (name, tag, company, priority, position)\n"
             + "Example: " + COMMAND_WORD + " name";
     public static final String MESSAGE_SUCCESS = "Sorted according to ";
     private final String type;

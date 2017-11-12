@@ -34,7 +34,7 @@ The list of events is displayed as a list in a tabbed component together with th
 to save space for the main panel that is used to display information for contacts and people. Similar to the person list,
 cards in the list can be clicked on via the GUI to provide an intuitive user experience.
 
-==== Implementation
+=== Implementation
 '''
 include::../DeveloperGuide.adoc[tag=eventcrud]
 
