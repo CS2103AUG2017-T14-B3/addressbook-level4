@@ -45,7 +45,7 @@ For a sales executive, it is of utmost importance to keep all upcoming events
 ---
 #Start of Extract [from: Developer Guide]#
 
-include::../DeveloperGuide.adoc[tag=scheduling]
+include::../DeveloperGuide.adoc[tag=Scheduling]
 
 #End of Extract#
 

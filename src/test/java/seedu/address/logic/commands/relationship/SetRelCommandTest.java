@@ -108,7 +108,7 @@ public class SetRelCommandTest {
         Person personTwo = new PersonBuilder(model.getFilteredPersonList().get(INDEX_FOURTH_PERSON.getZeroBased()))
             .withRelation().build();
         String expectedMessage = String.format(SetRelCommand.MESSAGE_EDIT_PERSON_SUCCESS,
-        personOne, personTwo);
+            personOne, personTwo);
         assertCommandSuccess(setRelCommand, model, expectedMessage, expectedModel);
     }
 
@@ -122,7 +122,7 @@ public class SetRelCommandTest {
         Person personTwo = new PersonBuilder(model.getFilteredPersonList().get(INDEX_FOURTH_PERSON.getZeroBased()))
             .withRelation().build();
         String expectedMessage = String.format(SetRelCommand.MESSAGE_EDIT_PERSON_SUCCESS,
-        personOne, personTwo);
+            personOne, personTwo);
         assertCommandSuccess(setRelCommand, model, expectedMessage, expectedModel);
     }
 
@@ -130,7 +130,7 @@ public class SetRelCommandTest {
     public void execute_addMultipleRelSamePerson_failure() {
         addPrefixPresent = true;
         EditPerson editPerson = new EditPersonBuilder().withToAddRel(VALID_REL_SIBLINGS).build();
-        SetRelCommand setRelCommand = prepareCommand(INDEX_THIRD_PERSON, INDEX_FOURTH_PERSON, editPerson,
+        SetRelCommand setRelCommand = prepareCommand(INDEX_FIRST_PERSON, INDEX_SECOND_PERSON, editPerson,
             addPrefixPresent);
         String expectedMessage = String.format(SetRelCommand.MESSAGE_NO_MULTIPLE_REL);
         assertCommandFailure(setRelCommand, model, expectedMessage);

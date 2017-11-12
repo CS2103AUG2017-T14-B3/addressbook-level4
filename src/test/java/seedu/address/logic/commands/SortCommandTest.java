@@ -78,8 +78,8 @@ public class SortCommandTest {
     @Test
     public void execute_positionValue_listSorted() {
         SortCommand command = prepareCommand(position);
-        assertSortSuccess(command, SortCommand.MESSAGE_SUCCESS + position, Arrays.asList(ALICE, BENSON,
-                GEORGE, ELLE, CARL, DANIEL, FIONA));
+        assertSortSuccess(command, SortCommand.MESSAGE_SUCCESS + position, Arrays.asList(ALICE, GEORGE,
+                ELLE, BENSON, CARL, DANIEL, FIONA));
     }
 
     @Test
