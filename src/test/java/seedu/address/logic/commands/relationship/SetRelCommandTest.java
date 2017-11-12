@@ -38,8 +38,8 @@ import seedu.address.testutil.PersonBuilder;
  * Contains integration tests (interaction with the Model) and unit tests for EditCommand.
  */
 public class SetRelCommandTest {
-    private boolean addPrefixPresent = false;
     private static final boolean shouldClear = true;
+    private boolean addPrefixPresent = false;
     private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
     private Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
 
