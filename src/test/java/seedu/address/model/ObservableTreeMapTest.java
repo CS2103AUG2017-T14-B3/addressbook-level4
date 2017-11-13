@@ -45,9 +45,11 @@ public class ObservableTreeMapTest {
        assertTrue(testMap2.keySet().size() == testMap1.keySet().size());
        assertTrue(testMap2.keySet().contains(VALID_KEY));
        assertTrue(testMap2.values().size() == testMap1.values().size());
-       assertTrue(testMap2.values().contains(VALID_VALUE));
-       assertTrue(testMap2.entrySet().size() == testMap1.entrySet().size());
-       assertTrue(testMap2.entrySet().equals(testMap1.entrySet()));
+        assertTrue(testMap2.keySet().toArray().length == testMap2.keySet().toArray().length);
+        assertTrue(testMap2.values().contains(VALID_VALUE));
+        assertTrue(testMap2.entrySet().size() == testMap1.entrySet().size());
+        assertTrue(testMap2.values().toArray().length == testMap2.values().toArray().length);
+        assertTrue(testMap2.entrySet().equals(testMap1.entrySet()));
 
        assertTrue(testMap1.equals(testMap2));
     }
@@ -123,7 +125,8 @@ public class ObservableTreeMapTest {
             }
         });
 
-        testMap1.clear();
+        testMap1.remove(VALID_KEY);
+        testMap1.remove(VALID_KEY_TWO);
 
         assertTrue(!testMap1.containsKey(VALID_KEY));
         assertTrue(!testMap1.containsKey(VALID_KEY_TWO));
