@@ -21,37 +21,37 @@ public class ObservableTreeMapTest {
 
     @Test
     public void addListener_addElement() {
-       ObservableTreeMap<Integer, Integer> testMap1 = new ObservableTreeMap<>(internalMap);
-       ObservableTreeMap<Integer, Integer> testMap2 = new ObservableTreeMap<>(internalMap);
-       testMap1.addListener(new MapChangeListener<Integer, Integer>() {
-           @Override
-           public void onChanged(Change<? extends Integer, ? extends Integer> change) {
-               boolean added = change.wasAdded();
-               if (added != change.wasRemoved()) {
-                   if (added) {
-                       testMap2.put(change.getKey(), change.getValueAdded());
-                   }
-               }
-           }
-       });
+        ObservableTreeMap<Integer, Integer> testMap1 = new ObservableTreeMap<>(internalMap);
+        ObservableTreeMap<Integer, Integer> testMap2 = new ObservableTreeMap<>(internalMap);
+        testMap1.addListener(new MapChangeListener<Integer, Integer>() {
+            @Override
+            public void onChanged(Change<? extends Integer, ? extends Integer> change) {
+                boolean added = change.wasAdded();
+                if (added != change.wasRemoved()) {
+                    if (added) {
+                        testMap2.put(change.getKey(), change.getValueAdded());
+                    }
+                }
+            }
+        });
 
-       testMap1.put(VALID_KEY, VALID_VALUE);
-       assertTrue(testMap2.size() == testMap1.size());
-       assertTrue(testMap2.containsKey(VALID_KEY));
-       assertTrue(testMap2.containsValue(VALID_VALUE));
-       assertTrue(testMap2.get(VALID_KEY) == VALID_VALUE);
-       assertTrue(testMap2.get(VALID_KEY) == VALID_VALUE);
+        testMap1.put(VALID_KEY, VALID_VALUE);
+        assertTrue(testMap2.size() == testMap1.size());
+        assertTrue(testMap2.containsKey(VALID_KEY));
+        assertTrue(testMap2.containsValue(VALID_VALUE));
+        assertTrue(testMap2.get(VALID_KEY) == VALID_VALUE);
+        assertTrue(testMap2.get(VALID_KEY) == VALID_VALUE);
 
-       assertTrue(testMap2.keySet().size() == testMap1.keySet().size());
-       assertTrue(testMap2.keySet().contains(VALID_KEY));
-       assertTrue(testMap2.values().size() == testMap1.values().size());
-       assertTrue(testMap2.keySet().toArray().length == testMap2.keySet().toArray().length);
-       assertTrue(testMap2.values().contains(VALID_VALUE));
-       assertTrue(testMap2.entrySet().size() == testMap1.entrySet().size());
-       assertTrue(testMap2.values().toArray().length == testMap2.values().toArray().length);
-       assertTrue(testMap2.entrySet().equals(testMap1.entrySet()));
+        assertTrue(testMap2.keySet().size() == testMap1.keySet().size());
+        assertTrue(testMap2.keySet().contains(VALID_KEY));
+        assertTrue(testMap2.values().size() == testMap1.values().size());
+        assertTrue(testMap2.keySet().toArray().length == testMap2.keySet().toArray().length);
+        assertTrue(testMap2.values().contains(VALID_VALUE));
+        assertTrue(testMap2.entrySet().size() == testMap1.entrySet().size());
+        assertTrue(testMap2.values().toArray().length == testMap2.values().toArray().length);
+        assertTrue(testMap2.entrySet().equals(testMap1.entrySet()));
 
-       assertTrue(testMap1.equals(testMap2));
+        assertTrue(testMap1.equals(testMap2));
     }
 
     @Test
