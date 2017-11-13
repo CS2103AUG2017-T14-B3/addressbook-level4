@@ -2,8 +2,8 @@ package seedu.address.model;
 
 import static org.junit.Assert.assertTrue;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.TreeMap;
 
 import org.junit.Test;
@@ -45,11 +45,11 @@ public class ObservableTreeMapTest {
        assertTrue(testMap2.keySet().size() == testMap1.keySet().size());
        assertTrue(testMap2.keySet().contains(VALID_KEY));
        assertTrue(testMap2.values().size() == testMap1.values().size());
-        assertTrue(testMap2.keySet().toArray().length == testMap2.keySet().toArray().length);
-        assertTrue(testMap2.values().contains(VALID_VALUE));
-        assertTrue(testMap2.entrySet().size() == testMap1.entrySet().size());
-        assertTrue(testMap2.values().toArray().length == testMap2.values().toArray().length);
-        assertTrue(testMap2.entrySet().equals(testMap1.entrySet()));
+       assertTrue(testMap2.keySet().toArray().length == testMap2.keySet().toArray().length);
+       assertTrue(testMap2.values().contains(VALID_VALUE));
+       assertTrue(testMap2.entrySet().size() == testMap1.entrySet().size());
+       assertTrue(testMap2.values().toArray().length == testMap2.values().toArray().length);
+       assertTrue(testMap2.entrySet().equals(testMap1.entrySet()));
 
        assertTrue(testMap1.equals(testMap2));
     }
@@ -73,6 +73,15 @@ public class ObservableTreeMapTest {
 
         testMap1.remove(VALID_KEY, VALID_VALUE);
         assertTrue(testMap2.isEmpty());
+
+        assertTrue(testMap2.keySet().size() == testMap1.keySet().size());
+        assertTrue(!testMap2.keySet().contains(VALID_KEY));
+        assertTrue(testMap2.values().size() == testMap1.values().size());
+        assertTrue(!testMap2.values().contains(VALID_VALUE));
+        assertTrue(testMap2.entrySet().size() == testMap1.entrySet().size());
+        assertTrue(testMap2.entrySet().equals(testMap1.entrySet()));
+
+        assertTrue(testMap1.equals(testMap2));
     }
 
     @Test
@@ -103,6 +112,17 @@ public class ObservableTreeMapTest {
         assertTrue(testMap1.containsValue(VALID_VALUE_TWO));
         assertTrue(testMap2.get(VALID_KEY) == testMap1.get(VALID_KEY));
         assertTrue(testMap2.get(VALID_KEY_TWO) == testMap1.get(VALID_KEY_TWO));
+
+        assertTrue(testMap2.keySet().size() == testMap1.keySet().size());
+        assertTrue(testMap2.keySet().containsAll(new ArrayList<>(Arrays.asList(VALID_KEY, VALID_KEY_TWO))));
+        assertTrue(testMap2.values().size() == testMap1.values().size());
+        assertTrue(testMap2.keySet().toArray().length == testMap2.keySet().toArray().length);
+        assertTrue(testMap2.values().containsAll(new ArrayList<>(Arrays.asList(VALID_VALUE, VALID_VALUE_TWO))));
+        assertTrue(testMap2.entrySet().size() == testMap1.entrySet().size());
+        assertTrue(testMap2.values().toArray().length == testMap2.values().toArray().length);
+        assertTrue(testMap2.entrySet().equals(testMap1.entrySet()));
+
+        assertTrue(testMap1.equals(testMap2));
     }
 
     @Test
@@ -133,5 +153,16 @@ public class ObservableTreeMapTest {
         assertTrue(!testMap1.containsValue(VALID_VALUE));
         assertTrue(!testMap1.containsValue(VALID_VALUE_TWO));
         assertTrue(testMap2.isEmpty());
+
+        assertTrue(testMap2.keySet().size() == testMap1.keySet().size());
+        assertTrue(!testMap2.keySet().contains(VALID_KEY));
+        assertTrue(testMap2.values().size() == testMap1.values().size());
+        assertTrue(testMap2.keySet().toArray().length == testMap2.keySet().toArray().length);
+        assertTrue(!testMap2.values().contains(VALID_VALUE));
+        assertTrue(testMap2.entrySet().size() == testMap1.entrySet().size());
+        assertTrue(testMap2.values().toArray().length == testMap2.values().toArray().length);
+        assertTrue(testMap2.entrySet().equals(testMap1.entrySet()));
+
+        assertTrue(testMap1.equals(testMap2));
     }
 }

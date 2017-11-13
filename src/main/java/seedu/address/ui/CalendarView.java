@@ -285,7 +285,7 @@ public class CalendarView extends UiPart<Region> {
 
         //Iteratively add the events to the calendar view
         for (ReadOnlyEvent event:eventsThisWeek) {
-        if (!addedEvents.containsKey(event) && !event.equals(lastChangedEvent) && !event.equals(newlyAddedEvent)) {
+            if (!addedEvents.containsKey(event) && !event.equals(lastChangedEvent) && !event.equals(newlyAddedEvent)) {
                 StackPane eventPane = createPane(event);
                 addEventPaneToCalendarView(calendarView, event, eventPane);
             }
