@@ -1,4 +1,3 @@
-//@@author reginleiff
 package seedu.address.model.event.timeslot;
 
 import static org.junit.Assert.assertFalse;
@@ -8,6 +7,7 @@ import org.junit.Test;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 
+//@@author reginleiff
 public class TimeslotTest {
     private String validTimeOne = "22/10/2017 1053-1055";
     private String validTimeTwo = "22/10/2017 1032-1055";

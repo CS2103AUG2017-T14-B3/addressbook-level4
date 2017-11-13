@@ -49,9 +49,12 @@ public class DateTest {
 
     @Test
     public void gregorianDatesTest() throws IllegalValueException {
+        // Invalid Gregorian dates
         assertFalse(isGregorianDate("29/02/2017"));
         assertFalse(isGregorianDate("00/02/2017"));
         assertFalse(isGregorianDate("07/00/2017"));
+
+        // Valid Gregorian dates
         assertTrue(isGregorianDate("23/10/2017"));
         assertTrue(isGregorianDate("29/02/2020"));
     }
@@ -71,8 +74,6 @@ public class DateTest {
 
     @Test
     public void compareTo() throws Exception {
-
-
         assertTrue(testDateOne.compareTo(testDateTwo) < 0);
         assertTrue(testDateTwo.compareTo(testDateThree) < 0);
         assertTrue(testDateThree.compareTo(testDateOne) > 0);

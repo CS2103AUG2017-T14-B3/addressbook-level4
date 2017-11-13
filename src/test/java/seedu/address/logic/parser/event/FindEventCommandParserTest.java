@@ -1,4 +1,3 @@
-//@@author reginleiff
 package seedu.address.logic.parser.event;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
@@ -12,9 +11,7 @@ import org.junit.Test;
 import seedu.address.logic.commands.event.FindEventCommand;
 import seedu.address.model.event.TitleContainsKeywordsPredicate;
 
-/**
- * @@reginleiff
- */
+//@@author reginleiff
 public class FindEventCommandParserTest {
     private FindEventCommandParser parser = new FindEventCommandParser();
 

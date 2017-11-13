@@ -23,6 +23,7 @@ import seedu.address.model.event.ReadOnlyEvent;
 import seedu.address.model.event.Title;
 import seedu.address.model.event.timeslot.Timeslot;
 
+//@@author reginleiff
 /**
  * Parses input arguments and creates a new AddEventCommand object
  */

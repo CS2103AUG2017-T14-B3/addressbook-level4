@@ -1,4 +1,3 @@
-//@@author reginleiff
 package seedu.address.logic.commands.event;
 
 import static java.util.Objects.requireNonNull;
@@ -26,6 +25,7 @@ import seedu.address.model.event.exceptions.EventNotFoundException;
 import seedu.address.model.event.exceptions.EventTimeClashException;
 import seedu.address.model.event.timeslot.Timeslot;
 
+//@@author reginleiff
 /**
  * Edits the details of an existing event in Sales Navigator.
  */
