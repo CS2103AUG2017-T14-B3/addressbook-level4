@@ -1,4 +1,3 @@
-//@@author reginleiff
 package seedu.address.model.event;
 
 import static org.junit.Assert.assertFalse;
@@ -6,20 +5,44 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
+//@@author reginleiff
 public class TitleTest {
+    private static final String INVALID_TITLE_EMPTY_STRING = "";
+    private static final String INVALID_TITLE_SPACES = "  ";
+
+    private static final String VALID_TITLE_ALPHABETS_ONLY = "birthday";
+    private static final String VALID_TITLE_NUMBERS_ONLY = "12345";
+    private static final String VALID_TITLE_ALPHANUMERIC = "nus 50th anniversary";
+    private static final String VALID_TITLE_ALPHANUMERIC_CAPITAL = "CS2103 MIDTERM";
+    private static final String VALID_TITLE_ALL = "NUS'S Championed: 2020 Homecoming Graduation Ceremony";
 
     @Test
     public void isValidTitleTest() {
-        // invalid title
-        assertFalse(Title.isValidTitle("")); // empty string
-        assertFalse(Title.isValidTitle(" ")); // spaces only
+        // Invalid titles
+        assertInvalidTitle(INVALID_TITLE_EMPTY_STRING); // spaces only
+        assertInvalidTitle(INVALID_TITLE_SPACES); // empty string
 
-        // valid title
-        assertTrue(Title.isValidTitle("peter's birthday")); // alphabets only
-        assertTrue(Title.isValidTitle("12345")); // numbers only
-        assertTrue(Title.isValidTitle("nus 50th anniversary")); // alphanumeric characters
-        assertTrue(Title.isValidTitle("CS2103 MIDTERM")); // with capital letters
-        // long names with symbols
-        assertTrue(Title.isValidTitle("National University of Singapore: 2020 Homecoming Graduation Ceremony"));
+        // Valid titles
+        assertValidTitle(VALID_TITLE_ALPHABETS_ONLY); // alphabets only
+        assertValidTitle(VALID_TITLE_NUMBERS_ONLY); // numbers only
+        assertValidTitle(VALID_TITLE_ALPHANUMERIC); // alphanumeric characters
+        assertValidTitle(VALID_TITLE_ALPHANUMERIC_CAPITAL); // with capital letters
+
+
+        assertValidTitle(VALID_TITLE_ALL); // long names with symbols
+    }
+
+    /**
+     * Asserts if title is valid.
+     */
+    public void assertValidTitle(String title) {
+        assertTrue(Title.isValidTitle(title));
+    }
+
+    /**
+     * Asserts if title is invalid.
+     */
+    public void assertInvalidTitle(String title) {
+        assertFalse(Title.isValidTitle(title));
     }
 }
