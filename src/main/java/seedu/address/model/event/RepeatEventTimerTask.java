@@ -29,7 +29,6 @@ public class RepeatEventTimerTask extends TimerTask {
         this.model = model;
         this.targetEvent = event;
         this.period = period;
-        System.out.println("New timer task created: " + event);
     }
 
     /**
@@ -60,9 +59,7 @@ public class RepeatEventTimerTask extends TimerTask {
                     model.addEvent(editedEvent);
                 } catch (EventTimeClashException etce) {
                     Event newEvent = editedEvent.plusDays(period);
-                    System.out.println("Timer task - new event created: " + newEvent);
                     model.scheduleRepeatedEvent(newEvent);
-                    //RepeatEventTimerTask newTask = new RepeatEventTimerTask(model, editedEvent, period);
                 }
             }
         });
