@@ -115,7 +115,6 @@ public class AddressBook implements ReadOnlyAddressBook {
         } catch (EventTimeClashException e) {
             assert false : "AddressBooks should not have time-clashing events";
         }
-        logger.info("EVENT SIZE AT UNDO" + newData.getEventList().size());
         //@@author
 
         setTags(new HashSet<>(newData.getTagList()));
@@ -222,6 +221,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         personRel.forEach(rel -> correctRelReferences.add(masterRelObjects.get(rel)));
         person.setRel(correctRelReferences);
     }
+
     /**
      * Ensures that every relation in these persons:
      * - exists in the master list {@link #relation}
@@ -233,6 +233,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         persons.forEach(this::syncMasterRelListWith);
     }
     //@@author
+
     /**
      * Removes {@code key} from this {@code AddressBook}.
      *
@@ -374,7 +375,6 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     //@@author reginleiff
-
     /**
      *
      * Gets the current date and returns the local implementation of date.
@@ -392,5 +392,6 @@ public class AddressBook implements ReadOnlyAddressBook {
             return null;
         }
     }
+    //@@author
 
 }

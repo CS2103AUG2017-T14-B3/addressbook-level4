@@ -27,7 +27,7 @@ import seedu.address.model.event.exceptions.EventTimeClashException;
 import seedu.address.model.event.timeslot.Timeslot;
 
 /**
- * Edits the details of an existing event in the address book.
+ * Edits the details of an existing event in Sales Navigator.
  */
 public class EditEventCommand extends UndoableCommand {
 
@@ -42,9 +42,9 @@ public class EditEventCommand extends UndoableCommand {
             + "[" + PREFIX_DESCRIPTION + "DESCRIPTION] "
             + "[" + PREFIX_PERIOD + "PERIOD] "
             + "Example: " + COMMAND_WORD + " 1 "
-            + PREFIX_TIMESLOT + "1300-1500 "
+            + PREFIX_TIMESLOT + "13/11/2017 1300-1500 "
             + PREFIX_DESCRIPTION + "New description for event x "
-            + PREFIX_PERIOD + " 14.";
+            + PREFIX_PERIOD + " 14";
 
     public static final String MESSAGE_EDIT_EVENT_SUCCESS = "Edited Event: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
