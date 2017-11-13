@@ -49,7 +49,7 @@ public class ObservableTreeMapTest {
        assertTrue(testMap2.entrySet().size() == testMap1.entrySet().size());
        assertTrue(testMap2.entrySet().equals(testMap1.entrySet()));
 
-       assertTrue(testMap1);
+       assertTrue(testMap1.equals(testMap2));
     }
 
     @Test

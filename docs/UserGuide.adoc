@@ -458,9 +458,7 @@ After a recurring event is added, the future instances of the event will not
 show up immediately in the event list. Instead,
  if the `repeat period` is, for example, 7 days, when the event is finished,
  a new instance of the event will be automatically scheduled with the same
- time slot 7 days later. If this instance has a time clash with an existing
- event, it will be skipped and a new instance will be created for the next
- period, so on and so forth.
+ time slot 7 days later.
 
 //end::repeat[]
 

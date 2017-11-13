@@ -138,7 +138,7 @@ public class CalendarView extends UiPart<Region> {
         initPageTurnerButtons(headers);
         initDateHeader(headers);
         initDateTimeHeader(calendarView);
-        initEvents(calendarView, eventList, null);
+        initEvents(calendarView, eventList, null, null);
         initScrollPanes();
     }
 
@@ -199,7 +199,7 @@ public class CalendarView extends UiPart<Region> {
                 currentEndOfWeek = currentEndOfWeek.minusDays(7);
                 initSlots(calendarView);
                 initDateHeader(headers);
-                initEvents(calendarView, eventList, null);
+                initEvents(calendarView, eventList, null, null);
             }
         });
         nextPage.setOnAction(new EventHandler<ActionEvent>() {
@@ -209,7 +209,7 @@ public class CalendarView extends UiPart<Region> {
                 currentEndOfWeek = currentEndOfWeek.plusDays(7);
                 initSlots(calendarView);
                 initDateHeader(headers);
-                initEvents(calendarView, eventList, null);
+                initEvents(calendarView, eventList, null, null);
             }
         });
 
@@ -276,7 +276,7 @@ public class CalendarView extends UiPart<Region> {
      * @param eventList list of all events
      */
     private void initEvents(GridPane calendarView, ObservableList<ReadOnlyEvent> eventList, ReadOnlyEvent
-            lastChangedEvent) {
+            lastChangedEvent, ReadOnlyEvent newlyAddedEvent) {
         this.eventList = eventList;
         initStartEndOfWeek();
         ObservableList<ReadOnlyEvent> eventsThisWeek = extractEvents(eventList);
@@ -285,7 +285,7 @@ public class CalendarView extends UiPart<Region> {
 
         //Iteratively add the events to the calendar view
         for (ReadOnlyEvent event:eventsThisWeek) {
-            if (!addedEvents.containsKey(event)) {
+        if (!addedEvents.containsKey(event) && !event.equals(lastChangedEvent) && !event.equals(newlyAddedEvent)) {
                 StackPane eventPane = createPane(event);
                 addEventPaneToCalendarView(calendarView, event, eventPane);
             }
@@ -534,10 +534,9 @@ public class CalendarView extends UiPart<Region> {
         ReadOnlyEvent newlyAddedEvent = abce.data.getNewlyAddedEvent();
         logger.info("LastChangedEvent is " + lastChangedEvent);
         logger.info("NewlyAddedEvent is " + newlyAddedEvent);
-        if (lastChangedEvent != null && newlyAddedEvent != null) {
+        initEvents(calendarView, abce.data.getEventList(), lastChangedEvent, newlyAddedEvent);
+        if (!abce.data.getEventList().isEmpty()) {
             updateEvents(calendarView, abce.data.getEventList(), lastChangedEvent, newlyAddedEvent);
-        } else {
-            initEvents(calendarView, abce.data.getEventList(), null);
         }
     }
 
