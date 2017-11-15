@@ -1,4 +1,4 @@
-﻿= Sales Navigator- Developer Guide
+﻿= Sales Navigator - Developer Guide
 :toc:
 :toc-title:
 :toc-placement: preamble
@@ -195,7 +195,8 @@ The `Model`,
 
 * stores a `UserPref` object that represents the user's preferences.
 * stores the Address Book data.
-* exposes an unmodifiable `ObservableList<ReadOnlyPerson>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
+* exposes an unmodifiable `ObservableList<ReadOnlyPerson>` and an unmodifiable `ObservableList<ReadOnlyEvent` that can
+be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
 * does not depend on any of the other three components.
 
 === Storage component
@@ -347,32 +348,110 @@ image::UndoRedoActivityDiagram.png[width="200"]
 
 // tag::eventcrud[]
 === Events CRUD Mechanism
-The events CRUD (Create, Read, Update, Delete) mechanism is very similar to the persons CRUD system.  Four commands `AddEventCommand`, `FindEventCommand`, `DeleteEventCommand`, `EditEventCommand` are used to execute their respective functions through the `LogicManager`. +
+The events CRUD (Create, Read, Update, Delete) mechanism is very similar to the persons CRUD system.  Four commands
+`AddEventCommand`, `FindEventCommand` (work in progress), `DeleteEventCommand`, `EditEventCommand` are used to execute their respective
+functions through the `LogicManager`. +
 
-Commands are first read from `CommandBox` which then calls upon the `LogicManager` to detect the type of command. `LogicManager` then creates a `AddressBookParser` which uses `CheckCommandsParser` to detect any synonymous alternatives for their respective commands and returns the specific command type if available. +
+image::EventsSequenceDiagram.png[width="800"]
 
-The specific command type is passed through its specific parser along with its arguments (E.g. `AddEventCommand` is parsed via `AddEventCommandParser`). The specific parser creates a specific command to return to `LogicManager` (E.g. `AddEventCommandParser` returns `AddEventCommand` with the `Event` to be be added once executed). +
+Commands are first read from `CommandBox` in the UI Component which then calls upon the `LogicManager` in the Logic Component
+to detect the type of command.
+`LogicManager` then creates a `AddressBookParser` which uses `CheckCommandsParser` to detect any synonymous alternatives
+for their respective commands and returns the specific command type if available. +
 
-`LogicManager` proceeds to execute the received command. In this implementation, the Command will call upon `ModelManager` to do complete the CRUD operations onto its internal database. (E.g. `AddEventCommand` calls `model.addEvent(event)` to add the event created by `AddEventCommandParser` to the event list in `AddressBook`. +
+The specific command type is passed through its specific parser along with its arguments (E.g. `DeleteEventCommand` is parsed
+via `DeleteEventCommandParser`). The specific parser creates a specific command to return to `LogicManager` (E.g.
+`DeleteEventCommandParser` returns `DeleteEventCommand` with the index of the `Event` to be be deleted once executed). +
 
-Once this is complete, an update is sent to the the `filteredEventList` which updates the `UI` Component. +
+`LogicManager` proceeds to execute the received command. In this implementation, the Command will call upon
+`ModelManager` in the Model component to do complete the respective CRUD operation onto its internal database.
+(E.g. `DeleteEventCommand` results in `model.deleteEvent(event)` to delete the event at index indicated by
+`DeleteEventCommandParser` from the event list in `AddressBook`. +
 
-Additionally, an `AddressBookChangedEvent` is also raised to the `EventsCenter` to indicate a change into so that `XmlAddressBookStorage` can begin saving the new information. It calls on `XmlSerializableAddressBook` to serialize the new event information and saves it to the data file via `XmlFileStorage`.
+Once the model component has been updated, a signal is sent to the the `filteredEventList` which updates the UI
+Component. +
+
+Additionally, an `AddressBookChangedEvent` is also raised to the `EventsCenter` to indicate a change into so that
+`XmlAddressBookStorage` in the storage component can begin saving the new information. It calls on
+`XmlSerializableAddressBook` to serialize the new event list information and saves it to the data file via
+`XmlFileStorage`.
 
 ==== Design Considerations
 
-**Aspect:** Implementation of Storage +
-**Alternative 1 (current choice):** Saving to a single data file shared with Person Data +
-**Pros:** We do not need a separate data file to save event information. Additionally, reading data is only done once. +
-**Cons:** Not very modular and intuitive. +
-**Alternative 2:** Create new data file to record events. +
-**Pros:** Modular and intuitive to new developers. Manual additions to the data file will also be easier. +
-**Cons:** Separate files are harder to manage.
+**Aspect 1:** Implementation of Storage +
+
+**Alternative 1 (current choice):** Saving to a single XML file shared with contact data +
+****
+**Pros:**
+
+* We do not need a separate data file to save event information. Additionally, reading data is only done once. +
+
+**Cons:**
+
+* Not very modular and intuitive. +
+
+****
+
+**Alternative 2:** Create a separate XML file to record events data +
+****
+**Pros:**
+
+* Modular and intuitive to new developers. Manual additions to the data file will also be easier. +
+
+**Cons:**
+
+* Separate files are harder to manage.
+****
+
+**Aspect 2:** Implementation of Parsers +
+
+**Alternative 1 (current choice): ** Creating individual parsers for a new function (E.g. `AddEventCommandParser` for `AddEventCommand`) +
+****
+**Pros:**
+
+* Modular implementation where a parser only parses for a specific command.
+
+* Issues will be easy to isolate and target.
+
+**Cons**
+
+* Repeated functionality with correponding parsers for Persons.
+
+****
+
+**Alternative 2: ** Creating a shared parser for events and persons which switch functionality depending on an input +
+****
+**Pros:**
+
+* Removes the repeated functionality amongst the 4 pairs of parsers.
+
+**Cons**
+
+* Complex implementation which will be harder to maintain in the long run of development.
+
+* More difficulty in debugging with newer changes.
+
+****
 
 ---
 // end::eventcrud[]
 
 // tag::timetable[]
+=== Timetable Events
+The timetable events schedule functions similarly to the events list on the left of the application. Upon starting the
+application, after the model component initialises saved data to create its "memory-model" of the storage, `AddressBook`
+uses its new functionality `getCurrentDate()` to retrieve today's date as indicated on the local machine and saves it
+to retrieve the scheduled events for today. +
+
+The implementation of the `EventList` used to store all the events in the model component has been modified to a `TreeMap`
+to allow the retrieval of a sublist of events between any two dates. This is done through `getObservablesSublist()` which
+uses the current date and the date that is one day after (possible due to the implementation of `addDays()` in `Date`. +
+
+image::TimetableUpdate.png[width="800"]
+
+This list is stored in the model component and will be updated accordingly if there are any changes to events made known
+upon the signalling of `AddressBookChangedEvent`.
+
 // end::timetable[]
 
 // tag::scheduling[]
@@ -407,6 +486,8 @@ dropped time slot, with the sames duration. If there is a time clash between
 the 'new' event and an existing event, or if the 'new' event's timing
 exceeds pre-set constraints (eg. extends out of the 24-hour period) the
 'dropping' action cannot be completed.
+
+image::dndSequenceDiagrams.png[width="800"]
 
 ==== Avoid time clash
 
@@ -454,6 +535,21 @@ any overlap with an existing event, this will generate a
 ****
 
 // end::scheduling[]
+
+// tag::repeat[]
+=== Schedule Recurring Event
+
+Recurring event can be scheduled using either the `repeat` command or by
+specifying the `p/` field in eventedit. As shown in the diagram
+below, the command will then edit the existing event with the
+specified `repeat period`. When the new event is added, a TimerTask is
+triggered, which will schedule a task to add a new event to AddressBook
+immediately after this event finishes in the future. In this way, we can have
+ infinitely recurring events as long as a new event can be added.
+
+image::repeatEventSequenceDiagrams.png[width=800]
+
+// end::repeat[]
 
 === Logging
 
@@ -581,38 +677,34 @@ the change does not affect that particular panel or card.
 === Attaching photo to a contact
 
 Another optional field that can be added to a contact is the photo field. It
-can be added either:
+can be added in two ways:
 
-* through the `add` or `edit` command; OR
+* Through GUI
+** When the `updatephoto` command is executed, or when the `import photo`
+button on the person panel (beneath the person's photo) is clicked, a
+`FileChooser` window will be opened in the main UI.
+** After user has chosen the image file (restricted to jpg/jpeg/png format),
+the file path will be passed into a new EditCommand `edit [index]
+ph/[filepath]` which will then be processed by the `Logic` component. After
+parsing, the command will be executed, and `Model` component will make the
+corresponding change (updating the `Photo` field of the person with ). The
+change will then be reflected in UI through an `AddressBookChangedEvent`. The
+ process can be illustrated with the following sequence diagram.
 
-* through the GUI
+image::photoGUISequenceDiagrams.png[width="1000"]
 
-==== Command-line implementation
+* By specifying through the `add` or `edit` command
 
-When the image file location is specified in the `add` or `edit` command, the
- `AddCommandParser` and `EditCommandParser` parses the command and copy the
- file specified from the local file system to the
- `/src/main/resources/images` directory. The URL string of the copied image
- file is then stored as the `photoURL` String in the `Photo` field of a
- `Person`.
-
-When the person's details are loaded in the `PersonPanel`, the `photoURL`
-stored in the person is then loaded as an image and displayed in the graphic
-UI.
-
-==== GUI implementation
-
-For every `PersonPanel`, there is an `Import Image` button which allows the
-user to select a file from the local file system to import. Similar to the
-command-line implementation, this file is then copied to the
-`/src/main/resources/images` directory and then loaded in the graphic UI.
+When using CLI, the image file to be imported as the photo can be specified
+with the `ph/` field in edit/add commands. After the command is successfully
+parsed, the process will be similar to the sequence diagram shown above.
 
 //tag::photo[]
 
 // tag::Sorting[]
 === Sorting of persons list
 
-The sorting mechanism achieved by creating a new `SortCommand` and `SortCommandParser`. It is also facilitated by
+The sorting mechanism is achieved by creating a new `SortCommand` and `SortCommandParser`. It is also facilitated by
 `UniquePersonList`, which resides in `AddressBook`. It supports
  the rearrangement of the person list which modifies the current arrangement. This command inherits the
 `UndoableCommand` which allows the user to undo/redo the sorting.
@@ -634,17 +726,17 @@ The execution of the command is done in the following method:
 
 [source, java]
 ----
-public CommandResult executeUndoableCommand() {
+public CommandResult executeUndoableCommand() throws CommandException {
     try {
-        model.sortPerson(sortType);
+        model.sortPersonList(sortType);
         return new CommandResult(MESSAGE_SUCCESS + sortType);
     } catch (InvalidSortTypeException iste) {
-            return new CommandResult(MESSAGE_UNKNOWN_SORT_TYPE);
+            throw new CommandException(MESSAGE_UNKNOWN_SORT_TYPE);
         }
     }
 ----
 
-After a series of method calls, the *model.sortPerson()* will eventually call the *sortPerson()* method in
+After a series of method calls, the *model.sortPersonList()* will eventually call the *sortPerson()* method in
 `UniquePersonList`.
 
 
@@ -692,7 +784,7 @@ If sorting type is not found, an error message will to shown in the result displ
 sorting
 type.
 
-Comparators for sorting *Name* and *Tag* are the same, they do not have a custom comparator.
+Sorting *Name* and *Tag* are done using the default comparator as they are only sorted alphabetically.
 
 
 *Company* and *Position* have a default input, _"NIL"_, if it is not specified during the adding of the person,
@@ -708,7 +800,7 @@ Since *Company*, *Position* and *Priority* have specific way of sorting, a custo
 The *_ORDERED_ENTRIES_* indicates how should it should be sorted in both the comparator for *Company*, *Position* and
  *Priority*.
 
-The implementation of the comparator for *Company* and *Position* are the same. For *Position* simply change all the
+The implementation of the comparator for *Company* and *Position* are the same. For *Position*, simply change all the
 variables and data type to be *Position*.
 
 An example of the implementation for *Company* is as follows:
@@ -765,7 +857,7 @@ image::SortCommandSequenceDiagram.png[width="800"]
 ==== Design Considerations:
 *Aspect*: Implementation of Sorting
 
-*Alternative 1*: Just sort all the different methods alphabetically.
+*Alternative 1*: Just sort all the different types alphabetically.
 
 *Pros*: The user is able to see the person list sorted alphabetically for each sorting method
 
@@ -773,20 +865,20 @@ image::SortCommandSequenceDiagram.png[width="800"]
 list should be sorted for example priority should be sorted with *H* and the top, *M* in the middle and *L* at the
 bottom.
 
-*Alternative 2 (current choice)*: Have the sorting method to deal with such specificaitions.
+*Alternative 2 (current choice)*: Have the sorting method to deal with such specifications.
 
-*Pros*: Users is able to sort alphabetically automatically for all the sorting method provided.
+*Pros*: Users is able to sort alphabetically automatically for all the sorting types provided.
 
-*Cons*: Custom comparator will be required to compare the the sorting types that have a specific format.
+*Cons*: Custom comparators will be required to compare the the sorting types that have a specific format.
 
 // end::Sorting[]
 
 // tag::SettingRelationship[]
 === Setting relationship between two persons
 
-The setting of relationship mechanism achieved by creating a new `SetRelCommand`, `SetRelCommandParser`
+The setting of relationship mechanism is achieved by creating a new `SetRelCommand`, `SetRelCommandParser`
 , `UniqueRelList` and `Relationship` classes. `SetRelCommand` and `SetRelCommandParser` classes resides in the `Logic
-Component` facilitated by `UniqueRelList` and `Relationship` classes resides in the `Model Component`.
+Component` and they are facilitated by `Relationship` and `UniqueRelList` classes that resides in the `Model Component`.
 It supports the adding, deleting and clearing of relationship between two different persons. This command inherits the
 `UndoableCommand` which allows the user to undo/redo the adding/deleting/clearing of relationship between two persons.
 
@@ -809,19 +901,21 @@ public Relationship(String name, Set<Relationship> relation) {
 ----
 
 As you can see from the code above, the relationship name has to be validated to make sure it fits the a certain
-format by checking if it matches the regular expression for it. The overloaded constructor forms the relationship
-the string of the other person's name and the relationship.
+format by checking if it matches the regular expression. The overloaded constructor concatenates the relationship
+and the person's name.
 
 Before a new instance of `SetRelCommand` is created,
 
 SetRelCommmandParser ensures that:
 
 1. the relationship prefix is present.
-2. the indexes are the same.
+2. the indexes are the different.
 3. the indexes are an unsigned integer.
-4. the relationships are not empty strings or null for adding and deleting.
+4. there are 2 indexes present.
+5. only one add relationship or delete relationship prefix present.
+6. the relationships are not empty strings or null for adding and deleting.
 
-`SetRelCommandParser` returns a new instance of `SetRelCommand` that takes in two different indexes, an editedPerson
+`SetRelCommandParser` returns a new instance of `SetRelCommand` that takes in two indexes, an editedPerson
 and a boolean value that states whether the add relationship prefix is present.
 
 The implementation of `SetRelCommand` constructor is as follows:
@@ -872,7 +966,7 @@ public CommandResult executeUndoableCommand() throws CommandException {
 }
 ----
 
-The implementation of the adding/deleting and clearing was inspired to be by my course mate, Sim Yan Yu
+The idea of how the adding/deleting and clearing would be done was inspired to me by my course mate, Sim Yan Yu
 (syy94). However, the implementations are modified significantly to fit this feature.
 
 The implementations of adding/deleting are as follows:
@@ -904,7 +998,7 @@ The following sequence diagram shows how the set relationship operation works:
 image::SetRelCommandSequenceDiagram.png[width="800"]
 
 ==== Design Considerations:
-*Aspect*: Settng relationships for contacts
+*Aspect*: Setting relationships for contacts
 
 *Alternative 1*: Manually setting the relationship for each person.
 
@@ -945,7 +1039,7 @@ switch (commandWord) {
     return new AddCommandParser().parse(arguments);
 ----
 
-An example of the implementation checking the *add* command in `CheckCommandsParser` is as follows:
+An example of the implementation of checking the *add* command in `CheckCommandsParser` is as follows:
 [source, java]
 ----
 /**
@@ -975,8 +1069,8 @@ if (!Collections.disjoint(userInputCommand, commandsForAdd)) {
 The code for the other commands will be the same except for the aliases/synonyms.
 
 [NOTE]
-If the input command does not match with any of the *aliases/synonyms*, an exception will be thrown to notify the
-user that the command entered is *invalid*.
+If the input command does not match with any of the *aliases/synonyms*, an exception will be thrown and an error
+message will be shown to notify the user that the command entered is *invalid*.
 
 ==== Design Considerations:
 *Aspect*: Implementation of aliases/synonyms for each command

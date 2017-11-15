@@ -535,9 +535,11 @@ public class CalendarView extends UiPart<Region> {
         logger.info("LastChangedEvent is " + lastChangedEvent);
         logger.info("NewlyAddedEvent is " + newlyAddedEvent);
         initEvents(calendarView, abce.data.getEventList(), lastChangedEvent, newlyAddedEvent);
+
         if (!abce.data.getEventList().isEmpty()) {
             updateEvents(calendarView, abce.data.getEventList(), lastChangedEvent, newlyAddedEvent);
         }
+
     }
 
 
