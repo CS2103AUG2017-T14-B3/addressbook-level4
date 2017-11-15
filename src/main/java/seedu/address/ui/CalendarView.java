@@ -41,7 +41,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.DataFormat;
 import javafx.scene.input.Dragboard;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
@@ -406,18 +405,6 @@ public class CalendarView extends UiPart<Region> {
         eventPane.setStyle("-fx-background-color: #81C7D4; -fx-alignment: CENTER; "
                 + "-fx-border-color: " + "white");
 
-        //Add listener to mouse-click event to show detail of the event
-        eventPane.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent t) {
-                try {
-                    logic.execute("eventfind " + event.getTitle().toString());
-                } catch (CommandException | ParseException e) {
-                    raise(new NewResultAvailableEvent(e.getMessage(), true));
-                }
-            }
-        });
-
         //Add the label to the pane
         eventPane.getChildren().addAll(eventTitle);
 
@@ -548,7 +535,8 @@ public class CalendarView extends UiPart<Region> {
         logger.info("LastChangedEvent is " + lastChangedEvent);
         logger.info("NewlyAddedEvent is " + newlyAddedEvent);
         initEvents(calendarView, abce.data.getEventList(), lastChangedEvent, newlyAddedEvent);
-        if (abce.data.getEventList().size() != 0) {
+
+        if (!abce.data.getEventList().isEmpty()) {
             updateEvents(calendarView, abce.data.getEventList(), lastChangedEvent, newlyAddedEvent);
         }
 

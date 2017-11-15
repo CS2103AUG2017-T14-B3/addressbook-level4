@@ -4,6 +4,7 @@ import static junit.framework.TestCase.fail;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TIMESLOT_SOCCER;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TIMESLOT_TENNIS;
 import static seedu.address.testutil.TypicalEvents.ANNIVERSARY;
 import static seedu.address.testutil.TypicalEvents.BIRTHDAY;
 import static seedu.address.testutil.TypicalEvents.DEADLINE;
@@ -54,11 +55,18 @@ public class EventListTest {
         EventList eventList = new EventList();
         ReadOnlyEvent toAdd1 = new EventBuilder().withTimeslot(VALID_TIMESLOT_SOCCER).build();
         ReadOnlyEvent toAdd2 = new EventBuilder().withTimeslot(VALID_TIMESLOT_SOCCER).build();
-        ReadOnlyEvent toAdd3 = new EventBuilder().withTimeslot(VALID_TIMESLOT_SOCCER).build();
+        ReadOnlyEvent toAdd3 = new EventBuilder().withTimeslot(VALID_TIMESLOT_TENNIS).build();
 
         try {
             eventList.add(toAdd1);
             eventList.add(toAdd2);
+            fail("The expected exception was not thrown.");
+        } catch (Exception e) {
+            assertTrue(e instanceof EventTimeClashException);
+        }
+
+        try {
+            eventList.add(toAdd3);
             fail("The expected exception was not thrown.");
         } catch (Exception e) {
             assertTrue(e instanceof EventTimeClashException);

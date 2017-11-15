@@ -384,27 +384,23 @@ Format: `list all` / `list` / `refresh` / `show all` / `display all`
 `Since v1.4` +
 Synonyms/Aliases for the command: `checkschedule` / `thisweek`/`cs`/`tw` +
 
-Displays user's schedule for the current week upon executing the command. +
-After execution of the command, a calendar GUI will appear in the main +
+Displays user's schedule for the current week upon executing the command.
+After execution of the command, a calendar GUI will appear in the main
 window, with events displayed in the corresponding time slots. Each time slot
- is 30 minutes, starting from 7:00 am and ending with 11:59 pm +
+ is 30 minutes, starting from 7:00 am and ending with 11:59 pm.
 
 With the calendar GUI, the user can:
 
-* Have an overview of all scheduled events in the current week
+* Have an overview of all scheduled events
 ** All changes to events will be reflected on the calendar UI in real time
-* Check the detail of a specific event by clicking on the event block in the
-calendar UI
-** This will direct user to the event's detail page
 * Reschedule events through drag-and-drop
 ** Dragging and dropping an event, if successful, will change the event's
-starting time to the dropped timeslot in the calendar, while maintaining the
-duration of the event
+starting time to the dropped timeslot in the calendar
 ****
 Conditions for successful drag-and-drop:
 
 * There should not be any time clash with existing events (eg. if a timeslot
-is already occupied by an event, cannot drop at this time slot) +
+is already occupied by an event, we cannot drop at this time slot) +
 * The dropped event block should be entirely contained within the calendar
 (eg. cannot drop at the last time slot, if event's duration is longer than 30
 minutes) +
@@ -413,22 +409,42 @@ minutes) +
 
 // tag::repeat[]
 
-=== Schedule recurring event through `recurrence period` field
+=== Schedule recurring event: `repeat`/`rp`
 
 User can schedule events with a regular period of recurrence through the
-`recurrence period` field, identified by prefix `p/` when adding or editing
-events. Values put for `recurrence period` can only be positive integers
+`recurrence period` field. This can be done through two ways:
+
+. Specifying recurrence period with prefix `p/` when adding or editing
+events.
+
+* When an event is added without specifying the `recurrence period`, the
+  default vlaue is 0, which means it will not be repeated. Event recurrence can
+   also be removed by setting the value of the period to be 0.
+. Using the `repeat` command to specify the event to be edited, and the new
+   period to be added
+
+Example command:
+****
+* eventadd n/Meeting with Apple t/10/10/2017 1300-1400 d/First Meeting p/14
+** This will add a new event that repeats itself every 14 days
+* eventedit 1 p/0
+** This will cancel the repetition of event identified by
+index 1 in the last shown list
+* repeat 2 14
+** This will change the recurrance period of the event identified by index 1
+in the last shown list to 14 days
+****
+
+Values put for `recurrence period` can only be positive integers
 indicating interval between two scheduled occurrence of the event.
 
-For example, if an event is added with a  `repeat period` of 7 days, when the
- event is finished, a new instance of the event will be scheduled with the same
- time slot 7 days later. If this instance will clash with an existing event, it
- will be skipped and a new instance will be created for the next period.
+After a recurring event is added, the future instances of the event will not
+show up immediately in the event list. Instead,
+ if the `repeat period` is, for example, 7 days, when the event is finished,
+ a new instance of the event will be automatically scheduled with the same
+ time slot 7 days later.
 
-When an event is added without specifying the `recurrence period`, the
-default vlaue is 0, which means it will not be repeated. Event recurrence can
- also be removed by setting the value of the period to be 0.
-// end::repeat[]
+//end::repeat[]
 
 // tag::timetable[]
 === Displaying user's timetable: `timetable`
