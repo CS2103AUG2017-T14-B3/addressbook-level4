@@ -1,5 +1,5 @@
 # huiyiiih
-###### \java\seedu\address\logic\commands\relationship\SetRelCommand.java
+###### /java/seedu/address/logic/commands/relationship/SetRelCommand.java
 ``` java
 /**
  * Sets the relationship between two persons
@@ -104,7 +104,7 @@ public class SetRelCommand extends UndoableCommand {
         return new CommandResult(String.format(MESSAGE_EDIT_PERSON_SUCCESS, editedPersonOne, editedPersonTwo));
     }
 ```
-###### \java\seedu\address\logic\commands\relationship\SetRelCommand.java
+###### /java/seedu/address/logic/commands/relationship/SetRelCommand.java
 ``` java
         public Optional<Set<Relationship>> getToAddRel(ReadOnlyPerson person) {
             Set<Relationship> relWithName = new HashSet<>();
@@ -116,7 +116,7 @@ public class SetRelCommand extends UndoableCommand {
             return Optional.of(relWithName);
         }
 ```
-###### \java\seedu\address\logic\commands\relationship\SetRelCommand.java
+###### /java/seedu/address/logic/commands/relationship/SetRelCommand.java
 ``` java
         public Optional<Set<Relationship>> getToDeleteRel(ReadOnlyPerson person) {
             Set<Relationship> relWithName = new HashSet<>();
@@ -124,7 +124,7 @@ public class SetRelCommand extends UndoableCommand {
             return Optional.of(relWithName);
         }
 ```
-###### \java\seedu\address\logic\commands\SortCommand.java
+###### /java/seedu/address/logic/commands/SortCommand.java
 ``` java
 
 /**
@@ -163,7 +163,7 @@ public class SortCommand extends UndoableCommand {
     }
 }
 ```
-###### \java\seedu\address\logic\parser\ArgumentMultimap.java
+###### /java/seedu/address/logic/parser/ArgumentMultimap.java
 ``` java
     /**
      * Returns true if there is only one prefix present
@@ -186,7 +186,7 @@ public class SortCommand extends UndoableCommand {
         return argMultimap.containsKey(prefix);
     }
 ```
-###### \java\seedu\address\logic\parser\CheckCommandsParser.java
+###### /java/seedu/address/logic/parser/CheckCommandsParser.java
 ``` java
 
 /**
@@ -331,7 +331,7 @@ public class CheckCommandsParser {
     }
 }
 ```
-###### \java\seedu\address\logic\parser\CliSyntax.java
+###### /java/seedu/address/logic/parser/CliSyntax.java
 ``` java
     /* Prefix definitions for Relationship*/
     public static final Prefix PREFIX_ADD_RELATIONSHIP = new Prefix("ar/");
@@ -340,7 +340,7 @@ public class CheckCommandsParser {
     //@author
 }
 ```
-###### \java\seedu\address\logic\parser\ParserUtil.java
+###### /java/seedu/address/logic/parser/ParserUtil.java
 ``` java
     /**
      * Parses {@code Collection<String> relationship} into a {@code Set<Relationship>}.
@@ -354,7 +354,7 @@ public class CheckCommandsParser {
         return relationSet;
     }
 ```
-###### \java\seedu\address\logic\parser\relationship\SetRelCommandParser.java
+###### /java/seedu/address/logic/parser/relationship/SetRelCommandParser.java
 ``` java
 
 /**
@@ -480,7 +480,7 @@ public class SetRelCommandParser implements Parser<SetRelCommand> {
     }
 }
 ```
-###### \java\seedu\address\logic\parser\SortCommandParser.java
+###### /java/seedu/address/logic/parser/SortCommandParser.java
 ``` java
 
 /**
@@ -505,22 +505,22 @@ public class SortCommandParser implements Parser<SortCommand> {
 
 }
 ```
-###### \java\seedu\address\model\AddressBook.java
+###### /java/seedu/address/model/AddressBook.java
 ``` java
     private final UniqueRelList relation;
 ```
-###### \java\seedu\address\model\AddressBook.java
+###### /java/seedu/address/model/AddressBook.java
 ``` java
     public void setRel(Set<Relationship> relation) {
         this.relation.setRel(relation);
     }
 ```
-###### \java\seedu\address\model\AddressBook.java
+###### /java/seedu/address/model/AddressBook.java
 ``` java
         setRel(new HashSet<>(newData.getRelList()));
         syncMasterRelListWith(persons);
 ```
-###### \java\seedu\address\model\AddressBook.java
+###### /java/seedu/address/model/AddressBook.java
 ``` java
     /**
      * Sorts the list according to name, tag, company, priority and position
@@ -529,7 +529,7 @@ public class SortCommandParser implements Parser<SortCommand> {
         persons.sortPerson(type);
     }
 ```
-###### \java\seedu\address\model\AddressBook.java
+###### /java/seedu/address/model/AddressBook.java
 ``` java
     /**
      * Ensures that every relationships in this person:
@@ -561,14 +561,14 @@ public class SortCommandParser implements Parser<SortCommand> {
         persons.forEach(this::syncMasterRelListWith);
     }
 ```
-###### \java\seedu\address\model\AddressBook.java
+###### /java/seedu/address/model/AddressBook.java
 ``` java
     @Override
     public ObservableList<Relationship> getRelList() {
         return relation.asObservableList();
     }
 ```
-###### \java\seedu\address\model\Model.java
+###### /java/seedu/address/model/Model.java
 ``` java
     /**
      * Sorts the person list according to user input option
@@ -588,7 +588,7 @@ public class SortCommandParser implements Parser<SortCommand> {
     void updateFilteredPersonList(Predicate<ReadOnlyPerson> predicate);
 
 ```
-###### \java\seedu\address\model\ModelManager.java
+###### /java/seedu/address/model/ModelManager.java
 ``` java
     @Override
     public void sortPersonList(String type) throws InvalidSortTypeException {
@@ -597,7 +597,7 @@ public class SortCommandParser implements Parser<SortCommand> {
         indicateAddressBookChanged();
     }
 ```
-###### \java\seedu\address\model\person\Company.java
+###### /java/seedu/address/model/person/Company.java
 ``` java
     /**
      * Comparator to compare the company to sort them with NIL all the way at the bottom.
@@ -620,7 +620,7 @@ public class SortCommandParser implements Parser<SortCommand> {
         return companyOne.compareTo(companyTwo);
     }
 ```
-###### \java\seedu\address\model\person\exceptions\InvalidSortTypeException.java
+###### /java/seedu/address/model/person/exceptions/InvalidSortTypeException.java
 ``` java
 package seedu.address.model.person.exceptions;
 
@@ -635,7 +635,7 @@ public class InvalidSortTypeException extends IllegalValueException {
     }
 }
 ```
-###### \java\seedu\address\model\person\Person.java
+###### /java/seedu/address/model/person/Person.java
 ``` java
     /**
      * Returns an immutable relationship set, which throws {@code UnsupportedOperationException}
@@ -653,7 +653,7 @@ public class InvalidSortTypeException extends IllegalValueException {
         relation.set(new UniqueRelList(replacement));
     }
 ```
-###### \java\seedu\address\model\person\Position.java
+###### /java/seedu/address/model/person/Position.java
 ``` java
     /**
      * Comparator to compare the positions to sort them with NIL all the way at the bottom.
@@ -676,7 +676,7 @@ public class InvalidSortTypeException extends IllegalValueException {
         return positionOne.compareTo(positionTwo);
     }
 ```
-###### \java\seedu\address\model\person\Priority.java
+###### /java/seedu/address/model/person/Priority.java
 ``` java
     /**
      * Comparator to compare the priorities to sort them according to H, M, L.
@@ -700,11 +700,11 @@ public class InvalidSortTypeException extends IllegalValueException {
         return priorityOne.compareTo(priorityTwo);
     }
 ```
-###### \java\seedu\address\model\person\ReadOnlyPerson.java
+###### /java/seedu/address/model/person/ReadOnlyPerson.java
 ``` java
     Set<Relationship> getRelation();
 ```
-###### \java\seedu\address\model\person\Status.java
+###### /java/seedu/address/model/person/Status.java
 ``` java
     /**
      * Comparator to compare the statuses to sort them with NIL all the way at the bottom.
@@ -726,7 +726,7 @@ public class InvalidSortTypeException extends IllegalValueException {
         return statusOne.compareTo(statusTwo);
     }
 ```
-###### \java\seedu\address\model\person\UniquePersonList.java
+###### /java/seedu/address/model/person/UniquePersonList.java
 ``` java
     /**
      * Sorts the person list according to the type entered by user
@@ -766,7 +766,7 @@ public class InvalidSortTypeException extends IllegalValueException {
         }
     }
 ```
-###### \java\seedu\address\model\ReadOnlyAddressBook.java
+###### /java/seedu/address/model/ReadOnlyAddressBook.java
 ``` java
     /**
      * Returns an unmodifiable view of the relationships list.
@@ -774,7 +774,7 @@ public class InvalidSortTypeException extends IllegalValueException {
      */
     ObservableList<Relationship> getRelList();
 ```
-###### \java\seedu\address\model\relationship\Relationship.java
+###### /java/seedu/address/model/relationship/Relationship.java
 ``` java
 
 /**
@@ -839,7 +839,7 @@ public class Relationship {
 
 }
 ```
-###### \java\seedu\address\model\relationship\UniqueRelList.java
+###### /java/seedu/address/model/relationship/UniqueRelList.java
 ``` java
 package seedu.address.model.relationship;
 
@@ -996,7 +996,7 @@ public class UniqueRelList implements Iterable<Relationship> {
     }
 }
 ```
-###### \java\seedu\address\model\util\SampleDataUtil.java
+###### /java/seedu/address/model/util/SampleDataUtil.java
 ``` java
     /**
      * Returns a relationship set containing the list of strings given.
@@ -1009,20 +1009,20 @@ public class UniqueRelList implements Iterable<Relationship> {
         return rel;
     }
 ```
-###### \java\seedu\address\storage\XmlSerializableAddressBook.java
+###### /java/seedu/address/storage/XmlSerializableAddressBook.java
 ``` java
     @XmlElement
     private List<XmlAdaptedRelationship> relation;
 ```
-###### \java\seedu\address\storage\XmlSerializableAddressBook.java
+###### /java/seedu/address/storage/XmlSerializableAddressBook.java
 ``` java
         relation = new ArrayList<>();
 ```
-###### \java\seedu\address\storage\XmlSerializableAddressBook.java
+###### /java/seedu/address/storage/XmlSerializableAddressBook.java
 ``` java
         relation.addAll(src.getRelList().stream().map(XmlAdaptedRelationship::new).collect(Collectors.toList()));
 ```
-###### \java\seedu\address\storage\XmlSerializableAddressBook.java
+###### /java/seedu/address/storage/XmlSerializableAddressBook.java
 ``` java
     @Override
     public ObservableList<Relationship> getRelList() {
@@ -1038,7 +1038,7 @@ public class UniqueRelList implements Iterable<Relationship> {
         return FXCollections.unmodifiableObservableList(rel);
     }
 ```
-###### \resources\view\BrightTheme.css
+###### /resources/view/BrightTheme.css
 ``` css
 .scroll-pane > .viewport {
    -fx-background-color: transparent;
@@ -1048,7 +1048,7 @@ public class UniqueRelList implements Iterable<Relationship> {
    -fx-background-color: transparent;
 }
 ```
-###### \resources\view\PersonPanel.fxml
+###### /resources/view/PersonPanel.fxml
 ``` fxml
          <Label layoutX="14.0" layoutY="255.0" prefHeight="100.0" prefWidth="275.0" styleClass="label-header" text="Relationships" AnchorPane.leftAnchor="14.0">
          <font>

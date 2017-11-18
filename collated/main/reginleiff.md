@@ -1,5 +1,5 @@
 # reginleiff
-###### \java\seedu\address\commons\events\ui\ToggleTimetableEvent.java
+###### /java/seedu/address/commons/events/ui/ToggleTimetableEvent.java
 ``` java
 /**
  * An event requesting to toggle the timetable view.
@@ -13,7 +13,7 @@ public class ToggleTimetableEvent extends BaseEvent {
 
 }
 ```
-###### \java\seedu\address\logic\commands\event\AddEventCommand.java
+###### /java/seedu/address/logic/commands/event/AddEventCommand.java
 ``` java
 /**
  * Adds an event to the address book.
@@ -32,7 +32,7 @@ public class AddEventCommand extends UndoableCommand {
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_NAME + "John's 21st Birthday "
             + PREFIX_TIMESLOT + "22/10/2017 1900-2200 "
-            + PREFIX_DESCRIPTION + "johnd@example.com ";
+            + PREFIX_DESCRIPTION + "Poolside party at Sentosa! ";
 
     public static final String MESSAGE_SUCCESS = "New event added: %1$s";
     public static final String MESSAGE_TIME_CLASH = "This event has time clash with an existing event";
@@ -65,7 +65,7 @@ public class AddEventCommand extends UndoableCommand {
     }
 }
 ```
-###### \java\seedu\address\logic\commands\event\DeleteEventCommand.java
+###### /java/seedu/address/logic/commands/event/DeleteEventCommand.java
 ``` java
 /**
  * Deletes a event identified using it's last displayed index from the address book.
@@ -116,7 +116,7 @@ public class DeleteEventCommand extends UndoableCommand {
     }
 }
 ```
-###### \java\seedu\address\logic\commands\event\EditEventCommand.java
+###### /java/seedu/address/logic/commands/event/EditEventCommand.java
 ``` java
 package seedu.address.logic.commands.event;
 
@@ -162,8 +162,7 @@ public class EditEventCommand extends UndoableCommand {
             + "[" + PREFIX_PERIOD + "PERIOD] "
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_TIMESLOT + "1300-1500 "
-            + PREFIX_DESCRIPTION + "New description for event x "
-            + PREFIX_PERIOD + " 14.";
+            + PREFIX_DESCRIPTION + "New description for event x ";
 
     public static final String MESSAGE_EDIT_EVENT_SUCCESS = "Edited Event: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
@@ -323,7 +322,7 @@ public class EditEventCommand extends UndoableCommand {
 }
 
 ```
-###### \java\seedu\address\logic\commands\event\FindEventCommand.java
+###### /java/seedu/address/logic/commands/event/FindEventCommand.java
 ``` java
 package seedu.address.logic.commands.event;
 
@@ -363,7 +362,7 @@ public class FindEventCommand extends Command {
     }
 }
 ```
-###### \java\seedu\address\logic\commands\event\ToggleTimetableCommand.java
+###### /java/seedu/address/logic/commands/event/ToggleTimetableCommand.java
 ``` java
 /**
  * Toggles the view of the timetable.
@@ -381,7 +380,7 @@ public class ToggleTimetableCommand extends Command {
     }
 }
 ```
-###### \java\seedu\address\logic\commands\ListCommand.java
+###### /java/seedu/address/logic/commands/ListCommand.java
 ``` java
 /**
  * Lists all persons and/or events in Sales Navigator to the user.
@@ -430,7 +429,7 @@ public class ListCommand extends Command {
     }
 }
 ```
-###### \java\seedu\address\logic\Logic.java
+###### /java/seedu/address/logic/Logic.java
 ``` java
     /**
      * Returns an unmodifiable view of the filtered list of events
@@ -443,7 +442,7 @@ public class ListCommand extends Command {
     ObservableList<ReadOnlyEvent> getTimetable();
 
 ```
-###### \java\seedu\address\logic\LogicManager.java
+###### /java/seedu/address/logic/LogicManager.java
 ``` java
     @Override
     public ObservableList<ReadOnlyEvent> getFilteredEventList() {
@@ -455,7 +454,7 @@ public class ListCommand extends Command {
         return model.getTimetable();
     }
 ```
-###### \java\seedu\address\logic\parser\event\DateParser.java
+###### /java/seedu/address/logic/parser/event/DateParser.java
 ``` java
 package seedu.address.logic.parser.event;
 
@@ -488,12 +487,12 @@ public class DateParser {
 }
 
 ```
-###### \java\seedu\address\model\AddressBook.java
+###### /java/seedu/address/model/AddressBook.java
 ``` java
     private Date currentDate;
     private final EventList events;
 ```
-###### \java\seedu\address\model\AddressBook.java
+###### /java/seedu/address/model/AddressBook.java
 ``` java
         events = new EventList();
         relation = new UniqueRelList();
@@ -517,13 +516,13 @@ public class DateParser {
     }
 
 ```
-###### \java\seedu\address\model\AddressBook.java
+###### /java/seedu/address/model/AddressBook.java
 ``` java
     public void setEvents(List<? extends ReadOnlyEvent> events) throws EventTimeClashException {
         this.events.setEvents(events);
     }
 ```
-###### \java\seedu\address\model\AddressBook.java
+###### /java/seedu/address/model/AddressBook.java
 ``` java
         try {
             setEvents(newData.getEventList());
@@ -532,7 +531,7 @@ public class DateParser {
         }
         logger.info("EVENT SIZE AT UNDO" + newData.getEventList().size());
 ```
-###### \java\seedu\address\model\AddressBook.java
+###### /java/seedu/address/model/AddressBook.java
 ``` java
     //// event-level operations
 
@@ -588,7 +587,7 @@ public class DateParser {
         return this.newlyAddedEvent;
     }
 ```
-###### \java\seedu\address\model\AddressBook.java
+###### /java/seedu/address/model/AddressBook.java
 ``` java
     @Override
     public ObservableList<ReadOnlyEvent> getEventList() {
@@ -600,7 +599,7 @@ public class DateParser {
         return events.getObservableSubList(currentDate);
     }
 ```
-###### \java\seedu\address\model\AddressBook.java
+###### /java/seedu/address/model/AddressBook.java
 ``` java
 
     /**
@@ -623,7 +622,7 @@ public class DateParser {
 
 }
 ```
-###### \java\seedu\address\model\event\Description.java
+###### /java/seedu/address/model/event/Description.java
 ``` java
 /**
  * Represents an Event's Description in the address book.
@@ -681,7 +680,7 @@ public class Description {
     }
 }
 ```
-###### \java\seedu\address\model\event\Event.java
+###### /java/seedu/address/model/event/Event.java
 ``` java
 /**
  * Represents an Event in the address book.
@@ -798,7 +797,7 @@ public class Event implements ReadOnlyEvent, Comparable<Event> {
     }
 
 ```
-###### \java\seedu\address\model\event\EventList.java
+###### /java/seedu/address/model/event/EventList.java
 ``` java
 /**
  * A list of events that does not allow nulls.
@@ -860,7 +859,7 @@ public class EventList implements Iterable<Event> {
         requireNonNull(edited);
 
 ```
-###### \java\seedu\address\model\event\exceptions\EventNotFoundException.java
+###### /java/seedu/address/model/event/exceptions/EventNotFoundException.java
 ``` java
 package seedu.address.model.event.exceptions;
 
@@ -873,7 +872,7 @@ public class EventNotFoundException extends Exception {
     }
 }
 ```
-###### \java\seedu\address\model\event\ReadOnlyEvent.java
+###### /java/seedu/address/model/event/ReadOnlyEvent.java
 ``` java
 package seedu.address.model.event;
 
@@ -887,7 +886,7 @@ import seedu.address.model.event.timeslot.Timeslot;
 import seedu.address.model.event.timeslot.Timing;
 
 ```
-###### \java\seedu\address\model\event\ReadOnlyEvent.java
+###### /java/seedu/address/model/event/ReadOnlyEvent.java
 ``` java
 /**
  * A read-only immutable interface for an Event in the addressbook.
@@ -915,7 +914,7 @@ public interface ReadOnlyEvent {
     Description getDescription();
 
 ```
-###### \java\seedu\address\model\event\timeslot\Date.java
+###### /java/seedu/address/model/event/timeslot/Date.java
 ``` java
 /**
  * Represents an Timeslot's date in sales navigator.
@@ -956,7 +955,7 @@ public class Date implements Comparable<Date> {
     }
 
 ```
-###### \java\seedu\address\model\event\timeslot\Timeslot.java
+###### /java/seedu/address/model/event/timeslot/Timeslot.java
 ``` java
 /**
  * Timeslot contains date and time and is comparable based on year, month, day and starting time, in this order.
@@ -1049,7 +1048,7 @@ public class Timeslot implements Comparable<Timeslot> {
     }
 
 ```
-###### \java\seedu\address\model\event\timeslot\Timing.java
+###### /java/seedu/address/model/event/timeslot/Timing.java
 ``` java
 /**
  * Represents an Timeslot's timing in sales navigator.
@@ -1193,7 +1192,7 @@ public class Timing implements Comparable<Timing> {
     }
 }
 ```
-###### \java\seedu\address\model\event\Title.java
+###### /java/seedu/address/model/event/Title.java
 ``` java
 /**
  * Represents an Event's title in the address book.
@@ -1251,7 +1250,7 @@ public class Title {
     }
 }
 ```
-###### \java\seedu\address\model\event\TitleContainsKeywordsPredicate.java
+###### /java/seedu/address/model/event/TitleContainsKeywordsPredicate.java
 ``` java
 /**
  * Tests that a {@code ReadOnlyEvent}'s {@code Title} matches any of the keywords given.
@@ -1278,7 +1277,7 @@ public class TitleContainsKeywordsPredicate implements Predicate<ReadOnlyEvent> 
 
 }
 ```
-###### \java\seedu\address\model\Model.java
+###### /java/seedu/address/model/Model.java
 ``` java
     /**
      * Adds the given event
@@ -1314,14 +1313,14 @@ public class TitleContainsKeywordsPredicate implements Predicate<ReadOnlyEvent> 
     void updateFilteredEventList(Predicate<ReadOnlyEvent> predicate);
 
 ```
-###### \java\seedu\address\model\ModelManager.java
+###### /java/seedu/address/model/ModelManager.java
 ``` java
     private final FilteredList<ReadOnlyEvent> filteredEvents;
     private FilteredList<ReadOnlyEvent> scheduledEvents;
     private FilteredList<ReadOnlyEvent> timetableEvents;
 
 ```
-###### \java\seedu\address\model\ModelManager.java
+###### /java/seedu/address/model/ModelManager.java
 ``` java
     //=========== Schedule Accessors  =========================================================================
 
@@ -1368,7 +1367,7 @@ public class TitleContainsKeywordsPredicate implements Predicate<ReadOnlyEvent> 
         indicateAddressBookChanged();
     }
 ```
-###### \java\seedu\address\model\ReadOnlyAddressBook.java
+###### /java/seedu/address/model/ReadOnlyAddressBook.java
 ``` java
     /**
      * Returns an unmodifiable view of the events list.
@@ -1381,7 +1380,7 @@ public class TitleContainsKeywordsPredicate implements Predicate<ReadOnlyEvent> 
     ObservableList<ReadOnlyEvent> getTimetable(Date currentDate);
 
 ```
-###### \java\seedu\address\storage\XmlAdaptedEvent.java
+###### /java/seedu/address/storage/XmlAdaptedEvent.java
 ``` java
 /**
  * JAXB-friendly version of the Event.
@@ -1427,20 +1426,20 @@ public class XmlAdaptedEvent {
         final Timeslot timeslot = new Timeslot(this.timeslot);
         final Description description = new Description(this.description);
 ```
-###### \java\seedu\address\storage\XmlSerializableAddressBook.java
+###### /java/seedu/address/storage/XmlSerializableAddressBook.java
 ``` java
     @XmlElement
     private List<XmlAdaptedEvent> events;
 ```
-###### \java\seedu\address\storage\XmlSerializableAddressBook.java
+###### /java/seedu/address/storage/XmlSerializableAddressBook.java
 ``` java
         events = new ArrayList<>();
 ```
-###### \java\seedu\address\storage\XmlSerializableAddressBook.java
+###### /java/seedu/address/storage/XmlSerializableAddressBook.java
 ``` java
         events.addAll(src.getEventList().stream().map(XmlAdaptedEvent::new).collect(Collectors.toList()));
 ```
-###### \java\seedu\address\storage\XmlSerializableAddressBook.java
+###### /java/seedu/address/storage/XmlSerializableAddressBook.java
 ``` java
     @Override
     public ObservableList<ReadOnlyEvent> getEventList() {
@@ -1461,12 +1460,12 @@ public class XmlAdaptedEvent {
         return null;
     }
 ```
-###### \java\seedu\address\ui\MainWindow.java
+###### /java/seedu/address/ui/MainWindow.java
 ``` java
     private EventPanel timetablePanel;
     private TimetableListPanel timetableListPanel;
 ```
-###### \java\seedu\address\ui\MainWindow.java
+###### /java/seedu/address/ui/MainWindow.java
 ``` java
     @FXML
     private StackPane eventListPanelPlaceholder;
@@ -1477,7 +1476,7 @@ public class XmlAdaptedEvent {
     @FXML
     private SplitPane timetable;
 ```
-###### \java\seedu\address\ui\MainWindow.java
+###### /java/seedu/address/ui/MainWindow.java
 ``` java
     @Subscribe
     public void handleToggleTimetableEvent(ToggleTimetableEvent event) {
@@ -1504,7 +1503,7 @@ public class XmlAdaptedEvent {
         timetable.setVisible(true);
     }
 ```
-###### \java\seedu\address\ui\TimetableListCard.java
+###### /java/seedu/address/ui/TimetableListCard.java
 ``` java
 
 /**
@@ -1577,7 +1576,7 @@ public class TimetableListCard extends UiPart<Region> {
     }
 }
 ```
-###### \java\seedu\address\ui\TimetableListPanel.java
+###### /java/seedu/address/ui/TimetableListPanel.java
 ``` java
 /**
  * Panel containing the list of events in the timetable.
@@ -1635,7 +1634,7 @@ public class TimetableListPanel extends UiPart<Region> {
     }
 }
 ```
-###### \resources\view\MainWindow.fxml
+###### /resources/view/MainWindow.fxml
 ``` fxml
     <SplitPane fx:id="timetable" dividerPositions="0.15" minHeight="85.0" prefHeight="85.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
         <StackPane maxHeight="60.0" maxWidth="85.0" minHeight="60.0" minWidth="85.0" prefHeight="60.0" prefWidth="85.0">
@@ -1659,7 +1658,7 @@ public class TimetableListPanel extends UiPart<Region> {
          </padding>
     </SplitPane>
 ```
-###### \resources\view\TimetableListCard.fxml
+###### /resources/view/TimetableListCard.fxml
 ``` fxml
 
 <HBox fx:id="cardPane" minHeight="60.0" mouseTransparent="true" prefHeight="60.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
@@ -1676,7 +1675,7 @@ public class TimetableListPanel extends UiPart<Region> {
     </children>
 </HBox>
 ```
-###### \resources\view\TimetableListPanel.fxml
+###### /resources/view/TimetableListPanel.fxml
 ``` fxml
 
 <HBox HBox.hgrow="ALWAYS" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">

@@ -1,23 +1,23 @@
 # sebtsh
-###### \java\guitests\guihandles\PersonCardHandle.java
+###### /java/guitests/guihandles/PersonCardHandle.java
 ``` java
     private static final String COMPANY_FIELD_ID = "#company";
     private static final String POSITION_FIELD_ID = "#position";
     private static final String PRIORITY_FIELD_ID = "#priority";
 ```
-###### \java\guitests\guihandles\PersonCardHandle.java
+###### /java/guitests/guihandles/PersonCardHandle.java
 ``` java
     private final Label companyLabel;
     private final Label positionLabel;
     private final Label priorityLabel;
 ```
-###### \java\guitests\guihandles\PersonCardHandle.java
+###### /java/guitests/guihandles/PersonCardHandle.java
 ``` java
         this.companyLabel = getChildNode(COMPANY_FIELD_ID);
         this.positionLabel = getChildNode(POSITION_FIELD_ID);
         this.priorityLabel = getChildNode(PRIORITY_FIELD_ID);
 ```
-###### \java\guitests\guihandles\PersonCardHandle.java
+###### /java/guitests/guihandles/PersonCardHandle.java
 ``` java
     public String getCompany() {
         return companyLabel.getText();
@@ -31,7 +31,7 @@
         return priorityLabel.getText();
     }
 ```
-###### \java\seedu\address\logic\commands\CommandTestUtil.java
+###### /java/seedu/address/logic/commands/CommandTestUtil.java
 ``` java
     public static final String VALID_COMPANY_AMY = "Microsoft";
     public static final String VALID_COMPANY_BOB = "Google";
@@ -44,7 +44,7 @@
     public static final String VALID_NOTE_AMY = "Met this person last week";
     public static final String VALID_NOTE_BOB = "Likes coffee";
 ```
-###### \java\seedu\address\logic\commands\CommandTestUtil.java
+###### /java/seedu/address/logic/commands/CommandTestUtil.java
 ``` java
     public static final String COMPANY_DESC_AMY = " " + PREFIX_COMPANY + VALID_COMPANY_AMY;
     public static final String COMPANY_DESC_BOB = " " + PREFIX_COMPANY + VALID_COMPANY_BOB;
@@ -57,7 +57,7 @@
     public static final String NOTE_DESC_AMY = " " + PREFIX_NOTE + VALID_NOTE_AMY;
     public static final String NOTE_DESC_BOB = " " + PREFIX_NOTE + VALID_NOTE_BOB;
 ```
-###### \java\seedu\address\logic\commands\CommandTestUtil.java
+###### /java/seedu/address/logic/commands/CommandTestUtil.java
 ``` java
     public static final String INVALID_COMPANY_DESC = " " + PREFIX_COMPANY; // empty string not allowed for company
     public static final String INVALID_POSITION_DESC = " " + PREFIX_POSITION; //empty string not allowed for position
@@ -65,7 +65,7 @@
     public static final String INVALID_PRIORITY_DESC = " " + PREFIX_PRIORITY + "A"; //only H, M, L allowed for priority
     public static final String INVALID_NOTE_DESC = " " + PREFIX_NOTE; //empty string not allowed for status
 ```
-###### \java\seedu\address\logic\commands\CommandTestUtil.java
+###### /java/seedu/address/logic/commands/CommandTestUtil.java
 ``` java
         DESC_AMY = new EditPersonDescriptorBuilder().withName(VALID_NAME_AMY)
                 .withPhone(VALID_PHONE_AMY).withEmail(VALID_EMAIL_AMY).withAddress(VALID_ADDRESS_AMY)
@@ -81,7 +81,7 @@
                 .withNote(VALID_NOTE_BOB).withPhoto(VALID_PHOTO_BOB).withTags
                 (VALID_TAG_FRIEND).withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND).build();
 ```
-###### \java\seedu\address\logic\parser\AddCommandParserTest.java
+###### /java/seedu/address/logic/parser/AddCommandParserTest.java
 ``` java
     @Test
     public void parse_allFieldsPresent_success() {
@@ -141,7 +141,7 @@
                 new AddCommand(expectedPersonMultipleTags));
     }
 ```
-###### \java\seedu\address\logic\parser\AddCommandParserTest.java
+###### /java/seedu/address/logic/parser/AddCommandParserTest.java
 ``` java
     @Test
     public void parse_invalidValue_failure() {
@@ -196,7 +196,7 @@
                 + INVALID_ADDRESS_DESC, Name.MESSAGE_NAME_CONSTRAINTS);
     }
 ```
-###### \java\seedu\address\logic\parser\EditCommandParserTest.java
+###### /java/seedu/address/logic/parser/EditCommandParserTest.java
 ``` java
     @Test
     public void parse_invalidValue_failure() {
@@ -236,7 +236,7 @@
     }
 
 ```
-###### \java\seedu\address\logic\parser\EditCommandParserTest.java
+###### /java/seedu/address/logic/parser/EditCommandParserTest.java
 ``` java
     @Test
     public void parse_multipleRepeatedFields_acceptsLast() {
@@ -259,7 +259,7 @@
         assertParseSuccess(parser, userInput, expectedCommand);
     }
 ```
-###### \java\seedu\address\model\person\CompanyTest.java
+###### /java/seedu/address/model/person/CompanyTest.java
 ``` java
 package seedu.address.model.person;
 
@@ -284,7 +284,7 @@ public class CompanyTest {
     }
 }
 ```
-###### \java\seedu\address\model\person\NoteTest.java
+###### /java/seedu/address/model/person/NoteTest.java
 ``` java
 package seedu.address.model.person;
 
@@ -308,7 +308,7 @@ public class NoteTest {
     }
 }
 ```
-###### \java\seedu\address\model\person\PositionTest.java
+###### /java/seedu/address/model/person/PositionTest.java
 ``` java
 package seedu.address.model.person;
 
@@ -332,7 +332,7 @@ public class PositionTest {
     }
 }
 ```
-###### \java\seedu\address\model\person\PriorityTest.java
+###### /java/seedu/address/model/person/PriorityTest.java
 ``` java
 package seedu.address.model.person;
 
@@ -357,7 +357,7 @@ public class PriorityTest {
     }
 }
 ```
-###### \java\seedu\address\model\person\StatusTest.java
+###### /java/seedu/address/model/person/StatusTest.java
 ``` java
 package seedu.address.model.person;
 
@@ -381,7 +381,7 @@ public class StatusTest {
     }
 }
 ```
-###### \java\seedu\address\testutil\EditPersonDescriptorBuilder.java
+###### /java/seedu/address/testutil/EditPersonDescriptorBuilder.java
 ``` java
     /**
      * Returns an {@code EditPersonDescriptor} with fields containing {@code person}'s details
@@ -402,7 +402,7 @@ public class StatusTest {
         descriptor.setRelation(person.getRelation());
     }
 ```
-###### \java\seedu\address\testutil\EditPersonDescriptorBuilder.java
+###### /java/seedu/address/testutil/EditPersonDescriptorBuilder.java
 ``` java
     /**
      * Sets the {@code Company} of the {@code EditPersonDescriptor} that we are building.
@@ -464,7 +464,7 @@ public class StatusTest {
         return this;
     }
 ```
-###### \java\seedu\address\testutil\PersonBuilder.java
+###### /java/seedu/address/testutil/PersonBuilder.java
 ``` java
     public static final String DEFAULT_COMPANY = "NIL";
     public static final String DEFAULT_POSITION = "NIL";
@@ -472,7 +472,7 @@ public class StatusTest {
     public static final String DEFAULT_PRIORITY = "L";
     public static final String DEFAULT_NOTE = "NIL";
 ```
-###### \java\seedu\address\testutil\PersonBuilder.java
+###### /java/seedu/address/testutil/PersonBuilder.java
 ``` java
     public PersonBuilder() {
         try {
@@ -496,7 +496,7 @@ public class StatusTest {
         }
     }
 ```
-###### \java\seedu\address\testutil\PersonBuilder.java
+###### /java/seedu/address/testutil/PersonBuilder.java
 ``` java
     /**
      * Sets the {@code Company} of the {@code Person} that we are building.
@@ -558,7 +558,7 @@ public class StatusTest {
         return this;
     }
 ```
-###### \java\seedu\address\testutil\PersonUtil.java
+###### /java/seedu/address/testutil/PersonUtil.java
 ``` java
     /**
      * Returns the part of command string for the given {@code person}'s details.
@@ -585,13 +585,13 @@ public class StatusTest {
     }
 }
 ```
-###### \java\seedu\address\ui\testutil\GuiTestAssert.java
+###### /java/seedu/address/ui/testutil/GuiTestAssert.java
 ``` java
         assertEquals(expectedCard.getCompany(), actualCard.getCompany());
         assertEquals(expectedCard.getPosition(), actualCard.getPosition());
         assertEquals(expectedCard.getPriority(), actualCard.getPriority());
 ```
-###### \java\seedu\address\ui\testutil\GuiTestAssert.java
+###### /java/seedu/address/ui/testutil/GuiTestAssert.java
 ``` java
         assertEquals(expectedPerson.getPosition().value, actualCard.getPosition());
         assertEquals(expectedPerson.getCompany().value, actualCard.getCompany());

@@ -1,5 +1,5 @@
 # shuang-yang
-###### \java\seedu\address\commons\events\ui\HideCalendarEvent.java
+###### /java/seedu/address/commons/events/ui/HideCalendarEvent.java
 ``` java
 package seedu.address.commons.events.ui;
 
@@ -17,7 +17,7 @@ public class HideCalendarEvent extends BaseEvent {
 
 }
 ```
-###### \java\seedu\address\commons\events\ui\ShowCalendarEvent.java
+###### /java/seedu/address/commons/events/ui/ShowCalendarEvent.java
 ``` java
 package seedu.address.commons.events.ui;
 
@@ -36,7 +36,7 @@ public class ShowCalendarEvent extends BaseEvent {
 
 }
 ```
-###### \java\seedu\address\commons\events\ui\ShowPhotoSelectionEvent.java
+###### /java/seedu/address/commons/events/ui/ShowPhotoSelectionEvent.java
 ``` java
 package seedu.address.commons.events.ui;
 
@@ -60,7 +60,7 @@ public class ShowPhotoSelectionEvent extends BaseEvent {
     }
 }
 ```
-###### \java\seedu\address\logic\commands\event\RepeatCommand.java
+###### /java/seedu/address/logic/commands/event/RepeatCommand.java
 ``` java
 package seedu.address.logic.commands.event;
 
@@ -170,7 +170,7 @@ public class RepeatCommand extends UndoableCommand {
     }
 }
 ```
-###### \java\seedu\address\logic\commands\UpdatePhotoCommand.java
+###### /java/seedu/address/logic/commands/UpdatePhotoCommand.java
 ``` java
 package seedu.address.logic.commands;
 
@@ -212,11 +212,11 @@ public class UpdatePhotoCommand extends Command {
     }
 }
 ```
-###### \java\seedu\address\logic\parser\CliSyntax.java
+###### /java/seedu/address/logic/parser/CliSyntax.java
 ``` java
     public static final Prefix PREFIX_PERIOD = new Prefix("p/");
 ```
-###### \java\seedu\address\logic\parser\event\AddEventCommandParser.java
+###### /java/seedu/address/logic/parser/event/AddEventCommandParser.java
 ``` java
 
             //Initialize period to "0"
@@ -237,7 +237,7 @@ public class UpdatePhotoCommand extends Command {
 
 }
 ```
-###### \java\seedu\address\logic\parser\event\RepeatCommandParser.java
+###### /java/seedu/address/logic/parser/event/RepeatCommandParser.java
 ``` java
 package seedu.address.logic.parser.event;
 
@@ -287,7 +287,7 @@ public class RepeatCommandParser implements Parser<RepeatCommand> {
     }
 }
 ```
-###### \java\seedu\address\logic\parser\ParserUtil.java
+###### /java/seedu/address/logic/parser/ParserUtil.java
 ``` java
     /**
      * Parses a {@code Optional<String> photo} into an {@code Optional<Photo>}
@@ -344,7 +344,7 @@ public class RepeatCommandParser implements Parser<RepeatCommand> {
     }
 
 ```
-###### \java\seedu\address\logic\parser\UpdatePhotoCommandParser.java
+###### /java/seedu/address/logic/parser/UpdatePhotoCommandParser.java
 ``` java
 package seedu.address.logic.parser;
 
@@ -383,7 +383,7 @@ public class UpdatePhotoCommandParser implements Parser<UpdatePhotoCommand> {
     }
 }
 ```
-###### \java\seedu\address\model\event\Event.java
+###### /java/seedu/address/model/event/Event.java
 ``` java
     @Override
     public ObjectProperty<Period> periodProperty() {
@@ -498,7 +498,7 @@ public class UpdatePhotoCommandParser implements Parser<UpdatePhotoCommand> {
         return this.getTimeslot().compareTo(other.getTimeslot());
     }
 ```
-###### \java\seedu\address\model\event\EventList.java
+###### /java/seedu/address/model/event/EventList.java
 ``` java
         Event targetEvent = new Event(target);
         if (!internalMap.containsValue(targetEvent)) {
@@ -515,7 +515,7 @@ public class UpdatePhotoCommandParser implements Parser<UpdatePhotoCommand> {
         internalMap.put(editedEvent.getTimeslot(), editedEvent);
 
 ```
-###### \java\seedu\address\model\event\EventList.java
+###### /java/seedu/address/model/event/EventList.java
 ``` java
         final boolean eventFound = internalMap.containsValue(toRemove);
         if (!eventFound) {
@@ -525,7 +525,7 @@ public class UpdatePhotoCommandParser implements Parser<UpdatePhotoCommand> {
 
         return eventFound;
 ```
-###### \java\seedu\address\model\event\EventList.java
+###### /java/seedu/address/model/event/EventList.java
 ``` java
     /**
      * Check if a given event has any time clash with any event in the EventList.
@@ -560,7 +560,7 @@ public class UpdatePhotoCommandParser implements Parser<UpdatePhotoCommand> {
     }
 
 ```
-###### \java\seedu\address\model\event\exceptions\DuplicateEventException.java
+###### /java/seedu/address/model/event/exceptions/DuplicateEventException.java
 ``` java
 
 /**
@@ -572,7 +572,7 @@ public class DuplicateEventException extends DuplicateDataException {
     }
 }
 ```
-###### \java\seedu\address\model\event\exceptions\EventTimeClashException.java
+###### /java/seedu/address/model/event/exceptions/EventTimeClashException.java
 ``` java
 package seedu.address.model.event.exceptions;
 
@@ -585,7 +585,7 @@ public class EventTimeClashException extends Exception {
     }
 }
 ```
-###### \java\seedu\address\model\event\exceptions\RepetitionException.java
+###### /java/seedu/address/model/event/exceptions/RepetitionException.java
 ``` java
 package seedu.address.model.event.exceptions;
 
@@ -599,7 +599,7 @@ public class RepetitionException extends Exception {
     }
 }
 ```
-###### \java\seedu\address\model\event\ObservableTreeMap.java
+###### /java/seedu/address/model/event/ObservableTreeMap.java
 ``` java
 package seedu.address.model.event;
 
@@ -1306,7 +1306,7 @@ public class ObservableTreeMap<K, V> implements ObservableMap<K, V> {
 
 }
 ```
-###### \java\seedu\address\model\event\Period.java
+###### /java/seedu/address/model/event/Period.java
 ``` java
 package seedu.address.model.event;
 
@@ -1388,7 +1388,7 @@ public class Period {
     }
 }
 ```
-###### \java\seedu\address\model\event\ReadOnlyEvent.java
+###### /java/seedu/address/model/event/ReadOnlyEvent.java
 ``` java
 
     ObjectProperty<Period> periodProperty();
@@ -1418,7 +1418,7 @@ public class Period {
     void setNextScheduledEvent(Event nextScheduledEvent);
 
 ```
-###### \java\seedu\address\model\event\RepeatEventTimerTask.java
+###### /java/seedu/address/model/event/RepeatEventTimerTask.java
 ``` java
 package seedu.address.model.event;
 
@@ -1450,7 +1450,6 @@ public class RepeatEventTimerTask extends TimerTask {
         this.model = model;
         this.targetEvent = event;
         this.period = period;
-        System.out.println("New timer task created: " + event);
     }
 
     /**
@@ -1481,9 +1480,7 @@ public class RepeatEventTimerTask extends TimerTask {
                     model.addEvent(editedEvent);
                 } catch (EventTimeClashException etce) {
                     Event newEvent = editedEvent.plusDays(period);
-                    System.out.println("Timer task - new event created: " + newEvent);
                     model.scheduleRepeatedEvent(newEvent);
-                    //RepeatEventTimerTask newTask = new RepeatEventTimerTask(model, editedEvent, period);
                 }
             }
         });
@@ -1491,7 +1488,7 @@ public class RepeatEventTimerTask extends TimerTask {
     }
 }
 ```
-###### \java\seedu\address\model\event\timeslot\Date.java
+###### /java/seedu/address/model/event/timeslot/Date.java
 ``` java
     public Date(LocalDate localDate) {
         this.day = localDate.getDayOfMonth();
@@ -1499,13 +1496,13 @@ public class RepeatEventTimerTask extends TimerTask {
         this.year = localDate.getYear();
     }
 ```
-###### \java\seedu\address\model\event\timeslot\Date.java
+###### /java/seedu/address/model/event/timeslot/Date.java
 ``` java
     public LocalDate toLocalDate() {
         return LocalDate.of(year, month, day);
     }
 ```
-###### \java\seedu\address\model\event\timeslot\Timeslot.java
+###### /java/seedu/address/model/event/timeslot/Timeslot.java
 ``` java
     /**
      * Increase the date by specified number of days.
@@ -1536,7 +1533,7 @@ public class RepeatEventTimerTask extends TimerTask {
     }
 
 ```
-###### \java\seedu\address\model\Model.java
+###### /java/seedu/address/model/Model.java
 ``` java
     /**
      * Schedule a repeated event.
@@ -1544,7 +1541,7 @@ public class RepeatEventTimerTask extends TimerTask {
     void scheduleRepeatedEvent(ReadOnlyEvent event);
 }
 ```
-###### \java\seedu\address\model\ReadOnlyAddressBook.java
+###### /java/seedu/address/model/ReadOnlyAddressBook.java
 ``` java
     /**
      * Returns the last changed event.
@@ -1559,14 +1556,14 @@ public class RepeatEventTimerTask extends TimerTask {
     Date getCurrentDate();
 }
 ```
-###### \java\seedu\address\storage\XmlAdaptedEvent.java
+###### /java/seedu/address/storage/XmlAdaptedEvent.java
 ``` java
         Period period = new Period("0"); //to handle legacy versions where the optional field is not present
         if (this.period != null) {
             period = new Period(this.period);
         }
 ```
-###### \java\seedu\address\ui\CalendarView.java
+###### /java/seedu/address/ui/CalendarView.java
 ``` java
 
 package seedu.address.ui;
@@ -1610,7 +1607,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.DataFormat;
 import javafx.scene.input.Dragboard;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
@@ -1975,18 +1971,6 @@ public class CalendarView extends UiPart<Region> {
         eventPane.setStyle("-fx-background-color: #81C7D4; -fx-alignment: CENTER; "
                 + "-fx-border-color: " + "white");
 
-        //Add listener to mouse-click event to show detail of the event
-        eventPane.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent t) {
-                try {
-                    logic.execute("eventfind " + event.getTitle().toString());
-                } catch (CommandException | ParseException e) {
-                    raise(new NewResultAvailableEvent(e.getMessage(), true));
-                }
-            }
-        });
-
         //Add the label to the pane
         eventPane.getChildren().addAll(eventTitle);
 
@@ -2117,7 +2101,8 @@ public class CalendarView extends UiPart<Region> {
         logger.info("LastChangedEvent is " + lastChangedEvent);
         logger.info("NewlyAddedEvent is " + newlyAddedEvent);
         initEvents(calendarView, abce.data.getEventList(), lastChangedEvent, newlyAddedEvent);
-        if (abce.data.getEventList().size() != 0) {
+
+        if (!abce.data.getEventList().isEmpty()) {
             updateEvents(calendarView, abce.data.getEventList(), lastChangedEvent, newlyAddedEvent);
         }
 
@@ -2238,7 +2223,7 @@ public class CalendarView extends UiPart<Region> {
 
 }
 ```
-###### \java\seedu\address\ui\EventCard.java
+###### /java/seedu/address/ui/EventCard.java
 ``` java
 
 /**
@@ -2316,7 +2301,7 @@ public class EventCard extends UiPart<Region> {
     }
 }
 ```
-###### \java\seedu\address\ui\EventListPanel.java
+###### /java/seedu/address/ui/EventListPanel.java
 ``` java
 /**
  * Panel containing the list of events.
@@ -2376,7 +2361,7 @@ public class EventListPanel extends UiPart<Region> {
     }
 
 ```
-###### \java\seedu\address\ui\MainWindow.java
+###### /java/seedu/address/ui/MainWindow.java
 ``` java
         //When calendar button is clicked, the browserPlaceHolder will switch
         // to the calendar view
@@ -2394,7 +2379,7 @@ public class EventListPanel extends UiPart<Region> {
             }
         });
 ```
-###### \java\seedu\address\ui\MainWindow.java
+###### /java/seedu/address/ui/MainWindow.java
 ``` java
     /**
      * Opens the calendar view.
@@ -2420,7 +2405,7 @@ public class EventListPanel extends UiPart<Region> {
     }
 
 ```
-###### \java\seedu\address\ui\MainWindow.java
+###### /java/seedu/address/ui/MainWindow.java
 ``` java
     @Subscribe
     private void handleShowCalendarEvent(ShowCalendarEvent event) {
@@ -2470,7 +2455,7 @@ public class EventListPanel extends UiPart<Region> {
         }
     }
 ```
-###### \java\seedu\address\ui\PersonPanel.java
+###### /java/seedu/address/ui/PersonPanel.java
 ``` java
     /**
      * Register the image import button for click event.
@@ -2511,7 +2496,7 @@ public class EventListPanel extends UiPart<Region> {
         });
     }
 ```
-###### \java\seedu\address\ui\PersonPanel.java
+###### /java/seedu/address/ui/PersonPanel.java
 ``` java
         //Load the photo of the contact
         String imagePath = person.getPhoto().toString();
@@ -2522,7 +2507,7 @@ public class EventListPanel extends UiPart<Region> {
     }
 
 ```
-###### \resources\view\BrightTheme.css
+###### /resources/view/BrightTheme.css
 ``` css
 
 .background {
@@ -2850,7 +2835,7 @@ public class EventListPanel extends UiPart<Region> {
     -fx-padding: 8 1 8 1;
 }
 ```
-###### \resources\view\EventListCard.fxml
+###### /resources/view/EventListCard.fxml
 ``` fxml
 
 <?import javafx.geometry.Insets?>
@@ -2893,7 +2878,7 @@ public class EventListPanel extends UiPart<Region> {
     </GridPane>
 </HBox>
 ```
-###### \resources\view\EventListPanel.fxml
+###### /resources/view/EventListPanel.fxml
 ``` fxml
 
 <?import javafx.scene.control.ListView?>
@@ -2903,7 +2888,7 @@ public class EventListPanel extends UiPart<Region> {
     <ListView fx:id="eventListView" prefHeight="1000.0" />
 </VBox>
 ```
-###### \resources\view\MainWindow.fxml
+###### /resources/view/MainWindow.fxml
 ``` fxml
 
 <?import java.net.URL?>
