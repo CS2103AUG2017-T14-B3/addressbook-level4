@@ -1,5 +1,5 @@
 # reginleiff
-###### \java\seedu\address\logic\commands\event\AddEventCommandTest.java
+###### /java/seedu/address/logic/commands/event/AddEventCommandTest.java
 ``` java
 public class AddEventCommandTest {
 
@@ -160,7 +160,7 @@ public class AddEventCommandTest {
 
 }
 ```
-###### \java\seedu\address\logic\commands\event\DeleteEventCommandTest.java
+###### /java/seedu/address/logic/commands/event/DeleteEventCommandTest.java
 ``` java
 /**
  * Contains integration tests (interaction with the Model) and unit tests for {@code DeleteEventCommand}.
@@ -258,7 +258,7 @@ public class DeleteEventCommandTest {
     }
 }
 ```
-###### \java\seedu\address\logic\commands\event\EditEventCommandTest.java
+###### /java/seedu/address/logic/commands/event/EditEventCommandTest.java
 ``` java
 public class EditEventCommandTest {
 
@@ -392,7 +392,7 @@ public class EditEventCommandTest {
     }
 
 ```
-###### \java\seedu\address\logic\commands\event\FindEventCommandTest.java
+###### /java/seedu/address/logic/commands/event/FindEventCommandTest.java
 ``` java
 /**
  * Contains integration tests (interaction with the Model) for {@code FindEventCommand}.
@@ -473,7 +473,7 @@ public class FindEventCommandTest {
     }
 }
 ```
-###### \java\seedu\address\logic\parser\event\AddEventCommandParserTest.java
+###### /java/seedu/address/logic/parser/event/AddEventCommandParserTest.java
 ``` java
 public class AddEventCommandParserTest {
     private AddEventCommandParser parser = new AddEventCommandParser();
@@ -497,7 +497,7 @@ public class AddEventCommandParserTest {
                 + DESCRIPTION_SOCCER, new AddEventCommand(expectedEvent));
 
 ```
-###### \java\seedu\address\logic\parser\event\DateParserTest.java
+###### /java/seedu/address/logic/parser/event/DateParserTest.java
 ``` java
 public class DateParserTest {
 
@@ -561,7 +561,7 @@ public class DateParserTest {
 
 }
 ```
-###### \java\seedu\address\logic\parser\event\DeleteEventCommandParserTest.java
+###### /java/seedu/address/logic/parser/event/DeleteEventCommandParserTest.java
 ``` java
 public class DeleteEventCommandParserTest {
 
@@ -579,7 +579,7 @@ public class DeleteEventCommandParserTest {
     }
 }
 ```
-###### \java\seedu\address\logic\parser\event\EditEventCommandParserTest.java
+###### /java/seedu/address/logic/parser/event/EditEventCommandParserTest.java
 ``` java
 public class EditEventCommandParserTest {
 
@@ -716,7 +716,7 @@ public class EditEventCommandParserTest {
     }
 }
 ```
-###### \java\seedu\address\logic\parser\event\FindEventCommandParserTest.java
+###### /java/seedu/address/logic/parser/event/FindEventCommandParserTest.java
 ``` java
 package seedu.address.logic.parser.event;
 
@@ -755,7 +755,7 @@ public class FindEventCommandParserTest {
     }
 }
 ```
-###### \java\seedu\address\model\event\DescriptionTest.java
+###### /java/seedu/address/model/event/DescriptionTest.java
 ``` java
 package seedu.address.model.event;
 
@@ -783,7 +783,7 @@ public class DescriptionTest {
     }
 }
 ```
-###### \java\seedu\address\model\event\timeslot\DateTest.java
+###### /java/seedu/address/model/event/timeslot/DateTest.java
 ``` java
 public class DateTest {
 
@@ -857,7 +857,7 @@ public class DateTest {
 
 }
 ```
-###### \java\seedu\address\model\event\timeslot\TimeslotTest.java
+###### /java/seedu/address/model/event/timeslot/TimeslotTest.java
 ``` java
 package seedu.address.model.event.timeslot;
 
@@ -920,7 +920,7 @@ public class TimeslotTest {
 
 }
 ```
-###### \java\seedu\address\model\event\timeslot\TimingTest.java
+###### /java/seedu/address/model/event/timeslot/TimingTest.java
 ``` java
 public class TimingTest {
     private Timing timeOne;
@@ -983,7 +983,7 @@ public class TimingTest {
 }
 
 ```
-###### \java\seedu\address\model\event\TitleTest.java
+###### /java/seedu/address/model/event/TitleTest.java
 ``` java
 package seedu.address.model.event;
 
@@ -1010,7 +1010,7 @@ public class TitleTest {
     }
 }
 ```
-###### \java\seedu\address\model\EventListTest.java
+###### /java/seedu/address/model/EventListTest.java
 ``` java
     @Test
     public void getSubList_success() {
@@ -1035,7 +1035,7 @@ public class TitleTest {
         }
     }
 ```
-###### \java\seedu\address\testutil\EditEventDescriptorBuilder.java
+###### /java/seedu/address/testutil/EditEventDescriptorBuilder.java
 ``` java
 package seedu.address.testutil;
 
@@ -1109,7 +1109,7 @@ public class EditEventDescriptorBuilder {
     }
 
 ```
-###### \java\seedu\address\testutil\EventBuilder.java
+###### /java/seedu/address/testutil/EventBuilder.java
 ``` java
 package seedu.address.testutil;
 
@@ -1191,7 +1191,7 @@ public class EventBuilder {
     }
 
 ```
-###### \java\seedu\address\testutil\EventsUtil.java
+###### /java/seedu/address/testutil/EventsUtil.java
 ``` java
 package seedu.address.testutil;
 
@@ -1220,7 +1220,7 @@ public class EventsUtil {
     }
 }
 ```
-###### \java\seedu\address\testutil\TypicalEvents.java
+###### /java/seedu/address/testutil/TypicalEvents.java
 ``` java
 package seedu.address.testutil;
 

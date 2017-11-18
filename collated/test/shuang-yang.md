@@ -1,5 +1,5 @@
 # shuang-yang
-###### \java\guitests\guihandles\EventCardHandle.java
+###### /java/guitests/guihandles/EventCardHandle.java
 ``` java
 
 /**
@@ -50,7 +50,7 @@ public class EventCardHandle extends NodeHandle<Node> {
 
 }
 ```
-###### \java\seedu\address\logic\commands\CommandTestUtil.java
+###### /java/seedu/address/logic/commands/CommandTestUtil.java
 ``` java
     public static final String VALID_PERIOD_MIDTERM = " 180";
     public static final String VALID_PERIOD_SOCCER = " 7";
@@ -59,7 +59,7 @@ public class EventCardHandle extends NodeHandle<Node> {
     public static final String PERIOD_SOCCER = " " + PREFIX_PERIOD + VALID_PERIOD_SOCCER;
     public static final String INVALID_PERIOD = " " + PREFIX_PERIOD + " -1";
 ```
-###### \java\seedu\address\logic\commands\event\EditEventCommandTest.java
+###### /java/seedu/address/logic/commands/event/EditEventCommandTest.java
 ``` java
 
     @Test
@@ -91,7 +91,7 @@ public class EventCardHandle extends NodeHandle<Node> {
     }
 }
 ```
-###### \java\seedu\address\logic\commands\event\RepeatCommandTest.java
+###### /java/seedu/address/logic/commands/event/RepeatCommandTest.java
 ``` java
 package seedu.address.logic.commands.event;
 
@@ -220,7 +220,7 @@ public class RepeatCommandTest {
 
 }
 ```
-###### \java\seedu\address\logic\parser\event\AddEventCommandParserTest.java
+###### /java/seedu/address/logic/parser/event/AddEventCommandParserTest.java
 ``` java
         // multiple period - last period accepted
         assertParseSuccess(parser, AddEventCommand.COMMAND_WORD + TITLE_SOCCER + TIMESLOT_SOCCER + DESCRIPTION_SOCCER
@@ -261,7 +261,7 @@ public class RepeatCommandTest {
     }
 }
 ```
-###### \java\seedu\address\logic\parser\event\RepeatCommandParserTest.java
+###### /java/seedu/address/logic/parser/event/RepeatCommandParserTest.java
 ``` java
 package seedu.address.logic.parser.event;
 
@@ -326,7 +326,7 @@ public class RepeatCommandParserTest {
     }
 }
 ```
-###### \java\seedu\address\logic\parser\ParserUtilTest.java
+###### /java/seedu/address/logic/parser/ParserUtilTest.java
 ``` java
 
     @Test
@@ -357,7 +357,7 @@ public class RepeatCommandParserTest {
     }
 
 ```
-###### \java\seedu\address\model\EventListTest.java
+###### /java/seedu/address/model/EventListTest.java
 ``` java
 
 public class EventListTest {
@@ -391,7 +391,7 @@ public class EventListTest {
         EventList eventList = new EventList();
         ReadOnlyEvent toAdd1 = new EventBuilder().withTimeslot(VALID_TIMESLOT_SOCCER).build();
         ReadOnlyEvent toAdd2 = new EventBuilder().withTimeslot(VALID_TIMESLOT_SOCCER).build();
-        ReadOnlyEvent toAdd3 = new EventBuilder().withTimeslot(VALID_TIMESLOT_SOCCER).build();
+        ReadOnlyEvent toAdd3 = new EventBuilder().withTimeslot(VALID_TIMESLOT_TENNIS).build();
 
         try {
             eventList.add(toAdd1);
@@ -400,10 +400,17 @@ public class EventListTest {
         } catch (Exception e) {
             assertTrue(e instanceof EventTimeClashException);
         }
+
+        try {
+            eventList.add(toAdd3);
+            fail("The expected exception was not thrown.");
+        } catch (Exception e) {
+            assertTrue(e instanceof EventTimeClashException);
+        }
     }
 
 ```
-###### \java\seedu\address\model\ObservableTreeMapTest.java
+###### /java/seedu/address/model/ObservableTreeMapTest.java
 ``` java
 public class ObservableTreeMapTest {
     private static final int VALID_KEY = 1;
@@ -561,7 +568,7 @@ public class ObservableTreeMapTest {
     }
 }
 ```
-###### \java\seedu\address\testutil\EditEventDescriptorBuilder.java
+###### /java/seedu/address/testutil/EditEventDescriptorBuilder.java
 ``` java
     /**
      * Sets the {@code Period} of the {@code EditEventDescriptor} that we are building.
@@ -575,7 +582,7 @@ public class ObservableTreeMapTest {
         return this;
     }
 ```
-###### \java\seedu\address\testutil\EventBuilder.java
+###### /java/seedu/address/testutil/EventBuilder.java
 ``` java
     /**
      * Sets the {@code Period} of the {@code Event} that we are building.
@@ -589,7 +596,7 @@ public class ObservableTreeMapTest {
         return this;
     }
 ```
-###### \java\seedu\address\ui\EventCardTest.java
+###### /java/seedu/address/ui/EventCardTest.java
 ``` java
 
 public class EventCardTest extends GuiUnitTest {

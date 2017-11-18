@@ -1,5 +1,5 @@
 # huiyiiih
-###### \java\seedu\address\logic\commands\CommandTestUtil.java
+###### /java/seedu/address/logic/commands/CommandTestUtil.java
 ``` java
     public static final String VALID_NAME_JOE = "Joe Smith";
     public static final String VALID_NAME_JANE = "Jane Smith";
@@ -14,7 +14,7 @@
     public static final String VALID_JANE_REL = "Joe Smith [siblings]";
     public static final String VALID_JOE_REL = "Jane Smith [siblings]";
 ```
-###### \java\seedu\address\logic\commands\CommandTestUtil.java
+###### /java/seedu/address/logic/commands/CommandTestUtil.java
 ``` java
     public static final String REL_DESC_SIBLINGS = " " + PREFIX_ADD_RELATIONSHIP + VALID_REL_SIBLINGS;
     public static final String REL_DESC_COLLEAGUE = " " + PREFIX_ADD_RELATIONSHIP + VALID_REL_COLLEAGUE;
@@ -23,12 +23,12 @@
     public static final String POSITION_DESC = " " + PREFIX_POSITION + VALID_POSITION;
     public static final String PRIORITY_DESC = " " + PREFIX_PRIORITY + VALID_PRIORITY;
 ```
-###### \java\seedu\address\logic\commands\CommandTestUtil.java
+###### /java/seedu/address/logic/commands/CommandTestUtil.java
 ``` java
     public static final SetRelCommand.EditPerson DESC_JOE;
     public static final SetRelCommand.EditPerson DESC_JANE;
 ```
-###### \java\seedu\address\logic\commands\CommandTestUtil.java
+###### /java/seedu/address/logic/commands/CommandTestUtil.java
 ``` java
         DESC_JOE = new EditPersonBuilder().withName(VALID_NAME_JOE)
             .withPhone(VALID_PHONE_AMY).withEmail(VALID_EMAIL_AMY).withAddress(VALID_ADDRESS_AMY)
@@ -43,7 +43,7 @@
             .withNote(VALID_NOTE_AMY).withPhoto(VALID_PHOTO_AMY).withTags
             (VALID_TAG_FRIEND).withToAddRel(VALID_JANE_REL).build();
 ```
-###### \java\seedu\address\logic\commands\relationship\SetRelCommandTest.java
+###### /java/seedu/address/logic/commands/relationship/SetRelCommandTest.java
 ``` java
 
 /**
@@ -198,7 +198,7 @@ public class SetRelCommandTest {
     }
 }
 ```
-###### \java\seedu\address\logic\parser\AddCommandParserTest.java
+###### /java/seedu/address/logic/parser/AddCommandParserTest.java
 ``` java
     @Test
     public void parse_addrelprefixpresent_failure() {
@@ -210,7 +210,7 @@ public class SetRelCommandTest {
             + EMAIL_DESC_AMY + ADDRESS_DESC_AMY + REL_DESC_SIBLINGS, Phone.MESSAGE_PHONE_CONSTRAINTS);
     }
 ```
-###### \java\seedu\address\logic\parser\CheckCommandsParserTest.java
+###### /java/seedu/address/logic/parser/CheckCommandsParserTest.java
 ``` java
 
 public class CheckCommandsParserTest {
@@ -366,7 +366,7 @@ public class CheckCommandsParserTest {
     }
 }
 ```
-###### \java\seedu\address\logic\parser\EditCommandParserTest.java
+###### /java/seedu/address/logic/parser/EditCommandParserTest.java
 ``` java
     @Test
     public void parse_addrelprefixpresent_failure() {
@@ -381,7 +381,7 @@ public class CheckCommandsParserTest {
         assertParseFailure(parser, "1" + INVALID_PHONE_DESC + REL_DESC_SIBLINGS, Phone.MESSAGE_PHONE_CONSTRAINTS);
     }
 ```
-###### \java\seedu\address\logic\parser\ParserUtilTest.java
+###### /java/seedu/address/logic/parser/ParserUtilTest.java
 ``` java
     @Test
     public void parseRels_null_throwsNullPointerException() throws Exception {
@@ -401,7 +401,7 @@ public class CheckCommandsParserTest {
         assertEquals(expectedRelSet, actualRelSet);
     }
 ```
-###### \java\seedu\address\logic\parser\relationship\SetRelCommandParserTest.java
+###### /java/seedu/address/logic/parser/relationship/SetRelCommandParserTest.java
 ``` java
 
 public class SetRelCommandParserTest {
@@ -494,7 +494,7 @@ public class SetRelCommandParserTest {
     }
 }
 ```
-###### \java\seedu\address\logic\parser\SortCommandParserTest.java
+###### /java/seedu/address/logic/parser/SortCommandParserTest.java
 ``` java
 
 public class SortCommandParserTest {
@@ -517,7 +517,7 @@ public class SortCommandParserTest {
     }
 }
 ```
-###### \java\seedu\address\model\AddressBookTest.java
+###### /java/seedu/address/model/AddressBookTest.java
 ``` java
     @Test
     public void getRelList_modifyList_throwsUnsupportedOperationException() {
@@ -525,7 +525,7 @@ public class SortCommandParserTest {
         addressBook.getRelList().remove(0);
     }
 ```
-###### \java\seedu\address\model\relationship\RelationshipTest.java
+###### /java/seedu/address/model/relationship/RelationshipTest.java
 ``` java
 
 public class RelationshipTest {
@@ -545,7 +545,7 @@ public class RelationshipTest {
     }
 }
 ```
-###### \java\seedu\address\model\UniqueRelListTest.java
+###### /java/seedu/address/model/UniqueRelListTest.java
 ``` java
 
 public class UniqueRelListTest {
@@ -560,7 +560,7 @@ public class UniqueRelListTest {
     }
 }
 ```
-###### \java\seedu\address\testutil\EditPersonBuilder.java
+###### /java/seedu/address/testutil/EditPersonBuilder.java
 ``` java
 
     /**
@@ -598,7 +598,7 @@ public class UniqueRelListTest {
         return this;
     }
 ```
-###### \java\seedu\address\testutil\PersonBuilder.java
+###### /java/seedu/address/testutil/PersonBuilder.java
 ``` java
     /**
      * Parses the {@code relation} into a {@code Set<Relationship>} and set it to the {@code Person} that we are
@@ -613,7 +613,7 @@ public class UniqueRelListTest {
         return this;
     }
 ```
-###### \java\systemtests\SetRelCommandSystemTest.java
+###### /java/systemtests/SetRelCommandSystemTest.java
 ``` java
 public class SetRelCommandSystemTest extends AddressBookSystemTest {
 
