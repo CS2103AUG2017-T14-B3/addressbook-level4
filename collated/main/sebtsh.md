@@ -1,5 +1,5 @@
 # sebtsh
-###### /java/seedu/address/logic/commands/AddCommand.java
+###### \java\seedu\address\logic\commands\AddCommand.java
 ``` java
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a person to the address book. "
             + "Parameters: "
@@ -26,7 +26,7 @@
             + PREFIX_TAG + "friends "
             + PREFIX_TAG + "owesMoney";
 ```
-###### /java/seedu/address/logic/commands/EditCommand.java
+###### \java\seedu\address\logic\commands\EditCommand.java
 ``` java
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the person identified "
             + "by the index number used in the last person listing. "
@@ -47,7 +47,7 @@
             + PREFIX_PHONE + "91234567 "
             + PREFIX_EMAIL + "johndoe@example.com";
 ```
-###### /java/seedu/address/logic/commands/EditCommand.java
+###### \java\seedu\address\logic\commands\EditCommand.java
 ``` java
     /**
      * Creates and returns a {@code Person} with the details of {@code personToEdit}
@@ -76,7 +76,7 @@
                updatedPhoto, updatedTags, updatedRel);
     }
 ```
-###### /java/seedu/address/logic/commands/EditCommand.java
+###### \java\seedu\address\logic\commands\EditCommand.java
 ``` java
     /**
      * Stores the details to edit the person with. Each non-empty field value will replace the
@@ -123,7 +123,7 @@
                     this.photo, this.tags, this.relation);
         }
 ```
-###### /java/seedu/address/logic/commands/EditCommand.java
+###### \java\seedu\address\logic\commands\EditCommand.java
 ``` java
         public Optional<Company> getCompany() {
             return Optional.ofNullable(company);
@@ -165,7 +165,7 @@
             this.note = note;
         }
 ```
-###### /java/seedu/address/logic/commands/EditCommand.java
+###### \java\seedu\address\logic\commands\EditCommand.java
 ``` java
         @Override
         public boolean equals(Object other) {
@@ -197,7 +197,7 @@
     }
 }
 ```
-###### /java/seedu/address/logic/parser/AddCommandParser.java
+###### \java\seedu\address\logic\parser\AddCommandParser.java
 ``` java
     /**
      * Parses the given {@code String} of arguments in the context of the AddCommand
@@ -275,7 +275,7 @@
     }
 }
 ```
-###### /java/seedu/address/logic/parser/CliSyntax.java
+###### \java\seedu\address\logic\parser\CliSyntax.java
 ``` java
     public static final Prefix PREFIX_COMPANY = new Prefix("c/");
     public static final Prefix PREFIX_POSITION = new Prefix("po/");
@@ -283,7 +283,7 @@
     public static final Prefix PREFIX_PRIORITY = new Prefix("pr/");
     public static final Prefix PREFIX_NOTE = new Prefix("no/");
 ```
-###### /java/seedu/address/logic/parser/EditCommandParser.java
+###### \java\seedu\address\logic\parser\EditCommandParser.java
 ``` java
     /**
      * Parses the given {@code String} of arguments in the context of the EditCommand
@@ -336,7 +336,7 @@
         return new EditCommand(index, editPersonDescriptor);
     }
 ```
-###### /java/seedu/address/logic/parser/ParserUtil.java
+###### \java\seedu\address\logic\parser\ParserUtil.java
 ``` java
     /**
      * Parses a {@code Optional<String> company} into an {@code Optional<Company>} if {@code company} is present.
@@ -384,7 +384,7 @@
     }
 
 ```
-###### /java/seedu/address/model/AddressBook.java
+###### \java\seedu\address\model\AddressBook.java
 ``` java
     /**
      * Removes a tag from all persons in the list if they have it
@@ -399,7 +399,7 @@
         tags.remove(tag); //remove tag from Master Tag List
     }
 ```
-###### /java/seedu/address/model/ModelManager.java
+###### \java\seedu\address\model\ModelManager.java
 ``` java
     /**
      * Removes specified tag from all the persons in the address book.
@@ -411,7 +411,7 @@
         indicateAddressBookChanged();
     }
 ```
-###### /java/seedu/address/model/person/Company.java
+###### \java\seedu\address\model\person\Company.java
 ``` java
 package seedu.address.model.person;
 
@@ -475,7 +475,7 @@ public class Company implements Comparator<Company> {
         return value.hashCode();
     }
 ```
-###### /java/seedu/address/model/person/Note.java
+###### \java\seedu\address\model\person\Note.java
 ``` java
 package seedu.address.model.person;
 
@@ -540,7 +540,7 @@ public class Note {
 
 }
 ```
-###### /java/seedu/address/model/person/Person.java
+###### \java\seedu\address\model\person\Person.java
 ``` java
     private ObjectProperty<Company> company;
     private ObjectProperty<Position> position;
@@ -549,7 +549,7 @@ public class Note {
     private ObjectProperty<Note> note;
     private ObjectProperty<Photo> photo;
 ```
-###### /java/seedu/address/model/person/Person.java
+###### \java\seedu\address\model\person\Person.java
 ``` java
     /**
      * Constructor without optional fields. Every field must be present and not null.
@@ -660,7 +660,7 @@ public class Note {
         this.relation = new SimpleObjectProperty<>(new UniqueRelList(relation));
     }
 ```
-###### /java/seedu/address/model/person/Person.java
+###### \java\seedu\address\model\person\Person.java
 ``` java
     @Override
     public Company getCompany() {
@@ -731,7 +731,7 @@ public class Note {
         this.note.set(note);
     }
 ```
-###### /java/seedu/address/model/person/Person.java
+###### \java\seedu\address\model\person\Person.java
 ``` java
     /**
      * Removes a tag from this person's list of tags if the list contains the tag.
@@ -742,7 +742,7 @@ public class Note {
         tags.get().remove(toRemove);
     }
 ```
-###### /java/seedu/address/model/person/Position.java
+###### \java\seedu\address\model\person\Position.java
 ``` java
 package seedu.address.model.person;
 
@@ -806,7 +806,7 @@ public class Position implements Comparator<Position> {
         return value.hashCode();
     }
 ```
-###### /java/seedu/address/model/person/Priority.java
+###### \java\seedu\address\model\person\Priority.java
 ``` java
 package seedu.address.model.person;
 
@@ -871,7 +871,7 @@ public class Priority implements Comparator<Priority> {
     }
 
 ```
-###### /java/seedu/address/model/person/ReadOnlyPerson.java
+###### \java\seedu\address\model\person\ReadOnlyPerson.java
 ``` java
     Address getAddress();
 
@@ -895,7 +895,7 @@ public class Priority implements Comparator<Priority> {
 
     Note getNote();
 ```
-###### /java/seedu/address/model/person/ReadOnlyPerson.java
+###### \java\seedu\address\model\person\ReadOnlyPerson.java
 ``` java
     /**
      * Returns true if both have the same state. (interfaces cannot override .equals)
@@ -947,7 +947,7 @@ public class Priority implements Comparator<Priority> {
         return builder.toString();
     }
 ```
-###### /java/seedu/address/model/person/Status.java
+###### \java\seedu\address\model\person\Status.java
 ``` java
 package seedu.address.model.person;
 
@@ -1012,7 +1012,7 @@ public class Status implements Comparator<Status> {
         return value.hashCode();
     }
 ```
-###### /java/seedu/address/model/tag/UniqueTagList.java
+###### \java\seedu\address\model\tag\UniqueTagList.java
 ``` java
     /**
      * Removes a Tag from the list if it is present.
@@ -1025,58 +1025,8 @@ public class Status implements Comparator<Status> {
             internalList.remove(toRemove);
         }
     }
-    //author
-
-    @Override
-    public Iterator<Tag> iterator() {
-        assert CollectionUtil.elementsAreUnique(internalList);
-        return internalList.iterator();
-    }
-
-    /**
-     * Returns the backing list as an unmodifiable {@code ObservableList}.
-     */
-    public ObservableList<Tag> asObservableList() {
-        assert CollectionUtil.elementsAreUnique(internalList);
-        return FXCollections.unmodifiableObservableList(internalList);
-    }
-
-    @Override
-    public boolean equals(Object other) {
-        assert CollectionUtil.elementsAreUnique(internalList);
-        return other == this // short circuit if same object
-                || (other instanceof UniqueTagList // instanceof handles nulls
-                && this.internalList.equals(((UniqueTagList) other).internalList));
-    }
-
-    /**
-     * Returns true if the element in this list is equal to the elements in {@code other}.
-     * The elements do not have to be in the same order.
-     */
-    public boolean equalsOrderInsensitive(UniqueTagList other) {
-        assert CollectionUtil.elementsAreUnique(internalList);
-        assert CollectionUtil.elementsAreUnique(other.internalList);
-        return this == other || new HashSet<>(this.internalList).equals(new HashSet<>(other.internalList));
-    }
-
-    @Override
-    public int hashCode() {
-        assert CollectionUtil.elementsAreUnique(internalList);
-        return internalList.hashCode();
-    }
-
-    /**
-     * Signals that an operation would have violated the 'no duplicates' property of the list.
-     */
-    public static class DuplicateTagException extends DuplicateDataException {
-        protected DuplicateTagException() {
-            super("Operation would result in duplicate tags");
-        }
-    }
-
-}
 ```
-###### /java/seedu/address/storage/XmlAdaptedPerson.java
+###### \java\seedu\address\storage\XmlAdaptedPerson.java
 ``` java
     @XmlElement(required = true)
     private String company;
@@ -1089,7 +1039,7 @@ public class Status implements Comparator<Status> {
     @XmlElement(required = true)
     private String note;
 ```
-###### /java/seedu/address/storage/XmlAdaptedPerson.java
+###### \java\seedu\address\storage\XmlAdaptedPerson.java
 ``` java
     /**
      * Converts a given Person into this class for JAXB use.
@@ -1167,7 +1117,7 @@ public class Status implements Comparator<Status> {
     }
 }
 ```
-###### /java/seedu/address/ui/EventListPanel.java
+###### \java\seedu\address\ui\EventListPanel.java
 ``` java
     @Subscribe
     /**
@@ -1185,7 +1135,7 @@ public class Status implements Comparator<Status> {
         eventListView.getSelectionModel().clearSelection();
     }
 ```
-###### /java/seedu/address/ui/EventPanel.java
+###### \java\seedu\address\ui\EventPanel.java
 ``` java
 package seedu.address.ui;
 
@@ -1281,23 +1231,23 @@ public class EventPanel extends UiPart<Region> {
     */
 }
 ```
-###### /java/seedu/address/ui/MainWindow.java
+###### \java\seedu\address\ui\MainWindow.java
 ``` java
     private PersonPanel personPanel;
     private EventPanel eventPanel;
 ```
-###### /java/seedu/address/ui/MainWindow.java
+###### \java\seedu\address\ui\MainWindow.java
 ``` java
         eventPanel = new EventPanel(logic);
 
         personPanel = new PersonPanel(logic);
 ```
-###### /java/seedu/address/ui/MainWindow.java
+###### \java\seedu\address\ui\MainWindow.java
 ``` java
         personPanel.setDimensions(personListPanel.getRoot().getHeight(),
                 primaryStage.getWidth() - personListPanel.getRoot().getWidth());
 ```
-###### /java/seedu/address/ui/MainWindow.java
+###### \java\seedu\address\ui\MainWindow.java
 ``` java
     /**
      * Called when a person panel is selected. Hides other panels and displays the person panel.
@@ -1330,7 +1280,7 @@ public class EventPanel extends UiPart<Region> {
         browserPlaceholder.getChildren().add((eventPanel.getRoot()));
     }
 ```
-###### /java/seedu/address/ui/MainWindow.java
+###### \java\seedu\address\ui\MainWindow.java
 ``` java
     @Subscribe
     private void handlePersonPanelSelectionChangedEvent(PersonPanelSelectionChangedEvent event) {
@@ -1344,13 +1294,13 @@ public class EventPanel extends UiPart<Region> {
         handleEventPanelSelected();
     }
 ```
-###### /java/seedu/address/ui/PersonCard.java
+###### \java\seedu\address\ui\PersonCard.java
 ``` java
         company.textProperty().bind(Bindings.convert(person.companyProperty()));
         position.textProperty().bind(Bindings.convert(person.positionProperty()));
         priority.textProperty().bind(Bindings.convert(person.priorityProperty()));
 ```
-###### /java/seedu/address/ui/PersonCard.java
+###### \java\seedu\address\ui\PersonCard.java
 ``` java
 
     /**
@@ -1377,7 +1327,7 @@ public class EventPanel extends UiPart<Region> {
     }
 }
 ```
-###### /java/seedu/address/ui/PersonListPanel.java
+###### \java\seedu\address\ui\PersonListPanel.java
 ``` java
     @Subscribe
     /**
@@ -1395,7 +1345,7 @@ public class EventPanel extends UiPart<Region> {
         personListView.getSelectionModel().clearSelection();
     }
 ```
-###### /java/seedu/address/ui/PersonPanel.java
+###### \java\seedu\address\ui\PersonPanel.java
 ``` java
 package seedu.address.ui;
 
@@ -1497,7 +1447,7 @@ public class PersonPanel extends UiPart<Region> {
     }
 
 ```
-###### /java/seedu/address/ui/PersonPanel.java
+###### \java\seedu\address\ui\PersonPanel.java
 ``` java
 
     /**
@@ -1521,7 +1471,7 @@ public class PersonPanel extends UiPart<Region> {
         person.getRelation().forEach
             (relationship -> relationshipPane.getChildren().add(new Label(relationship.relType)));
 ```
-###### /java/seedu/address/ui/PersonPanel.java
+###### \java\seedu\address\ui\PersonPanel.java
 ``` java
 
     /**
@@ -1578,7 +1528,7 @@ public class PersonPanel extends UiPart<Region> {
     }
 }
 ```
-###### /resources/view/BrightTheme.css
+###### \resources\view\BrightTheme.css
 ``` css
 
 #eventName .label {
@@ -1622,152 +1572,4 @@ public class PersonPanel extends UiPart<Region> {
     -fx-background-radius: 1;
     -fx-font-size: 11;
 }
-```
-###### /resources/view/EventPanel.fxml
-``` fxml
-
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.StackPane?>
-
-<StackPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="330.0" prefWidth="800.0" stylesheets="@BrightTheme.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <ImageView fitHeight="507.0" fitWidth="1085.0" opacity="0.15" StackPane.alignment="CENTER_LEFT">
-         <image>
-            <Image url="/images/eventpanelbackground.png" />
-         </image>
-      </ImageView>
-      <StackPane id="eventPeriod" prefHeight="150.0" prefWidth="200.0">
-         <children>
-            <Label id="eventPeriod" fx:id="periodLabel" prefHeight="200.0" prefWidth="281.0" wrapText="true" StackPane.alignment="BOTTOM_LEFT">
-               <padding>
-                  <Insets top="50.0" />
-               </padding>
-            </Label>
-         </children>
-      </StackPane>
-      <StackPane id="eventName" prefHeight="150.0" prefWidth="200.0">
-         <children>
-            <Label id="eventName" fx:id="nameLabel" prefHeight="105.0" prefWidth="800.0" text="Event Name Placeholder" StackPane.alignment="TOP_LEFT" />
-         </children>
-      </StackPane>
-      <StackPane id="eventTime" prefHeight="150.0" prefWidth="200.0">
-         <children>
-            <Label id="eventTime" fx:id="timeslotLabel" prefHeight="187.0" prefWidth="449.0" text="Event Timeslot Placeholder" StackPane.alignment="CENTER_LEFT">
-               <padding>
-                  <Insets bottom="130.0" />
-               </padding></Label>
-         </children>
-      </StackPane>
-      <StackPane id="eventDescription" prefHeight="150.0" prefWidth="200.0">
-         <children>
-            <Label id="eventDescription" fx:id="descriptionLabel" prefHeight="181.0" prefWidth="802.0" text="Event Description Placeholder" wrapText="true" StackPane.alignment="BOTTOM_LEFT">
-               <padding>
-                  <Insets bottom="150.0" />
-               </padding>
-            </Label>
-         </children>
-      </StackPane>
-   </children>
-</StackPane>
-```
-###### /resources/view/PersonPanel.fxml
-``` fxml
-
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.FlowPane?>
-<?import javafx.scene.shape.Line?>
-<?import javafx.scene.text.Font?>
-
-<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="330.0" prefWidth="846.0" stylesheets="@BrightTheme.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
-   <AnchorPane layoutX="-1.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="265.0" prefWidth="846.0">
-   <children>
-      <Label fx:id="nameLabel" layoutX="14.0" layoutY="14.0" prefHeight="62.0" prefWidth="563.0" styleClass="label-header">
-         <font>
-            <Font size="28.0" />
-         </font>
-      </Label>
-      <ImageView fx:id="photo" fitHeight="100" layoutX="725.0" layoutY="14.0" preserveRatio="true">
-      </ImageView>
-      <!--<Button fx:id="photoSelectionButton" layoutX="438" layoutY="125"-->
-              <!--prefWidth="80" prefHeight="25" text="import..."-->
-              <!--styleClass="importButton">-->
-      <!--</Button>-->
-      <Label fx:id="positionLabel" layoutX="14.0" layoutY="68.0" prefHeight="28.0" prefWidth="318.0">
-         <font>
-            <Font size="19.0" />
-         </font>
-      </Label>
-      <Label fx:id="companyLabel" layoutX="14.0" layoutY="90.0" prefHeight="28.0" prefWidth="318.0">
-         <font>
-            <Font size="19.0" />
-         </font>
-      </Label>
-      <FlowPane id="tags" fx:id="tagsPane" layoutX="14.0" layoutY="119.0" prefHeight="40.0" prefWidth="200.0" />
-      <Label fx:id="emailName" layoutX="579.0" layoutY="170.0" prefHeight="21.0" prefWidth="49.0" text="Email: ">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <Label fx:id="phoneLabel" layoutX="65.0" layoutY="170.0">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <Label fx:id="emailLabel" layoutX="428.0" layoutY="170.0">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <Label layoutX="15.0" layoutY="200.0" text="Address: " AnchorPane.leftAnchor="14.0">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <Label fx:id="addressLabel" layoutX="76.0" layoutY="200.0">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <Label layoutX="12.0" layoutY="230.0" text="Priority: " AnchorPane.leftAnchor="14.0">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <Label fx:id="priorityLabel" layoutX="70.0" layoutY="230.0">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <Label layoutX="16.0" layoutY="170.0" text="Phone: " AnchorPane.leftAnchor="14.0">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <Label fx:id="statusName" layoutX="383.0" layoutY="200.0" text="Status: ">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <Label fx:id="statusLabel" layoutX="432.0" layoutY="200.0">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <Label layoutX="14.0" layoutY="259.0" text="Notes:" AnchorPane.leftAnchor="14.0">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <Label fx:id="noteLabel" alignment="TOP_LEFT" layoutX="61.0" layoutY="259.0" prefHeight="20.0" prefWidth="667.0">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
 ```

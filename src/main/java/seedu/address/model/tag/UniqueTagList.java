@@ -105,7 +105,7 @@ public class UniqueTagList implements Iterable<Tag> {
             internalList.remove(toRemove);
         }
     }
-    //author
+    //@@author
 
     @Override
     public Iterator<Tag> iterator() {
